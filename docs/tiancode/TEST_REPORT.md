@@ -16,7 +16,9 @@
 - 已通过原生 Node pairing 检查：`verify-translation-pairing: 1 named pair(s) consistent`。
 - 已用 Ruby YAML 解析和 Python 结构断言检查 `.github/workflows/tiancode-windows-build.yml` 的 runner、Node.js/pnpm 版本、离线更新环境、构建版本输入、artifact 路径和 SHA-256 生成步骤。
 - 已在个人 fork 上运行 Windows Actions `38162449088`，确认 `windows-2025` runner、pnpm 依赖安装、Visual Studio/C++/SDK 工具链检查、官方构建、dsh/Host/vendor/Landlock runtime pack 和 Electron 下载步骤通过；运行在 `prepare:dsh -> runtime:install` 处因 Electron `44.0.0` 的 Windows 进程退出崩溃停止。
-- 已将 Electron 更新到 `44.7.0`，并用 pnpm `11.7.0` 通过 `--frozen-lockfile --lockfile-only` 校验锁文件；该版本包含对应的 Node shutdown 修复，等待新的 Windows Actions 运行验证最终 installer artifact。
+- 已将 Electron 更新到 `44.7.0`，并用 pnpm `11.7.0` 通过 `--frozen-lockfile --lockfile-only` 校验锁文件；该版本包含对应的 Node shutdown 修复，随后由新的 Windows Actions 运行验证最终 installer artifact。
+- Windows Actions `38165951276` 已成功完成构建、ZIP/校验和生成与 artifact 上传。运行地址：[GitHub Actions run 38165951276](https://github.com/5ysy/tiancode-harness/actions/runs/38165951276)。
+- 已下载 artifact 并检查 `TianCode-Setup-0.2.0-rc.2.20261012.1-win-x64-unsigned.exe`、同名 ZIP、`.sha256`、`SHA256SUMS.txt` 和 `build-manifest.json`；本地计算的 installer SHA-256 为 `c4533e9ace7f15e6e8131ecce5dd9c95a1aa5234fd3c6c777d36b593c2a0768d`，ZIP SHA-256 为 `588c9bfb7a55b9a408a9295344cdbe6b0a2c923e9fb9efdff4ed8a3e1ed8a30e`，均与清单一致。ZIP 内含 `.exe` 和 installer `.sha256` 文件。
 
 ## 未完成或未验证
 
@@ -25,8 +27,7 @@
 - `pnpm run verify-translation-pairing docs/upgrade-guide/v0.2.0-rc.2/tiancode-identity/guide.md` 同样因依赖安装阶段的 Registry 请求未完成，已用原生 Node pairing 检查替代当前工作区可执行证据。
 - `uv run pytest` 在收集阶段有 5 个 `ModuleNotFoundError`（`deepseek_harness` 和 `deepseek_harness_runtime`），未进入测试；`uv run ruff .` 因环境没有 `ruff` 可执行文件退出。
 - 由于 `vitest`、`tsx` 和对应的 esbuild 可执行链接没有完成，桌面端 focused Vitest 未执行。
-- Windows x64 unsigned NSIS 构建、安装、启动、卸载、快捷方式、任务栏、托盘、单实例隔离和 SHA-256 尚未验证。
-- GitHub Actions Windows runner 的最终 NSIS 构建、ZIP 上传和 artifact 下载仍待 Electron `44.7.0` 更新后的新运行验证；上一轮运行已验证依赖安装和工具链检查路径。
+- Windows x64 unsigned NSIS 构建、ZIP 生成、artifact 下载和 SHA-256 已通过 Actions run `38165951276` 验证；安装、启动、卸载、快捷方式、任务栏、托盘和单实例隔离仍需在 Windows 验收机上执行。
 - 无公网启动、内网模型流式输出和工具调用尚未验证。
 
 ## 插件兼容性验收
