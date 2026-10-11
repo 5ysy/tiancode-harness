@@ -1,0 +1,204 @@
+name: Build TianCode Windows installer
+
+# This workflow creates an unsigned installer for the private TianCode
+# distribution. Signing remains an enterprise release step on a controlled
+# machine with the company's certificate and hardware key.
+on:
+  workflow_dispatch:
+    inputs:
+      build_version:
+        description: Build version extending the product version (for example 0.2.0-rc.2-company.1).
+        required: true
+        default: 0.2.0-rc.2-company.1
+        type: string
+      npm_registry:
+        description: Optional HTTPS npm origin used for dependency and bundled-runtime installation.
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tiancode-windows-build-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PRIMARY_NODE_VERSION: '24'
+  DSH_TELEMETRY_DISABLED: '1'
+
+jobs:
+  build:
+    name: TianCode Windows x64 installer
+    runs-on: windows-2025
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Enable Windows Developer Mode
+        shell: pwsh
+        run: >-
+          reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock"
+          /t REG_DWORD /f /v "AllowDevelopmentWithoutDevLicense" /d "1"
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.7.0
+          dest: ${{ runner.temp }}/setup-pnpm-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.PRIMARY_NODE_VERSION }}
+
+      - name: Configure build caches
+        id: build-cache
+        shell: pwsh
+        run: |
+          $store = (pnpm store path --silent).Trim()
+          $electron = Join-Path $env:RUNNER_TEMP 'electron-cache'
+          $builder = Join-Path $env:RUNNER_TEMP 'electron-builder-cache'
+          New-Item -ItemType Directory -Force -Path $electron, $builder | Out-Null
+          "PNPM_CONFIG_STORE_DIR=$store" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "ELECTRON_CACHE=$electron" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "ELECTRON_BUILDER_CACHE=$builder" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "path=$store" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          "electron=$electron" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+          "builder=$builder" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
+      - name: Restore dependency and Electron caches
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ steps.build-cache.outputs.path }}
+            ${{ steps.build-cache.outputs.electron }}
+            ${{ steps.build-cache.outputs.builder }}
+          key: ${{ runner.os }}-node-${{ env.PRIMARY_NODE_VERSION }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ env.PRIMARY_NODE_VERSION }}-pnpm-
+
+      - name: Write TianCode packaging environment
+        shell: pwsh
+        env:
+          BUILD_VERSION: ${{ inputs.build_version }}
+          NPM_REGISTRY_INPUT: ${{ inputs.npm_registry }}
+        run: |
+          $registry = $env:NPM_REGISTRY_INPUT.Trim()
+          $registryLine = $null
+          if ($registry -ne '') {
+            try { $uri = [Uri]::new($registry) } catch { throw 'npm_registry must be an HTTPS origin' }
+            if ($uri.Scheme -ne 'https' -or $uri.UserInfo -ne '' -or $uri.AbsolutePath -ne '/' -or $uri.Query -ne '' -or $uri.Fragment -ne '') {
+              throw 'npm_registry must be an HTTPS origin without credentials, path, query, or fragment'
+            }
+            $origin = $uri.GetLeftPart([UriPartial]::Authority)
+            $registryLine = "DSH_DESKTOP_NPM_REGISTRY=$origin"
+            "NPM_CONFIG_REGISTRY=$origin" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          }
+
+          $lines = @(
+            'DSH_DESKTOP_APP_ID=com.tiancode.desktop',
+            'DSH_DESKTOP_UPDATES=disabled'
+          )
+          if ($null -ne $registryLine) { $lines += $registryLine }
+          $lines | Set-Content -Path 'apps/desktop/.env.windows' -Encoding utf8
+          Write-Output "Prepared unsigned TianCode packaging for build version $($env:BUILD_VERSION)."
+
+      - name: Install workspace dependencies
+        shell: pwsh
+        run: >-
+          $drive = (Split-Path -Qualifier $env:GITHUB_WORKSPACE).TrimEnd(':');
+          $fs = (Get-Volume -DriveLetter $drive).FileSystem;
+          if ($fs -eq 'ReFS') {
+            pnpm install --frozen-lockfile --package-import-method=clone
+          } else {
+            pnpm install --frozen-lockfile
+          }
+
+      - name: Validate Windows packaging toolchain
+        shell: pwsh
+        env:
+          BUILD_VERSION: ${{ inputs.build_version }}
+        run: pnpm run package:desktop:win:x64:unsigned -- --check --build-version $env:BUILD_VERSION
+
+      - name: Build unsigned TianCode installer
+        shell: pwsh
+        env:
+          BUILD_VERSION: ${{ inputs.build_version }}
+        run: pnpm run package:desktop:win:x64:unsigned -- --build-version $env:BUILD_VERSION
+
+      - name: Create ZIP and checksums
+        id: collect
+        shell: pwsh
+        env:
+          BUILD_VERSION: ${{ inputs.build_version }}
+        run: |
+          $artifactRoot = Join-Path $env:GITHUB_WORKSPACE 'apps/desktop/.desktop-build/targets/win-x64/unsigned-artifacts'
+          $installers = @(Get-ChildItem -LiteralPath $artifactRoot -Filter 'TianCode-Setup-*-win-x64-unsigned.exe' -File)
+          if ($installers.Count -ne 1) {
+            throw "Expected one unsigned TianCode installer in $artifactRoot, found $($installers.Count)."
+          }
+          $installer = $installers[0]
+          $installerHash = (Get-FileHash -LiteralPath $installer.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+          $installerSha = "$($installer.FullName).sha256"
+          "$installerHash  $($installer.Name)" | Set-Content -LiteralPath $installerSha -Encoding utf8
+
+          $zip = Join-Path $artifactRoot "$($installer.BaseName).zip"
+          Compress-Archive -LiteralPath @($installer.FullName, $installerSha) -DestinationPath $zip -CompressionLevel Optimal -Force
+          $zipHash = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+          $zipSha = "$zip.sha256"
+          "$zipHash  $([IO.Path]::GetFileName($zip))" | Set-Content -LiteralPath $zipSha -Encoding utf8
+
+          $sums = Join-Path $artifactRoot 'SHA256SUMS.txt'
+          @(
+            "$installerHash  $($installer.Name)",
+            "$zipHash  $([IO.Path]::GetFileName($zip))"
+          ) | Set-Content -LiteralPath $sums -Encoding utf8
+
+          $manifest = [ordered]@{
+            schemaVersion = 1
+            product = 'TianCode'
+            buildVersion = $env:BUILD_VERSION
+            target = 'win-x64'
+            unsigned = $true
+            commit = $env:GITHUB_SHA
+            installer = $installer.Name
+            zip = [IO.Path]::GetFileName($zip)
+            sha256 = [ordered]@{ installer = $installerHash; zip = $zipHash }
+          }
+          $manifestPath = Join-Path $artifactRoot 'build-manifest.json'
+          $manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $manifestPath -Encoding utf8
+
+          @"
+          ## TianCode Windows x64 artifact
+          - Installer: ``$($installer.Name)``
+          - ZIP: ``$([IO.Path]::GetFileName($zip))``
+          - SHA-256: ``SHA256SUMS.txt``
+          - Build version: ``$($env:BUILD_VERSION)``
+          "@ | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
+
+      - name: Upload TianCode installer artifacts
+        if: steps.collect.outcome == 'success'
+        uses: actions/upload-artifact@v7
+        with:
+          name: TianCode-windows-x64-${{ github.run_id }}
+          path: |
+            apps/desktop/.desktop-build/targets/win-x64/unsigned-artifacts/*.exe
+            apps/desktop/.desktop-build/targets/win-x64/unsigned-artifacts/*.blockmap
+            apps/desktop/.desktop-build/targets/win-x64/unsigned-artifacts/*.zip
+            apps/desktop/.desktop-build/targets/win-x64/unsigned-artifacts/*.sha256
+            apps/desktop/.desktop-build/targets/win-x64/unsigned-artifacts/SHA256SUMS.txt
+            apps/desktop/.desktop-build/targets/win-x64/unsigned-artifacts/build-manifest.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload TianCode packaging logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: TianCode-windows-x64-${{ github.run_id }}-logs
+          path: apps/desktop/.desktop-build/packaging-runs/**
+          if-no-files-found: warn
+          retention-days: 14
