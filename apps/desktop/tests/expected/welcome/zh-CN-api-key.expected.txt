@@ -1,7 +1,7 @@
-DeepSeek Harness
-DeepSeek Harness
+天山智码
+天山智码
 添加一个 API Key 开始使用
-配置 DeepSeek 官方模型，即可开始使用
+配置兼容 OpenAI 协议的内网模型，即可开始使用
 输入 API 密钥 [password]
 保存并继续 [disabled]
 稍后配置

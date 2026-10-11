@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   desktopBuildRecordFilename,
   desktopUpdateMetadataFilename,
+  desktopUpdatesDisabled,
   resolveDesktopAutoUpdateConfig,
   resolveDesktopAutoUpdateEnvironment,
   resolveDesktopAutoUpdateTarget,
@@ -11,6 +12,15 @@ import {
 const RELEASE_ID = '0123456789abcdef0123456789abcdef'
 
 describe('desktop auto-update environment', () => {
+  it('recognizes the explicit offline update switch and rejects other values', () => {
+    expect(desktopUpdatesDisabled({})).toBe(false)
+    expect(desktopUpdatesDisabled({ DSH_DESKTOP_UPDATES: ' disabled ' })).toBe(true)
+    expect(desktopUpdatesDisabled({ DSH_DESKTOP_UPDATES: 'enabled' })).toBe(false)
+    expect(() => desktopUpdatesDisabled({ DSH_DESKTOP_UPDATES: 'offline' })).toThrow(/must be "enabled" or "disabled"/u)
+    expect(() => resolveDesktopAutoUpdateConfig({ DSH_DESKTOP_UPDATES: 'disabled' }, 'win32', 'x64'))
+      .toThrow('updates are disabled')
+  })
+
   it.each([undefined, 'test'])('requires a release ID for deployment %s', (deployment) => {
     const environment = { DSH_DESKTOP_AUTO_UPDATE_ENV: deployment, DOWNLOAD_TEST_ORIGIN: 'https://updates.example.com',
       DOWNLOAD_TEST_COS_BUCKET: 'test-bucket' }

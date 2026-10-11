@@ -1,7 +1,7 @@
-DeepSeek Harness
-DeepSeek Harness
+TianCode
+TianCode
 Add an API key to get started
-Configure official DeepSeek models to start using Harness
+Configure an OpenAI-compatible model to start using TianCode
 Enter API key [password]
 Save and continue [disabled]
 Set up later

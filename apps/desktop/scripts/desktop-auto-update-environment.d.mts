@@ -1,8 +1,13 @@
 /** Environment variable that selects the Desktop update deployment. */
 export const DESKTOP_AUTO_UPDATE_ENV: 'DSH_DESKTOP_AUTO_UPDATE_ENV'
+/** Environment variable that controls public update feeds. */
+export const DESKTOP_UPDATES_ENV: 'DSH_DESKTOP_UPDATES'
 
 /** Supported Desktop update deployment. */
 export type DesktopAutoUpdateEnvironment = 'test' | 'production'
+
+/** Return whether a build has no network update source. */
+export function desktopUpdatesDisabled(env: NodeJS.ProcessEnv): boolean
 
 /** Directory name of one supported Desktop release target. */
 export type DesktopAutoUpdateTarget = 'mac-arm64' | 'mac-x64' | 'win-x64'

@@ -13,7 +13,12 @@ it.each(['test', 'production'] as const)('selects the %s policy and authenticati
   expect(policy).toEqual({ origin, allowedPageOrigins: [origin],
     ...(deployment === 'test' ? { allowedAuthOrigins: ['https://login.example.com'] } : {}),
     authentication: deployment === 'test' ? 'feishu-test' : 'anonymous' })
+  if (policy === undefined) throw new Error('expected a mandatory-update policy')
   expect(resolveDesktopPolicyConfig(policy)).toMatchObject(policy)
+})
+
+it('omits mandatory-update policy when public updates are disabled', () => {
+  expect(resolveDesktopPolicyEnvironment({ DSH_DESKTOP_UPDATES: 'disabled' })).toBeUndefined()
 })
 
 it('requires only the selected origin, defaults to test, and accepts explicit page restrictions', () => {

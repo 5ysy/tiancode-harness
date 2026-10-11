@@ -23,6 +23,12 @@ async function withDirectory(action: (directory: string) => Promise<void>): Prom
 }
 
 describe('Desktop local packaging configuration', () => {
+  it('allows unsigned Windows preparation without update or mandatory-policy origins when updates are disabled', () => {
+    expect(() => validateDesktopPackageEnvironment({
+      DSH_DESKTOP_APP_ID: 'com.example.offline', DSH_DESKTOP_UPDATES: 'disabled',
+    }, WINDOWS, { unsigned: true })).not.toThrow()
+  })
+
   it('takes cache concurrency from the Windows file and defaults to four without ambient overrides', async () => {
     await withDirectory(async (directory) => {
       const parent = { DSH_DESKTOP_WINDOWS_SIGNATURE_CACHE_CONCURRENCY: '8' }

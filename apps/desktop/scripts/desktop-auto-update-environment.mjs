@@ -4,6 +4,17 @@ import { valid } from 'semver'
 
 /** Environment variable that selects the Desktop update deployment. */
 export const DESKTOP_AUTO_UPDATE_ENV = 'DSH_DESKTOP_AUTO_UPDATE_ENV'
+/** Environment variable that disables all public update feeds for an internal build. */
+export const DESKTOP_UPDATES_ENV = 'DSH_DESKTOP_UPDATES'
+
+/** Return whether this build intentionally has no network update source. */
+export function desktopUpdatesDisabled(env) {
+  const value = env[DESKTOP_UPDATES_ENV]?.trim() ?? ''
+  if (value !== '' && value !== 'enabled' && value !== 'disabled') {
+    throw new Error(`desktop auto-update: ${DESKTOP_UPDATES_ENV} must be "enabled" or "disabled"`)
+  }
+  return value === 'disabled'
+}
 
 const UPDATE_ENVIRONMENTS = {
   test: {
@@ -128,6 +139,7 @@ function httpsOrigin(value, name) {
  * @throws {Error} When the test deployment lacks a valid HTTPS origin or a 32-character lowercase hexadecimal release ID.
  */
 export function resolveDesktopAutoUpdateConfig(env, platform, arch) {
+  if (desktopUpdatesDisabled(env)) throw new Error('desktop auto-update: updates are disabled for this build')
   const environment = resolveDesktopAutoUpdateEnvironment(env)
   const target = resolveDesktopAutoUpdateTarget(platform, arch)
   const deployment = UPDATE_ENVIRONMENTS[environment]

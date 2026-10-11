@@ -29,14 +29,14 @@ function barrier() {
 async function fixture(arch: 'arm64' | 'x64' = 'arm64') {
   const root = await mkdtemp(join(tmpdir(), 'desktop-parallel-notarization-'))
   const artifactsRoot = join(root, 'artifacts')
-  const appPath = join(artifactsRoot, arch === 'arm64' ? 'mac-arm64' : 'mac', 'DeepSeek Harness.app')
+  const appPath = join(artifactsRoot, arch === 'arm64' ? 'mac-arm64' : 'mac', 'TianCode.app')
   await mkdir(join(appPath, 'Contents', 'Resources'), { recursive: true })
   await writeFile(join(appPath, 'payload'), 'signed content')
   await writeMacOSAppUpdateConfig(join(appPath, 'Contents', 'Resources'), {
     publicUrl: `https://desktop-updates.example.com/dsh-desk/0123456789abcdef0123456789abcdef/feeds/mac-${arch}/`,
-  }, 'deepseek-harness-updater')
+  }, 'TianCode-Setup-updater')
   const version = '1.2.3-alpha.1'
-  const base = `deepseek-harness-${version}-mac-${arch}`
+  const base = `TianCode-Setup-${version}-mac-${arch}`
   const request = { arch, artifactsRoot, version, environment }
   const apple: MacOSArtifactOperations = {
     copyApp: async (source, destination) => {
@@ -196,7 +196,7 @@ describe('parallel macOS artifacts', () => {
   it('passes the actual App and isolated output directory to each single-target builder', () => {
     const target = resolveDesktopPackageTarget('mac-arm64', 'darwin', 'arm64')
     for (const format of ['zip', 'dmg'] as const) {
-      const appPath = join('private build', format, 'DeepSeek Harness.app')
+      const appPath = join('private build', format, 'TianCode.app')
       const output = join(dirname(appPath), 'artifacts')
       expect(desktopElectronBuilderArguments(target, false, { format, appPath, output })).toEqual([
         'exec', 'electron-builder', '--config', 'electron-builder.config.mjs',
@@ -204,6 +204,32 @@ describe('parallel macOS artifacts', () => {
         '--config.mac.notarize=false',
         '--prepackaged', appPath, '--config.directories.output', output,
       ])
+    }
+  })
+
+  it('omits update metadata and app-update verification when public updates are disabled', async () => {
+    const f = await fixture()
+    const environment = { ...f.request.environment, DSH_DESKTOP_UPDATES: 'disabled' }
+    await rm(join(f.appPath, 'Contents', 'Resources', 'app-update.yml'))
+    const built: string[] = []
+    try {
+      await packageMacOSArtifacts({ ...f.request, environment }, async artifact => {
+        built.push(artifact.format)
+        await mkdir(artifact.output, { recursive: true })
+        const base = `TianCode-Setup-${f.request.version}-mac-${f.request.arch}`
+        await writeFile(join(artifact.output, `${base}.${artifact.format}`), 'artifact')
+        if (artifact.format === 'zip') await writeFile(join(artifact.output, `${base}.zip.blockmap`), 'blockmap')
+      }, f.apple)
+      expect(built.sort()).toEqual(['dmg', 'zip'])
+      expect(await readdir(f.request.artifactsRoot)).toEqual([
+        'mac-arm64',
+        `TianCode-Setup-${f.request.version}-mac-${f.request.arch}.dmg`,
+        `TianCode-Setup-${f.request.version}-mac-${f.request.arch}.zip`,
+        `TianCode-Setup-${f.request.version}-mac-${f.request.arch}.zip.blockmap`,
+      ].sort())
+      expect(existsSync(join(f.request.artifactsRoot, 'nightly-mac.yml'))).toBe(false)
+    } finally {
+      await rm(f.root, { recursive: true, force: true })
     }
   })
 })
