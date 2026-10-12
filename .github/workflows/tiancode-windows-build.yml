@@ -1,15 +1,20 @@
 name: Build TianCode Windows installer
 
-# This workflow creates an unsigned installer for the private TianCode
-# distribution. Signing remains an enterprise release step on a controlled
-# machine with the company's certificate and hardware key.
+# This workflow creates and publishes unsigned installer artifacts for the
+# private TianCode distribution. Signing remains an enterprise release step on
+# a controlled machine with the company's certificate and hardware key.
 on:
   workflow_dispatch:
     inputs:
       build_version:
-        description: Build version extending the product version (for example 0.2.0-rc.2.20261012.1).
+        description: Build version extending the product version (for example 0.2.0-rc.2.20261012.2).
         required: true
-        default: 0.2.0-rc.2.20261012.1
+        default: 0.2.0-rc.2.20261012.2
+        type: string
+      release_tag:
+        description: GitHub Release tag; it must be tiancode-v<build_version>.
+        required: true
+        default: tiancode-v0.2.0-rc.2.20261012.2
         type: string
       npm_registry:
         description: Optional HTTPS npm origin used for dependency and bundled-runtime installation.
@@ -106,6 +111,23 @@ jobs:
           $lines | Set-Content -Path 'apps/desktop/.env.windows' -Encoding utf8
           Write-Output "Prepared unsigned TianCode packaging for build version $($env:BUILD_VERSION)."
 
+      - name: Validate release inputs
+        shell: pwsh
+        env:
+          BUILD_VERSION: ${{ inputs.build_version }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          if ($env:BUILD_VERSION -notmatch '^\d+\.\d+\.\d+(?:-[0-9A-Za-z][0-9A-Za-z.-]*)?$') {
+            throw 'build_version must be a semantic version with an optional prerelease suffix'
+          }
+          if ($env:RELEASE_TAG -notmatch '^tiancode-v\d+\.\d+\.\d+(?:-[0-9A-Za-z][0-9A-Za-z.-]*)?$') {
+            throw 'release_tag must use the tiancode-v<version> format'
+          }
+          $expectedTag = "tiancode-v$($env:BUILD_VERSION)"
+          if ($env:RELEASE_TAG -ne $expectedTag) {
+            throw "release_tag must equal $expectedTag"
+          }
+
       - name: Install workspace dependencies
         shell: pwsh
         run: >-
@@ -151,10 +173,21 @@ jobs:
           $zipSha = "$zip.sha256"
           "$zipHash  $([IO.Path]::GetFileName($zip))" | Set-Content -LiteralPath $zipSha -Encoding utf8
 
+          $sourceZip = Join-Path $artifactRoot "TianCode-source-$($env:BUILD_VERSION).zip"
+          $sourcePrefix = "TianCode-$($env:BUILD_VERSION)/"
+          git archive --format=zip "--prefix=$sourcePrefix" --output="$sourceZip" $env:GITHUB_SHA
+          if ($LASTEXITCODE -ne 0) {
+            throw "git archive failed for commit $($env:GITHUB_SHA)"
+          }
+          $sourceHash = (Get-FileHash -LiteralPath $sourceZip -Algorithm SHA256).Hash.ToLowerInvariant()
+          $sourceSha = "$sourceZip.sha256"
+          "$sourceHash  $([IO.Path]::GetFileName($sourceZip))" | Set-Content -LiteralPath $sourceSha -Encoding utf8
+
           $sums = Join-Path $artifactRoot 'SHA256SUMS.txt'
           @(
             "$installerHash  $($installer.Name)",
-            "$zipHash  $([IO.Path]::GetFileName($zip))"
+            "$zipHash  $([IO.Path]::GetFileName($zip))",
+            "$sourceHash  $([IO.Path]::GetFileName($sourceZip))"
           ) | Set-Content -LiteralPath $sums -Encoding utf8
 
           $manifest = [ordered]@{
@@ -166,7 +199,8 @@ jobs:
             commit = $env:GITHUB_SHA
             installer = $installer.Name
             zip = [IO.Path]::GetFileName($zip)
-            sha256 = [ordered]@{ installer = $installerHash; zip = $zipHash }
+            sourceZip = [IO.Path]::GetFileName($sourceZip)
+            sha256 = [ordered]@{ installer = $installerHash; zip = $zipHash; sourceZip = $sourceHash }
           }
           $manifestPath = Join-Path $artifactRoot 'build-manifest.json'
           $manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $manifestPath -Encoding utf8
@@ -175,6 +209,7 @@ jobs:
           ## TianCode Windows x64 artifact
           - Installer: ``$($installer.Name)``
           - ZIP: ``$([IO.Path]::GetFileName($zip))``
+          - Source ZIP: ``$([IO.Path]::GetFileName($sourceZip))``
           - SHA-256: ``SHA256SUMS.txt``
           - Build version: ``$($env:BUILD_VERSION)``
           "@ | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
@@ -202,3 +237,77 @@ jobs:
           path: apps/desktop/.desktop-build/packaging-runs/**
           if-no-files-found: warn
           retention-days: 14
+
+  release:
+    name: Publish TianCode GitHub Release
+    needs: build
+    runs-on: windows-2025
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Download TianCode installer artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: TianCode-windows-x64-${{ github.run_id }}
+          path: release-assets
+
+      - name: Publish TianCode GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUILD_VERSION: ${{ inputs.build_version }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          $assetRoot = Join-Path $env:GITHUB_WORKSPACE 'release-assets'
+          $assetPatterns = @(
+            'TianCode-Setup-*-win-x64-unsigned.exe',
+            'TianCode-Setup-*-win-x64-unsigned.exe.sha256',
+            'TianCode-Setup-*-win-x64-unsigned.zip',
+            'TianCode-Setup-*-win-x64-unsigned.zip.sha256',
+            "TianCode-source-$($env:BUILD_VERSION).zip",
+            "TianCode-source-$($env:BUILD_VERSION).zip.sha256",
+            'SHA256SUMS.txt',
+            'build-manifest.json'
+          )
+          $assets = @(
+            foreach ($pattern in $assetPatterns) {
+              $matches = @(Get-ChildItem -LiteralPath $assetRoot -Filter $pattern -Recurse -File)
+              if ($matches.Count -ne 1) {
+                throw "Expected one Release asset matching $pattern in $assetRoot, found $($matches.Count)."
+              }
+              $matches[0]
+            }
+          )
+
+          gh api "repos/$($env:GITHUB_REPOSITORY)/git/ref/tags/$($env:RELEASE_TAG)" *> $null
+          if ($LASTEXITCODE -eq 0) {
+            throw "Git tag $($env:RELEASE_TAG) already exists; choose a new release_tag."
+          }
+          gh release view $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY *> $null
+          if ($LASTEXITCODE -eq 0) {
+            throw "GitHub Release $($env:RELEASE_TAG) already exists; choose a new release_tag."
+          }
+
+          $notesFile = Join-Path $env:RUNNER_TEMP 'tiancode-release-notes.md'
+          @"
+          ## TianCode Windows x64
+
+          This release contains the unsigned TianCode Windows x64 installer and source archive for build $($env:BUILD_VERSION).
+
+          The installer is unsigned and may require the enterprise signing process before distribution. Verify downloaded files with SHA256SUMS.txt.
+          "@ | Set-Content -LiteralPath $notesFile -Encoding utf8
+
+          $arguments = @(
+            'release', 'create', $env:RELEASE_TAG,
+            '--repo', $env:GITHUB_REPOSITORY,
+            '--target', $env:GITHUB_SHA,
+            '--title', "TianCode $($env:BUILD_VERSION)",
+            '--notes-file', $notesFile,
+            '--prerelease'
+          )
+          $arguments += $assets.FullName
+          & gh @arguments
+          if ($LASTEXITCODE -ne 0) {
+            throw "gh release create failed for $($env:RELEASE_TAG)"
+          }

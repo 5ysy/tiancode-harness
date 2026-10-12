@@ -16,7 +16,7 @@
 | `apps/desktop/installer/` | 安装器文案和提取报告使用 TianCode 名称。 |
 | `apps/desktop/scripts/` | 更新打包产物、macOS 开发包、运行时冒烟路径和构建版本扫描中的应用名称。 |
 | `apps/desktop/package.json`、`pnpm-lock.yaml` | 将 Electron 固定到 `44.7.0`，修复 Windows runner 在运行时安装完成后的 Electron 进程退出崩溃。 |
-| `.github/workflows/tiancode-windows-build.yml` | 手动构建 Windows x64 unsigned NSIS 安装器，生成 ZIP、SHA-256 清单和脱敏打包日志并上传为 Actions artifacts。 |
+| `.github/workflows/tiancode-windows-build.yml` | 手动构建 Windows x64 unsigned NSIS 安装器，生成安装器 ZIP、源码 ZIP、SHA-256 清单和脱敏打包日志；Actions artifacts 保留构建结果，并创建包含这些文件的 GitHub Release。 |
 
 ## 离线策略
 
