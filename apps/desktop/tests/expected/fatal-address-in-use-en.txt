@@ -1,5 +1,5 @@
 TianCode is unavailable
 The application could not start or stopped unexpectedly.
-Another DSH instance (such as dsh web or the desktop app) is running. They cannot start at the same time. Quit the other running DSH instance, then restart.
+Another TianCode instance (such as the Web or Desktop app) is running. They cannot start at the same time. Quit the other TianCode instance, then restart.
 Exit
 Restart

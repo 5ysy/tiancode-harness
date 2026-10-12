@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render } from '@testing-library/react'
 import { SlotRegistry } from '@deepseek-ai/dsh-client-ui-renderer/client'
 import { apply, inject } from '../src/client/index.ts'
-import { OfficialBrandMark, OfficialBrandName } from '../src/client/Brand.tsx'
+import { OfficialBrandMark, OfficialBrandName, TianCodeBrandMark, TianCodeBrandName } from '../src/client/Brand.tsx'
 import { apply as hostApply } from '../src/index.ts'
 
 afterEach(() => {
@@ -69,6 +69,20 @@ describe('official browser-brand plugin', () => {
     after.declareHoles()
     await Promise.resolve()
     for (const hole of HOLES) expect(after.slots.entries(hole)).toHaveLength(1)
+  })
+
+  it('registers the TianCode occupants for the TianCode build profile', async () => {
+    vi.stubEnv('DSH_CLIENT_BUILD_PROFILE', 'tiancode')
+    const subject = await bench()
+    await subject.ctx.plugin({ inject: [...inject], apply }).await()
+    expect(subject.slots.entries('sidebar.brand.mark')).toHaveLength(1)
+    expect(subject.slots.entries('sidebar.brand.name')).toHaveLength(1)
+
+    const name = render(<TianCodeBrandName />)
+    expect(name.getByText('TianCode')).toBeTruthy()
+    name.unmount()
+    const mark = render(<TianCodeBrandMark size={24} />)
+    expect(mark.container.querySelector('img')?.getAttribute('src')).toBe('/tiancode-mark.png')
   })
 
   it('leaves the conversation hero on its declaring fallback even in official builds', async () => {

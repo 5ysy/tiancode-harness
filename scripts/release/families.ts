@@ -14,6 +14,7 @@ import { resolve } from 'node:path'
 import {
   officialClientBuildEnvironment,
   readClientBuildRecord,
+  tiancodeClientBuildEnvironment,
 } from '../client-build-environment.ts'
 import { validateTarballPayload } from '../publication-payload.ts'
 
@@ -327,9 +328,19 @@ class DshFamily extends ReleaseFamily {
   ] as const
   readonly tagPrefix = 'dsh-v'
 
-  /** Require current artifacts from a complete official client build. */
+  /** Require current artifacts from a complete named client build profile. */
   override verifyBuildArtifacts(root: string): void {
-    readClientBuildRecord(root, officialClientBuildEnvironment(root))
+    const record = readClientBuildRecord(root)
+    const profile = record.environment.DSH_CLIENT_BUILD_PROFILE
+    const expected = profile === undefined || profile === 'official'
+      ? officialClientBuildEnvironment(root)
+      : profile === 'tiancode'
+        ? tiancodeClientBuildEnvironment(root)
+        : undefined
+    if (expected === undefined) {
+      throw new Error(`dsh release requires a supported client build profile; got ${JSON.stringify(profile)}`)
+    }
+    readClientBuildRecord(root, expected)
   }
 
   /**

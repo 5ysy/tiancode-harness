@@ -15,6 +15,7 @@ import {
   repositoryGitDirty,
   repositoryVersion,
   resolveClientBuildEnvironment,
+  tiancodeClientBuildEnvironment,
   writeClientBuildRecord,
 } from './client-build-environment.ts'
 import { clientBundle } from '../packages/client/tsdown.client.ts'
@@ -162,6 +163,12 @@ describe('client build environment', () => {
       DSH_CLIENT_TITLE: 'DeepSeek Harness',
       DSH_CLIENT_VERSION: '1.2.3-rc.4',
     })
+    expect(tiancodeClientBuildEnvironment(fixtureRoot)).toEqual({
+      DSH_CLIENT_BUILD_PROFILE: 'tiancode',
+      DSH_CLIENT_COMMIT_HASH: commit,
+      DSH_CLIENT_TITLE: 'TianCode',
+      DSH_CLIENT_VERSION: '1.2.3-rc.4',
+    })
 
     write(join(fixtureRoot, '.gitignore'), 'ignored.txt\n')
     git(fixtureRoot, ['add', '.gitignore'])
@@ -198,6 +205,21 @@ describe('client build environment', () => {
     expect(repositoryGitDirty(fixtureRoot)).toBe(false)
     write(join(fixtureRoot, 'submodule/tracked.txt'), 'modified submodule\n')
     expect(repositoryGitDirty(fixtureRoot)).toBe(true)
+  })
+
+  it('resolves the TianCode profile with the same artifact metadata fields', () => {
+    const parent = {
+      DSH_CLIENT_BUILD_PROFILE: 'official',
+      DSH_CLIENT_COMMIT_HASH: COMMIT_HASH.slice(0, 7),
+      DSH_CLIENT_TITLE: 'Local title',
+      DSH_CLIENT_VERSION: '1.2.3',
+    }
+    expect(resolveClientBuildEnvironment(parent, 'tiancode')).toEqual({
+      DSH_CLIENT_BUILD_PROFILE: 'tiancode',
+      DSH_CLIENT_COMMIT_HASH: COMMIT_HASH.slice(0, 7),
+      DSH_CLIENT_TITLE: 'TianCode',
+      DSH_CLIENT_VERSION: '1.2.3',
+    })
   })
 
   it('omits dirty metadata when repository metadata is unavailable', () => {

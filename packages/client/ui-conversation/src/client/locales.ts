@@ -1,4 +1,5 @@
 /** `conversation` namespace dictionaries. */
+const clientTitle = process.env.DSH_CLIENT_TITLE ?? 'DeepSeek Harness'
 
 /** Dictionary namespace owned by this plugin. */
 export const NS = 'conversation'
@@ -362,7 +363,7 @@ export const zh = {
   'queue.remove': '删除排队消息',
   'queue.steer': '插话发送',
   'queue.steer.unavailable': '仅运行中可插话发送',
-  'error.sessionInUse': '当前会话已被占用，可能是其他正在运行的 DSH 导致的（如其他 dsh web、桌面端），请退出其他正在运行的 DSH 后重试。',
+  'error.sessionInUse': `当前会话已被占用，可能是其他正在运行的 ${clientTitle} 导致的（如 Web 或桌面端），请退出其他正在运行的 ${clientTitle} 后重试。`,
   'queue.editFailed': '编辑失败：这条消息可能已经开始发送。',
   'queue.removeFailed': '删除失败：这条消息可能已经开始发送。',
   'queue.steerFailed': '插话发送失败，请重试。',
@@ -738,7 +739,7 @@ export const en = {
   'queue.remove': 'Remove queued message',
   'queue.steer': 'Steer queued message',
   'queue.steer.unavailable': 'Steering is available only while the agent is running',
-  'error.sessionInUse': 'This session is already in use, possibly by another running DSH instance (such as dsh web or the desktop app). Quit other running DSH instances and try again.',
+  'error.sessionInUse': `This session is already in use, possibly by another running ${clientTitle} instance (such as the Web or Desktop app). Quit other running ${clientTitle} instances and try again.`,
   'queue.editFailed': 'Edit failed: this message may have already started sending.',
   'queue.removeFailed': 'Removal failed: this message may have already started sending.',
   'queue.steerFailed': 'Steering failed. Try again.',

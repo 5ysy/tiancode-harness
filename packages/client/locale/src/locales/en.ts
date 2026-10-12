@@ -1,5 +1,7 @@
 import type { CommonKey } from './zh.ts'
 
+const clientTitle = process.env.DSH_CLIENT_TITLE ?? 'DSH'
+
 /** en base dictionary for the common namespace, checked complete against the zh key set. */
 export const en = {
   'ok': 'OK',
@@ -33,7 +35,7 @@ export const en = {
   'collapse': 'Collapse',
   'expand': 'Expand',
   'back': 'Back',
-  'brand.localBuild': 'DSH Local Build',
+  'brand.localBuild': `${clientTitle} Local Build`,
   'workspace.defaultName': 'Default workspace',
   'unknown': 'Unknown',
   'none': 'None',

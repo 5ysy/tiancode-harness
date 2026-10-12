@@ -18,13 +18,34 @@ function escapeHtmlText(value: string): string {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
-/** Project the public build title into the initial HTML document. */
+/** Project the public build identity into the initial HTML document and PWA manifest. */
 function clientDocumentTitle(): Plugin {
   const title = escapeHtmlText(process.env.DSH_CLIENT_TITLE ?? DEFAULT_CLIENT_TITLE)
+  const tiancode = process.env.DSH_CLIENT_BUILD_PROFILE === 'tiancode'
   return {
     name: 'dsh-client-document-title',
     transformIndexHtml(html) {
-      return html.replace('<title>DSH Local Build</title>', `<title>${title}</title>`)
+      const titled = html.replace('<title>DSH Local Build</title>', `<title>${title}</title>`)
+      if (!tiancode) return titled
+      return titled
+        .replace(/\s*<link rel="icon"[^>]+>\s*/gu, '\n    <link rel="icon" type="image/png" href="/tiancode-mark.png" />\n')
+    },
+    generateBundle(_options, bundle) {
+      if (!tiancode) return
+      const manifest = Object.values(bundle).find(item => item.type === 'asset' && item.fileName === 'manifest.webmanifest')
+      if (manifest?.type !== 'asset') return
+      const parsed: unknown = JSON.parse(typeof manifest.source === 'string'
+        ? manifest.source
+        : new TextDecoder().decode(manifest.source))
+      if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) {
+        throw new Error('vite: manifest.webmanifest must contain an object')
+      }
+      manifest.source = `${JSON.stringify({
+        ...parsed,
+        name: 'TianCode',
+        short_name: 'TianCode',
+        icons: [{ src: 'tiancode-mark.png', sizes: '1024x1024', type: 'image/png', purpose: 'any' }],
+      }, null, 2)}\n`
     },
   }
 }

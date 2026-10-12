@@ -465,6 +465,10 @@ describe('desktop main startup', () => {
       expect((await handler(new Request('dsh-app://shell/%'))).status).toBe(400)
       expect((await handler(new Request('dsh-app://shell/%2e%2e%2fpackage.json'))).status).toBe(403)
       expect((await handler(new Request('dsh-app://shell/missing.html'))).status).toBe(404)
+      const mark = new Request('dsh-app://app/tiancode-mark.png')
+      expect((await handler(mark)).status).toBe(404)
+      expect(web.serveWebDocument).toHaveBeenLastCalledWith(mark,
+        join('test-runtime', 'node_modules', '@deepseek-ai', 'dsh-web-frontend', 'dist'))
       expect((await handler(new Request('dsh-app://other/update-dialog.html'))).status).toBe(404)
     } finally {
       vi.mocked(web.serveWebDocument).mockReset()

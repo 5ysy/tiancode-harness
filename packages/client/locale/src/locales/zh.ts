@@ -1,4 +1,6 @@
 /** zh base dictionary for the common namespace: cross-feature standard words. */
+const clientTitle = process.env.DSH_CLIENT_TITLE ?? 'DSH'
+
 export const zh = {
   'ok': '确定',
   'cancel': '取消',
@@ -31,7 +33,7 @@ export const zh = {
   'collapse': '收起',
   'expand': '展开',
   'back': '返回',
-  'brand.localBuild': 'DSH 本地构建',
+  'brand.localBuild': `${clientTitle} 本地构建`,
   'workspace.defaultName': '默认工作区',
   'unknown': '未知',
   'none': '无',
