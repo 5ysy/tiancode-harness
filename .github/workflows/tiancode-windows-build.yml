@@ -280,15 +280,6 @@ jobs:
             }
           )
 
-          gh api "repos/$($env:GITHUB_REPOSITORY)/git/ref/tags/$($env:RELEASE_TAG)" *> $null
-          if ($LASTEXITCODE -eq 0) {
-            throw "Git tag $($env:RELEASE_TAG) already exists; choose a new release_tag."
-          }
-          gh release view $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY *> $null
-          if ($LASTEXITCODE -eq 0) {
-            throw "GitHub Release $($env:RELEASE_TAG) already exists; choose a new release_tag."
-          }
-
           $notesFile = Join-Path $env:RUNNER_TEMP 'tiancode-release-notes.md'
           @"
           ## TianCode Windows x64
@@ -298,16 +289,32 @@ jobs:
           The installer is unsigned and may require the enterprise signing process before distribution. Verify downloaded files with SHA256SUMS.txt.
           "@ | Set-Content -LiteralPath $notesFile -Encoding utf8
 
-          $arguments = @(
-            'release', 'create', $env:RELEASE_TAG,
-            '--repo', $env:GITHUB_REPOSITORY,
-            '--target', $env:GITHUB_SHA,
-            '--title', "TianCode $($env:BUILD_VERSION)",
-            '--notes-file', $notesFile,
-            '--prerelease'
-          )
-          $arguments += $assets.FullName
-          & gh @arguments
-          if ($LASTEXITCODE -ne 0) {
-            throw "gh release create failed for $($env:RELEASE_TAG)"
+          gh release view $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY *> $null
+          $releaseExists = $LASTEXITCODE -eq 0
+          gh api "repos/$($env:GITHUB_REPOSITORY)/git/ref/tags/$($env:RELEASE_TAG)" *> $null
+          $tagExists = $LASTEXITCODE -eq 0
+          if ($tagExists -and -not $releaseExists) {
+            throw "Git tag $($env:RELEASE_TAG) already exists without a Release; choose a new release_tag."
+          }
+
+          if (-not $releaseExists) {
+            $createArguments = @(
+              'release', 'create', $env:RELEASE_TAG,
+              '--repo', $env:GITHUB_REPOSITORY,
+              '--target', $env:GITHUB_SHA,
+              '--title', "TianCode $($env:BUILD_VERSION)",
+              '--notes-file', $notesFile,
+              '--prerelease'
+            )
+            & gh @createArguments
+            if ($LASTEXITCODE -ne 0) {
+              throw "gh release create failed for $($env:RELEASE_TAG)"
+            }
+          }
+
+          foreach ($asset in $assets) {
+            & gh release upload $env:RELEASE_TAG $asset.FullName --repo $env:GITHUB_REPOSITORY --clobber
+            if ($LASTEXITCODE -ne 0) {
+              throw "gh release upload failed for $($asset.Name)"
+            }
           }
