@@ -19,6 +19,9 @@
 - 已将 Electron 更新到 `44.7.0`，并用 pnpm `11.7.0` 通过 `--frozen-lockfile --lockfile-only` 校验锁文件；该版本包含对应的 Node shutdown 修复，随后由新的 Windows Actions 运行验证最终 installer artifact。
 - Windows Actions `38165951276` 已成功完成构建、ZIP/校验和生成与 artifact 上传。运行地址：[GitHub Actions run 38165951276](https://github.com/5ysy/tiancode-harness/actions/runs/38165951276)。
 - 已下载 artifact 并检查 `TianCode-Setup-0.2.0-rc.2.20261012.1-win-x64-unsigned.exe`、同名 ZIP、`.sha256`、`SHA256SUMS.txt` 和 `build-manifest.json`；本地计算的 installer SHA-256 为 `c4533e9ace7f15e6e8131ecce5dd9c95a1aa5234fd3c6c777d36b593c2a0768d`，ZIP SHA-256 为 `588c9bfb7a55b9a408a9295344cdbe6b0a2c923e9fb9efdff4ed8a3e1ed8a30e`，均与清单一致。ZIP 内含 `.exe` 和 installer `.sha256` 文件。
+- Windows Actions run `38275517275` 已在 `windows-2025` 上成功构建 unsigned TianCode installer、安装器 ZIP、源码 ZIP、SHA-256 文件和 manifest；Release 发布阶段使用 run `38279554627` 复用该成功 artifact 并逐项上传资产，两个 run 均有成功结论。
+- GitHub Release [tiancode-v0.2.0-rc.2.20261012.2](https://github.com/5ysy/tiancode-harness/releases/tag/tiancode-v0.2.0-rc.2.20261012.2) 已创建为预发布版本，指向构建提交 `3b3f436b04dd4ae8d4014d498da8e60b96d19a22`，包含安装器、安装器 ZIP、源码 ZIP、三个 `.sha256` 文件、`SHA256SUMS.txt` 和 `build-manifest.json`。
+- 已下载 Release 中的校验文件和 manifest，并核对 GitHub asset digest 与 `SHA256SUMS.txt`：installer 为 `41013dd80d55dbf0875309a723a81765475d6143f987bc11df21940753188dda`，installer ZIP 为 `659ea55c28bcef4777ea20e5db406288c4c9a671edea26d381ee817d463e8a53`，source ZIP 为 `5dd2b08183f0d478a94d53eebe882e09f5e9c2faa94bbb3e859b8bdc71566d04`；manifest 的 `product`、`target`、`unsigned`、文件名和 commit 与构建参数一致。
 
 ## 未完成或未验证
 
@@ -27,7 +30,7 @@
 - `pnpm run verify-translation-pairing docs/upgrade-guide/v0.2.0-rc.2/tiancode-identity/guide.md` 同样因依赖安装阶段的 Registry 请求未完成，已用原生 Node pairing 检查替代当前工作区可执行证据。
 - `uv run pytest` 在收集阶段有 5 个 `ModuleNotFoundError`（`deepseek_harness` 和 `deepseek_harness_runtime`），未进入测试；`uv run ruff .` 因环境没有 `ruff` 可执行文件退出。
 - 由于 `vitest`、`tsx` 和对应的 esbuild 可执行链接没有完成，桌面端 focused Vitest 未执行。
-- Windows x64 unsigned NSIS 构建、ZIP 生成、artifact 下载和 SHA-256 已通过 Actions run `38165951276` 验证；安装、启动、卸载、快捷方式、任务栏、托盘和单实例隔离仍需在 Windows 验收机上执行。
+- Windows x64 unsigned NSIS 构建、ZIP/源码包生成、Release 资产上传和 SHA-256 清单已通过 Actions run `38275517275` 与 `38279554627` 验证；安装、启动、卸载、快捷方式、任务栏、托盘和单实例隔离仍需在 Windows 验收机上执行。
 - 无公网启动、内网模型流式输出和工具调用尚未验证。
 
 ## 插件兼容性验收
