@@ -16,6 +16,11 @@ on:
         required: true
         default: tiancode-v0.2.0-rc.2.20261012.2
         type: string
+      artifact_run_id:
+        description: Optional successful build run ID to publish without rebuilding its Windows artifact.
+        required: false
+        default: ''
+        type: string
       npm_registry:
         description: Optional HTTPS npm origin used for dependency and bundled-runtime installation.
         required: false
@@ -36,6 +41,7 @@ env:
 jobs:
   build:
     name: TianCode Windows x64 installer
+    if: inputs.artifact_run_id == ''
     runs-on: windows-2025
     timeout-minutes: 120
     steps:
@@ -241,6 +247,7 @@ jobs:
   release:
     name: Publish TianCode GitHub Release
     needs: build
+    if: ${{ always() && (needs.build.result == 'success' || inputs.artifact_run_id != '') }}
     runs-on: windows-2025
     timeout-minutes: 10
     permissions:
@@ -249,8 +256,10 @@ jobs:
       - name: Download TianCode installer artifacts
         uses: actions/download-artifact@v8
         with:
-          name: TianCode-windows-x64-${{ github.run_id }}
+          name: TianCode-windows-x64-${{ inputs.artifact_run_id || github.run_id }}
           path: release-assets
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.artifact_run_id || github.run_id }}
 
       - name: Publish TianCode GitHub Release
         shell: pwsh
@@ -258,7 +267,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           BUILD_VERSION: ${{ inputs.build_version }}
           RELEASE_TAG: ${{ inputs.release_tag }}
+          ARTIFACT_RUN_ID: ${{ inputs.artifact_run_id }}
         run: |
+          if ($env:ARTIFACT_RUN_ID -ne '' -and $env:ARTIFACT_RUN_ID -notmatch '^\d+$') {
+            throw 'artifact_run_id must contain only decimal digits'
+          }
           $assetRoot = Join-Path $env:GITHUB_WORKSPACE 'release-assets'
           $assetPatterns = @(
             'TianCode-Setup-*-win-x64-unsigned.exe',
@@ -297,11 +310,19 @@ jobs:
             throw "Git tag $($env:RELEASE_TAG) already exists without a Release; choose a new release_tag."
           }
 
+          $targetSha = $env:GITHUB_SHA
+          if ($env:ARTIFACT_RUN_ID -ne '') {
+            $targetSha = gh run view $env:ARTIFACT_RUN_ID --repo $env:GITHUB_REPOSITORY --json headSha --jq .headSha
+            if ($LASTEXITCODE -ne 0 -or $targetSha -notmatch '^[0-9a-f]{40}$') {
+              throw "Unable to resolve the artifact run commit for $($env:ARTIFACT_RUN_ID)"
+            }
+          }
+
           if (-not $releaseExists) {
             $createArguments = @(
               'release', 'create', $env:RELEASE_TAG,
               '--repo', $env:GITHUB_REPOSITORY,
-              '--target', $env:GITHUB_SHA,
+              '--target', $targetSha,
               '--title', "TianCode $($env:BUILD_VERSION)",
               '--notes-file', $notesFile,
               '--prerelease'

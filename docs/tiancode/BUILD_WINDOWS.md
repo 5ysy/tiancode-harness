@@ -43,7 +43,7 @@ pnpm --filter @deepseek-ai/dsh-desktop run test:installer
 
 仓库提供 `.github/workflows/tiancode-windows-build.yml` 手动工作流。它在 `windows-2025` x64 runner 上安装 Node.js 24、pnpm 11.7.0 和工作区依赖，写入 TianCode 的无更新打包配置，运行工具链检查，然后生成未签名 NSIS 安装器。Windows runner 会使用仓库已有的 Visual Studio C++ Build Tools 和 Windows SDK；工作流不读取 API Key、签名 PIN 或其他发布凭据。
 
-在 GitHub 仓库的 **Actions** 页面选择 **Build TianCode Windows installer**，点击 **Run workflow**，填写 `build_version`（默认值为 `0.2.0-rc.2.20261012.2`）和对应的 `release_tag`（必须是 `tiancode-v<build_version>`，默认值为 `tiancode-v0.2.0-rc.2.20261012.2`）。日期和序号用于区分同一产品版本的内部构建。如果企业依赖内网 npm Registry，可以在 `npm_registry` 输入框填写不带路径、凭据、查询参数或片段的 HTTPS origin；留空时使用默认 npm Registry。工作流会校验版本、Release 标签和 Registry 输入，并拒绝不符合规则的值。
+在 GitHub 仓库的 **Actions** 页面选择 **Build TianCode Windows installer**，点击 **Run workflow**，填写 `build_version`（默认值为 `0.2.0-rc.2.20261012.2`）和对应的 `release_tag`（必须是 `tiancode-v<build_version>`，默认值为 `tiancode-v0.2.0-rc.2.20261012.2`）。日期和序号用于区分同一产品版本的内部构建。如果企业依赖内网 npm Registry，可以在 `npm_registry` 输入框填写不带路径、凭据、查询参数或片段的 HTTPS origin；留空时使用默认 npm Registry。工作流会校验版本、Release 标签和 Registry 输入，并拒绝不符合规则的值。发布阶段失败时，可以把已经成功构建的 Actions run ID 填入可选的 `artifact_run_id`，跳过重新构建并重试 Release 资产上传。
 
 工作流成功后会在同一个仓库创建对应的预发布 GitHub Release，并在 **Assets** 中提供 Windows 安装器、安装器 ZIP、源码 ZIP、各文件的 SHA-256 文件、`SHA256SUMS.txt` 和 `build-manifest.json`。Release 使用 `contents: write` 权限发布，标签指向本次运行的提交。Actions artifact `TianCode-windows-x64-<run-id>` 仍提供单独的 `.exe`、`.zip`、`.blockmap`（构建器生成时存在）、源码 ZIP、`SHA256SUMS.txt` 和 `build-manifest.json`；`TianCode-windows-x64-<run-id>-logs` 保存脱敏的打包运行日志，失败时也会上传。下载后可在 PowerShell 中校验：
 
