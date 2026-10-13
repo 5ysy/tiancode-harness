@@ -5,16 +5,23 @@
 - `pnpm run build:tiancode` 与 Desktop build 已通过；客户端构建记录包含 TianCode profile、产品名称与显示版本 `v0.0.2`。
 - 品牌、通用设置、桌面主进程与单实例的 146 项定向 Vitest 测试通过；profile resolution 与 macOS/Windows packaging configuration 的 259 项定向测试通过。
 - Agent 预设目录与品牌、构建环境的后续 143 项定向 Vitest 测试通过；引导字典放入 locale 目录后，客户端 i18n 与 export JSDoc 检查通过。最终 TianCode 完整构建通过。
-- `pnpm run typecheck` 与修复 3 处已有 lint 错误后的 `pnpm run lint` 通过；6 组已修改文档的 bilingual pairing、client catalog 和 plugin package catalog 检查通过。
+- `pnpm run typecheck` 与修复 3 处已有 lint 错误后的 `pnpm run lint` 通过；7 组已修改文档的 bilingual pairing、client catalog 和 plugin package catalog 检查通过。
 - 在 macOS 真实 Electron 桌面界面逐项检查侧栏图标与 TianCode 名称、无侧栏版本、欢迎图标与指定中文标语、创造模式描述、更多菜单、通用设置 Session Log 说明和 `v0.0.2`、Agent 预设说明，均符合本次要求。开发版 Dock 使用 TianCode 资源。
 - 官方应用 Host 正在监听 `19387` 时，TianCode Host 在系统分配的另一端口启动，主界面可用；两者运行进程和监听端口同时存在。
 - Electron `44.7.0` 的原生内部模块访问在 `node-addon-require-builtin` `0.1.6` 上拒绝启动；更新到上游明确支持该 Electron 版本的 `0.1.9` 后，Electron 实际加载器检查与 Desktop 启动通过。依赖 frozen lockfile 安装通过。
 - 全库 `pnpm run test:docs` 为 18 项通过、3 项失败，`pnpm run doc-sync` 为 37 项通过、6 项失败。失败包括现有 TianCode 单语文档、任务稿换行、repository references、5 个既有 export JSDoc 缺失及过期生成目录；client catalog 和 plugin package catalog 已重新生成并定向验证。完整文档门禁尚未通过。
 - `uv run pytest` 有 5 个 Python 包缺失导致收集失败；`uv run ruff .` 因环境未安装 ruff 退出。上述命令未作为成功证据。
-- Windows 安装、卸载与内网模型调用仍需 Windows 企业环境验收；新的 GitHub Actions 构建和 Release 结果将在发布后记录。
+- Windows 安装、卸载与内网模型调用仍需 Windows 企业环境验收。
 - `pnpm run hygiene` 为 16 项通过、2 项失败；现有 vendor rescope 夹具残留尚未修复。该次运行报告的 2 处客户端硬编码品牌问题已修复并通过 `verify-client-ui-i18n` 定向检查。
 
-报告基于当前工作区和可用的 macOS 环境。测试结果只记录已经执行的命令；Windows、内网模型和安装卸载结果在对应环境完成前保持“未验证”。
+## 2026-10-14 Windows 发布验证
+
+- [GitHub Actions run 38432723290](https://github.com/5ysy/tiancode-harness/actions/runs/38432723290) 的 Windows x64 构建与 Release 作业均成功。打包日志确认 `runtime:primary-smoke`、`runtime:smoke` 和 `smoke-packaged-runtime.ts --unsigned` 通过。
+- [Release tiancode-v0.2.0-rc.2.20261014.1](https://github.com/5ysy/tiancode-harness/releases/tag/tiancode-v0.2.0-rc.2.20261014.1) 包含 8 个完整资产：安装器、安装器 ZIP、源码 ZIP、三个 `.sha256` 文件、`SHA256SUMS.txt` 和 `build-manifest.json`。安装器大小为 291,396,775 字节，界面显示版本为 `v0.0.2`。
+- 已下载 manifest 和校验文件，并核对 GitHub asset digest、manifest、`SHA256SUMS.txt` 与各 `.sha256` 文件。安装器 SHA-256 为 `260b376e8153025a787c04303b83233febd8082b6f5b1c9da88b5d46d30c2add`，安装器 ZIP 为 `9dd3aaa0906270dcc9bb644795b9d664a130f726e8110b72585de81ef42d7b10`，源码 ZIP 为 `fde54c60c3d9ea7d0d080aca3768c5dd725c5fe91451f785481001859d032e08`，全部一致。
+- manifest 的产品为 TianCode、目标为 `win-x64`、`unsigned` 为 true、构建版本为 `0.2.0-rc.2.20261014.1`；manifest 和 Release Git 标签均指向提交 `d6ad84879e770315609d885351fe627036fe8f3d`。
+
+报告基于当前工作区、macOS 实际界面和 Windows Actions。测试结果只记录已经执行的命令；Windows 安装后界面、内网模型和安装卸载结果在对应环境完成前保持“未验证”。
 
 ## 已检查
 
@@ -39,12 +46,9 @@
 
 ## 未完成或未验证
 
-- `pnpm install --offline` 因本地缓存缺少 `mermaid-11.16.0.tgz` 退出，工作区依赖链接仍不完整。
-- `pnpm --filter @deepseek-ai/dsh-desktop run build`、`pnpm run test:docs`、`pnpm run doc-sync` 和 `pnpm run lint` 都在自动补依赖阶段请求 npm Registry 时出现 `ECONNRESET`；命令未进入实际脚本或 TypeScript 编译阶段。
-- `pnpm run verify-translation-pairing docs/upgrade-guide/v0.2.0-rc.2/tiancode-identity/guide.md` 同样因依赖安装阶段的 Registry 请求未完成，已用原生 Node pairing 检查替代当前工作区可执行证据。
 - `uv run pytest` 在收集阶段有 5 个 `ModuleNotFoundError`（`deepseek_harness` 和 `deepseek_harness_runtime`），未进入测试；`uv run ruff .` 因环境没有 `ruff` 可执行文件退出。
-- 由于 `vitest`、`tsx` 和对应的 esbuild 可执行链接没有完成，桌面端 focused Vitest 未执行。
-- Windows x64 unsigned NSIS 构建、ZIP/源码包生成、Release 资产上传和 SHA-256 清单已通过 Actions run `38275517275` 与 `38279554627` 验证；安装、启动、卸载、快捷方式、任务栏、托盘和单实例隔离仍需在 Windows 验收机上执行。
+- 完整文档门禁与 hygiene 尚未全部通过，具体失败及后续定向修复见本报告的 2026-10-14 验证记录。
+- 安装、启动、卸载、快捷方式、任务栏、托盘和 Windows 单实例隔离仍需在 Windows 验收机上执行。
 - 无公网启动、内网模型流式输出和工具调用尚未验证。
 
 ## 插件兼容性验收
