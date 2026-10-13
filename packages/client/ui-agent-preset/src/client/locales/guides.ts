@@ -1,6 +1,7 @@
 /** Curated help for shipped presets, kept separate from their short picker copy. */
 const clientTitle = process.env.DSH_CLIENT_TITLE ?? 'DeepSeek Harness'
 
+/** English preset guide dictionary. */
 export const guideEn = {
   modeExplanation: 'Mode details',
   howToUse: 'How to use',

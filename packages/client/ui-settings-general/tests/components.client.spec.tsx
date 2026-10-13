@@ -225,6 +225,15 @@ it('reports a failed developer-tool write and allows retry', async () => {
 })
 
 describe('current version', () => {
+  it('renders the product display version independently of the package version', () => {
+    vi.stubEnv('DSH_CLIENT_VERSION', '0.2.0-rc.2')
+    vi.stubEnv('DSH_CLIENT_DISPLAY_VERSION', 'v0.0.2')
+    const translate: TriggerContentProps['t'] = (_key, params) => `当前版本：${params?.version}`
+    render(<CurrentVersionRow {...kit} t={translate} />)
+    expect(screen.getByText('当前版本：v0.0.2')).toBeTruthy()
+    expect(screen.queryByText(/0.2.0-rc.2/)).toBeNull()
+  })
+
   it.each([
     ['Current version: 1.2.3-rc.4', en],
     ['当前版本：1.2.3-rc.4', zh],

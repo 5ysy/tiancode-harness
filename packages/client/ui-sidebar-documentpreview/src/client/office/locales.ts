@@ -1,6 +1,7 @@
 /** Office preview copy and Host render configuration guidance. */
 const clientTitle = process.env.DSH_CLIENT_TITLE ?? 'DeepSeek Harness'
 
+/** Chinese Office preview dictionary. */
 export const zh = {
   title: 'Office 文档',
   loading: '文档渲染中...',

@@ -1,6 +1,7 @@
 /** zh base dictionary for the common namespace: cross-feature standard words. */
 const clientTitle = process.env.DSH_CLIENT_TITLE ?? 'DSH'
 
+/** Chinese common dictionary. */
 export const zh = {
   'ok': '确定',
   'cancel': '取消',

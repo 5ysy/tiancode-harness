@@ -1,6 +1,6 @@
 /** Locale bundles for the agent-preset hero chip, header label, and management section. */
 
-import { guideEn, guideZh, type PresetGuideKey } from './guide-locales.ts'
+import { guideEn, guideZh, type PresetGuideKey } from './locales/guides.ts'
 
 const clientTitle = process.env.DSH_CLIENT_TITLE ?? 'DeepSeek Harness'
 

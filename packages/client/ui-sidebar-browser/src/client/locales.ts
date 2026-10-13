@@ -1,6 +1,7 @@
 /** Locale-owned Browser tab copy. */
 const clientTitle = process.env.DSH_CLIENT_TITLE ?? 'DeepSeek Harness'
 
+/** Chinese browser dictionary. */
 export const zh = {
   'type.label': '浏览器',
   'guide.title': '浏览器',

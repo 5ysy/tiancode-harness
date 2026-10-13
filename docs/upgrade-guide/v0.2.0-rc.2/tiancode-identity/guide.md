@@ -9,7 +9,7 @@ English | [中文](guide.zh.md)
 
 ## Change
 
-The internal Desktop build uses `TianCode` and `com.tiancode.desktop`. Windows installs use `TianCode.exe`, a separate Electron profile, and a separate `DSH_HOME` under `%APPDATA%\\TianCode`. The upstream DeepSeek Harness installation keeps its own identity and data. Existing data is not copied automatically between the two products.
+The internal Desktop build uses `TianCode` and `com.tiancode.desktop`. Windows installs use `TianCode.exe`, a separate Electron profile, and a separate `DSH_HOME` under `%APPDATA%\\TianCode`. The upstream DeepSeek Harness installation keeps its own identity and data. Existing data is not copied automatically between the two products. The TianCode Host requests an OS-assigned loopback port, so it can start while the upstream application is running. General Settings displays the TianCode product version `v0.0.2`; package and build versions keep their release identifiers.
 
 ## Migration
 

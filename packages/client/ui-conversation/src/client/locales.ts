@@ -1,5 +1,6 @@
 /** `conversation` namespace dictionaries. */
 const clientTitle = process.env.DSH_CLIENT_TITLE ?? 'DeepSeek Harness'
+const isTianCode = process.env.DSH_CLIENT_BUILD_PROFILE === 'tiancode'
 
 /** Dictionary namespace owned by this plugin. */
 export const NS = 'conversation'
@@ -75,7 +76,7 @@ export const zh = {
   'settings.enter.description': '智能体运行时 Enter 键和发送按钮的行为；Cmd/Ctrl+Enter 使用另一行为',
   'settings.enter.queue': '排队发送',
   'settings.enter.steer': '插话发送',
-  'hero.headline': '探索未至之境',
+  'hero.headline': isTianCode ? '把你的工作交给我，请放心！' : '探索未至之境',
   'hero.preview': '预览版',
   'hero.chooseWorkspace': '选择工作区',
   'session.hierarchy': '会话层级',
@@ -451,7 +452,7 @@ export const en = {
   'settings.enter.description': 'What Enter and the Send button do while the agent is running; Cmd/Ctrl+Enter uses the other behavior',
   'settings.enter.queue': 'Queue',
   'settings.enter.steer': 'Steer',
-  'hero.headline': 'Into the Unknown',
+  'hero.headline': isTianCode ? 'Leave your work to me, with confidence!' : 'Into the Unknown',
   'hero.preview': 'Preview',
   'hero.chooseWorkspace': 'Choose workspace',
   'session.hierarchy': 'Session hierarchy',

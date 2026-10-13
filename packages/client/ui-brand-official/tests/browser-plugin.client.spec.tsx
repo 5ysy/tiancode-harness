@@ -73,16 +73,27 @@ describe('official browser-brand plugin', () => {
 
   it('registers the TianCode occupants for the TianCode build profile', async () => {
     vi.stubEnv('DSH_CLIENT_BUILD_PROFILE', 'tiancode')
+    vi.stubEnv('DSH_CLIENT_TITLE', 'TianCode')
     const subject = await bench()
-    await subject.ctx.plugin({ inject: [...inject], apply }).await()
+    const fiber = subject.ctx.plugin({ inject: [...inject], apply })
+    await fiber.await()
     expect(subject.slots.entries('sidebar.brand.mark')).toHaveLength(1)
     expect(subject.slots.entries('sidebar.brand.name')).toHaveLength(1)
+    expect(subject.slots.entries(HERO_HOLE)).toHaveLength(1)
 
     const name = render(<TianCodeBrandName />)
     expect(name.getByText('TianCode')).toBeTruthy()
     name.unmount()
-    const mark = render(<TianCodeBrandMark size={24} />)
+    const mark = render(<TianCodeBrandMark size={24} className="hero-mark" />)
     expect(mark.container.querySelector('img')?.getAttribute('src')).toBe('/tiancode-mark.png')
+    expect(mark.container.querySelector('img')?.getAttribute('class')).toBe('hero-mark')
+    subject.disposeHoles?.()
+    expect(subject.slots.entries(HERO_HOLE)).toHaveLength(0)
+    subject.declareHoles()
+    await Promise.resolve()
+    expect(subject.slots.entries(HERO_HOLE)).toHaveLength(1)
+    await fiber.dispose()
+    expect(subject.slots.entries(HERO_HOLE)).toHaveLength(0)
   })
 
   it('leaves the conversation hero on its declaring fallback even in official builds', async () => {

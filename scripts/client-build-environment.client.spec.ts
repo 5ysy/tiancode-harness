@@ -165,6 +165,7 @@ describe('client build environment', () => {
     })
     expect(tiancodeClientBuildEnvironment(fixtureRoot)).toEqual({
       DSH_CLIENT_BUILD_PROFILE: 'tiancode',
+      DSH_CLIENT_DISPLAY_VERSION: 'v0.0.2',
       DSH_CLIENT_COMMIT_HASH: commit,
       DSH_CLIENT_TITLE: 'TianCode',
       DSH_CLIENT_VERSION: '1.2.3-rc.4',
@@ -216,6 +217,7 @@ describe('client build environment', () => {
     }
     expect(resolveClientBuildEnvironment(parent, 'tiancode')).toEqual({
       DSH_CLIENT_BUILD_PROFILE: 'tiancode',
+      DSH_CLIENT_DISPLAY_VERSION: 'v0.0.2',
       DSH_CLIENT_COMMIT_HASH: COMMIT_HASH.slice(0, 7),
       DSH_CLIENT_TITLE: 'TianCode',
       DSH_CLIENT_VERSION: '1.2.3',

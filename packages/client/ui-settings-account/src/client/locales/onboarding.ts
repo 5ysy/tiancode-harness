@@ -1,6 +1,7 @@
 /** Chinese first-run copy from the onboarding requirements. */
 const clientTitle = process.env.DSH_CLIENT_TITLE ?? 'DeepSeek Harness'
 
+/** Chinese onboarding dictionary. */
 export const onboardingCopy = {
   onboardingArtworkLocale: 'zh',
   onboardingWelcome: '欢迎使用',

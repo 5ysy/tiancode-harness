@@ -9,7 +9,7 @@ description: "企业内网桌面版的应用身份和数据目录变更为 TianC
 
 ## 变更
 
-企业内网桌面版使用 `TianCode` 和 `com.tiancode.desktop`。Windows 安装使用 `TianCode.exe`、独立的 Electron profile，以及 `%APPDATA%\\TianCode` 下独立的 `DSH_HOME`。上游 DeepSeek Harness 安装保留自己的身份和数据目录。两个产品之间不会自动复制已有数据。
+企业内网桌面版使用 `TianCode` 和 `com.tiancode.desktop`。Windows 安装使用 `TianCode.exe`、独立的 Electron profile，以及 `%APPDATA%\\TianCode` 下独立的 `DSH_HOME`。上游 DeepSeek Harness 安装保留自己的身份和数据目录。两个产品之间不会自动复制已有数据。TianCode Host 请求系统分配的 loopback 端口，因此可以在上游应用运行时启动。通用设置显示 TianCode 产品版本 `v0.0.2`；包与构建版本保留发布标识。
 
 ## 迁移
 

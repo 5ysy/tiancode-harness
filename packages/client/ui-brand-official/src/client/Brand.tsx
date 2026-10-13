@@ -6,8 +6,8 @@ import type { SidebarBrandMarkOwnerProps } from '@deepseek-ai/dsh-client-ui-side
  * @param props - Host-supplied mark presentation.
  * @returns the TianCode application artwork.
  */
-export function TianCodeBrandMark({ size }: SidebarBrandMarkOwnerProps) {
-  return <img src="/tiancode-mark.png" width={size} height={size} alt="" aria-hidden="true" />
+export function TianCodeBrandMark({ size, className }: SidebarBrandMarkOwnerProps & { className?: string | undefined }) {
+  return <img src="/tiancode-mark.png" width={size} height={size} className={className} alt="" aria-hidden="true" />
 }
 
 /**
@@ -15,7 +15,7 @@ export function TianCodeBrandMark({ size }: SidebarBrandMarkOwnerProps) {
  * @returns the TianCode name.
  */
 export function TianCodeBrandName() {
-  return <span aria-hidden="true">TianCode</span>
+  return <span aria-hidden="true">{process.env.DSH_CLIENT_TITLE}</span>
 }
 
 /**

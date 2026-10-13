@@ -1,5 +1,19 @@
 # TianCode 测试报告
 
+## 2026-10-14 界面与共存验证
+
+- `pnpm run build:tiancode` 与 Desktop build 已通过；客户端构建记录包含 TianCode profile、产品名称与显示版本 `v0.0.2`。
+- 品牌、通用设置、桌面主进程与单实例的 146 项定向 Vitest 测试通过；profile resolution 与 macOS/Windows packaging configuration 的 259 项定向测试通过。
+- Agent 预设目录与品牌、构建环境的后续 143 项定向 Vitest 测试通过；引导字典放入 locale 目录后，客户端 i18n 与 export JSDoc 检查通过。最终 TianCode 完整构建通过。
+- `pnpm run typecheck` 与修复 3 处已有 lint 错误后的 `pnpm run lint` 通过；6 组已修改文档的 bilingual pairing、client catalog 和 plugin package catalog 检查通过。
+- 在 macOS 真实 Electron 桌面界面逐项检查侧栏图标与 TianCode 名称、无侧栏版本、欢迎图标与指定中文标语、创造模式描述、更多菜单、通用设置 Session Log 说明和 `v0.0.2`、Agent 预设说明，均符合本次要求。开发版 Dock 使用 TianCode 资源。
+- 官方应用 Host 正在监听 `19387` 时，TianCode Host 在系统分配的另一端口启动，主界面可用；两者运行进程和监听端口同时存在。
+- Electron `44.7.0` 的原生内部模块访问在 `node-addon-require-builtin` `0.1.6` 上拒绝启动；更新到上游明确支持该 Electron 版本的 `0.1.9` 后，Electron 实际加载器检查与 Desktop 启动通过。依赖 frozen lockfile 安装通过。
+- 全库 `pnpm run test:docs` 为 18 项通过、3 项失败，`pnpm run doc-sync` 为 37 项通过、6 项失败。失败包括现有 TianCode 单语文档、任务稿换行、repository references、5 个既有 export JSDoc 缺失及过期生成目录；client catalog 和 plugin package catalog 已重新生成并定向验证。完整文档门禁尚未通过。
+- `uv run pytest` 有 5 个 Python 包缺失导致收集失败；`uv run ruff .` 因环境未安装 ruff 退出。上述命令未作为成功证据。
+- Windows 安装、卸载与内网模型调用仍需 Windows 企业环境验收；新的 GitHub Actions 构建和 Release 结果将在发布后记录。
+- `pnpm run hygiene` 为 16 项通过、2 项失败；现有 vendor rescope 夹具残留尚未修复。该次运行报告的 2 处客户端硬编码品牌问题已修复并通过 `verify-client-ui-i18n` 定向检查。
+
 报告基于当前工作区和可用的 macOS 环境。测试结果只记录已经执行的命令；Windows、内网模型和安装卸载结果在对应环境完成前保持“未验证”。
 
 ## 已检查

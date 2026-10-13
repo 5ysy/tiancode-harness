@@ -26,6 +26,7 @@ const OFFICIAL_CLIENT_BUILD_ENVIRONMENT = {
 const TIANCODE_CLIENT_BUILD_ENVIRONMENT = {
   DSH_CLIENT_BUILD_PROFILE: 'tiancode',
   DSH_CLIENT_TITLE: 'TianCode',
+  DSH_CLIENT_DISPLAY_VERSION: 'v0.0.2',
 } as const
 
 /** Public variable carrying the source commit embedded in client artifacts. */

@@ -468,7 +468,7 @@ describe('desktop main startup', () => {
       const mark = new Request('dsh-app://app/tiancode-mark.png')
       expect((await handler(mark)).status).toBe(404)
       expect(web.serveWebDocument).toHaveBeenLastCalledWith(mark,
-        join('test-runtime', 'node_modules', '@deepseek-ai', 'dsh-web-frontend', 'dist'))
+        join(root, 'dsh', 'node_modules', '@deepseek-ai', 'dsh-web-frontend', 'dist'))
       expect((await handler(new Request('dsh-app://other/update-dialog.html'))).status).toBe(404)
     } finally {
       vi.mocked(web.serveWebDocument).mockReset()
@@ -525,7 +525,7 @@ describe('desktop main startup', () => {
     await vi.advanceTimersByTimeAsync(0)
     const zh = locale === 'zh-CN'
     expect(harness.dialog.showMessageBox).toHaveBeenLastCalledWith(expect.objectContaining({
-      type: 'info', title: zh ? '关于天山智码' : 'About TianCode', message: 'TianCode',
+      type: 'info', title: zh ? '关于天山智码' : 'About TianCode', message: zh ? '天山智码' : 'TianCode',
       detail: zh ? '版本 V1.0.0' : 'Version V1.0.0', buttons: [zh ? '确定' : 'OK'], cancelId: 0,
     }))
     // A dialog that cannot open is logged, not surfaced as an unhandled rejection.
@@ -858,7 +858,7 @@ describe('desktop main startup', () => {
     expect(() => handler(event, 'application', NaN, 34)).toThrow('invalid popup request')
     const application = handler(event, 'application', 48, 34)
     expect(harness.menu.buildFromTemplate.mock.lastCall![0].map(item => item.label ?? item.type)).toEqual([
-      '关于天山智码', 'separator', '检查更新…', '管理 dsh 命令…', 'separator', '退出',
+      '关于天山智码', 'separator', '检查更新…', '管理 TianCode 命令…', 'separator', '退出',
     ])
     expect(harness.popup.mock.lastCall![0]).toMatchObject({ window, x: 48, y: 34 })
     expect(harness.popup.mock.lastCall![0].callback).toBeTypeOf('function')
