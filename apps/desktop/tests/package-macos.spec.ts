@@ -213,7 +213,7 @@ describe('parallel macOS artifacts', () => {
     await rm(join(f.appPath, 'Contents', 'Resources', 'app-update.yml'))
     const built: string[] = []
     try {
-      await packageMacOSArtifacts({ ...f.request, environment }, async artifact => {
+      await packageMacOSArtifacts({ ...f.request, environment }, async (artifact) => {
         built.push(artifact.format)
         await mkdir(artifact.output, { recursive: true })
         const base = `TianCode-Setup-${f.request.version}-mac-${f.request.arch}`
