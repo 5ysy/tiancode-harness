@@ -162,7 +162,7 @@ jobs:
         run: pnpm run package:desktop:win:x64:unsigned -- --build-version $env:BUILD_VERSION
 
       - name: Verify shipped installer welcome, progress and completion
-        shell: pwsh
+        shell: powershell
         run: |
           $root = Join-Path $env:GITHUB_WORKSPACE 'apps/desktop/.desktop-build/targets/win-x64/unsigned-artifacts'
           $installers = @(Get-ChildItem -LiteralPath $root -Filter 'TianCode-Setup-*-win-x64-unsigned.exe' -File)
