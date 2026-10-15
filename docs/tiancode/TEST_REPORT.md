@@ -21,7 +21,16 @@
 - 已下载 manifest 和校验文件，并核对 GitHub asset digest、manifest、`SHA256SUMS.txt` 与各 `.sha256` 文件。安装器 SHA-256 为 `260b376e8153025a787c04303b83233febd8082b6f5b1c9da88b5d46d30c2add`，安装器 ZIP 为 `9dd3aaa0906270dcc9bb644795b9d664a130f726e8110b72585de81ef42d7b10`，源码 ZIP 为 `fde54c60c3d9ea7d0d080aca3768c5dd725c5fe91451f785481001859d032e08`，全部一致。
 - manifest 的产品为 TianCode、目标为 `win-x64`、`unsigned` 为 true、构建版本为 `0.2.0-rc.2.20261014.1`；manifest 和 Release Git 标签均指向提交 `d6ad84879e770315609d885351fe627036fe8f3d`。
 
-报告基于当前工作区、macOS 实际界面和 Windows Actions。测试结果只记录已经执行的命令；Windows 安装后界面、内网模型和安装卸载结果在对应环境完成前保持“未验证”。
+报告基于当前工作区、macOS 实际界面和 Windows Actions；测试结果只记录已经执行的命令。Windows 安装器的已验证范围见 2026-10-15 记录，企业内网验收范围见“未完成或未验证”。
+
+## 2026-10-15 Windows 安装器品牌验收
+
+- [Windows Actions run 38741731764](https://github.com/5ysy/tiancode-harness/actions/runs/38741731764) 的构建、实际安装器页面验证与 Release 发布全部成功。安装器明确使用提供的 TianCode ICO，四套安装品牌图片使用提供的横向 Logo。
+- 实际 `.exe` 在浅色、深色主题下分别完成安装；欢迎页、进度页和完成页的六张截图均已逐页查看，均显示天山智码 / TIANCode 与雪山代码图标。窗口标题与可见文字检查没有发现 DeepSeek 或 DSH；安装器图标与 Logo 渲染区域比对通过。
+- 安装完成状态达到 100%，`TianCode.exe` 存在，完成按钮正常退出；验证脚本最后执行卸载并确认应用文件移除。此项覆盖安装器流程，应用启动、快捷方式和企业内网模型不在本次验证范围内。
+- [Release tiancode-v0.2.0-rc.2.20261015.1](https://github.com/5ysy/tiancode-harness/releases/tag/tiancode-v0.2.0-rc.2.20261015.1) 包含安装器、安装器 ZIP、源码 ZIP、各自校验文件、SHA256SUMS 和 manifest，共 8 个资产。安装器为无签名 Windows x64 版本，大小为 291,953,403 字节。
+- Release 标签与 manifest 均指向本轮构建提交；GitHub asset digest、manifest、SHA256SUMS 与三个单独校验文件一致。下载到本地的安装器 SHA-256 为 `2f8a09bcbfe7ff2cbf9855d73af640545609acb7704caa9185327d0fa334ad3b`，与发布清单一致。安装器、校验文件及截图保存在 `TianCode_pachages/20261015.1`。
+- 本轮 `pnpm run doc-sync` 为 40 项通过、3 项失败；失败仍为现有单语文档 pairing、任务稿换行和 repository references，完整文档门禁未通过。
 
 ## 已检查
 
@@ -48,7 +57,7 @@
 
 - `uv run pytest` 在收集阶段有 5 个 `ModuleNotFoundError`（`deepseek_harness` 和 `deepseek_harness_runtime`），未进入测试；`uv run ruff .` 因环境没有 `ruff` 可执行文件退出。
 - 完整文档门禁与 hygiene 尚未全部通过，具体失败及后续定向修复见本报告的 2026-10-14 验证记录。
-- 安装、启动、卸载、快捷方式、任务栏、托盘和 Windows 单实例隔离仍需在 Windows 验收机上执行。
+- 安装器双主题页面、安装成功、完成退出和卸载清理由 Windows Actions 验证；应用启动、快捷方式、任务栏、托盘和 Windows 单实例隔离仍需在 Windows 验收机上执行。
 - 无公网启动、内网模型流式输出和工具调用尚未验证。
 
 ## 插件兼容性验收
