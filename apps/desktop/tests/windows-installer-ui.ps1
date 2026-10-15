@@ -169,8 +169,7 @@ public static class InstallerCapture {
     }
 
     public static void AssertIcon(string capture, string reference) {
-        using (var expectedIcon = new Icon(reference, 32, 32))
-        using (var expected = expectedIcon.ToBitmap())
+        using (var expected = ReadIconFrame(reference, 32))
         using (var source = new Bitmap(capture))
         using (var actual = new Bitmap(source, 32, 32)) {
             long difference = 0;
@@ -186,6 +185,28 @@ public static class InstallerCapture {
             }
             if (samples == 0 || difference / (double)samples > 18) throw new InvalidOperationException("Shipped installer icon differs from TianCode.ico");
         }
+    }
+
+    // Read the supplied PNG frame directly so GDI+ cannot choose another ICO size.
+    static Bitmap ReadIconFrame(string filename, int size) {
+        using (var reader = new System.IO.BinaryReader(System.IO.File.OpenRead(filename))) {
+            reader.ReadUInt16();
+            if (reader.ReadUInt16() != 1) throw new InvalidOperationException("Expected an ICO reference");
+            int count = reader.ReadUInt16();
+            for (int i = 0; i < count; i++) {
+                reader.BaseStream.Position = 6 + i * 16;
+                int width = reader.ReadByte();
+                int height = reader.ReadByte();
+                reader.BaseStream.Position += 6;
+                int length = reader.ReadInt32();
+                int offset = reader.ReadInt32();
+                if (width != size || height != size) continue;
+                reader.BaseStream.Position = offset;
+                using (var stream = new System.IO.MemoryStream(reader.ReadBytes(length)))
+                using (var frame = new Bitmap(stream)) return new Bitmap(frame);
+            }
+        }
+        throw new InvalidOperationException("Reference ICO does not contain the required PNG frame");
     }
 
     public static string VisibleText(int process) {
