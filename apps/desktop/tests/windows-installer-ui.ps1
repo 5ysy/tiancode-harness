@@ -142,6 +142,52 @@ public static class InstallerCapture {
         return result;
     }
 
+    public static string Caption(IntPtr window) {
+        var text = new StringBuilder(1024);
+        GetWindowText(window, text, text.Capacity);
+        return text.ToString();
+    }
+
+    // Sample the logo region in logical pixels; tolerate native scaling and antialiasing.
+    public static void AssertBrandImage(string capture, string reference) {
+        using (var actual = new Bitmap(capture))
+        using (var expected = new Bitmap(reference)) {
+            double scale = actual.Width / 600.0;
+            double sourceScale = expected.Width / 600.0;
+            long difference = 0;
+            int samples = 0;
+            for (int y = 22; y < 173; y += 2) {
+                for (int x = 60; x < 540; x += 2) {
+                    var a = actual.GetPixel((int)(x * scale), (int)((174 + y) * scale));
+                    var e = expected.GetPixel((int)(x * sourceScale), (int)(y * sourceScale));
+                    difference += Math.Abs(a.R - e.R) + Math.Abs(a.G - e.G) + Math.Abs(a.B - e.B);
+                    samples += 3;
+                }
+            }
+            if (difference / (double)samples > 12) throw new InvalidOperationException("Rendered installer logo differs from TianCode artwork: " + capture);
+        }
+    }
+
+    public static void AssertIcon(string capture, string reference) {
+        using (var expectedIcon = new Icon(reference, 32, 32))
+        using (var expected = expectedIcon.ToBitmap())
+        using (var source = new Bitmap(capture))
+        using (var actual = new Bitmap(source, 32, 32)) {
+            long difference = 0;
+            int samples = 0;
+            for (int y = 0; y < 32; y++) {
+                for (int x = 0; x < 32; x++) {
+                    var e = expected.GetPixel(x, y);
+                    if (e.A < 128) continue;
+                    var a = actual.GetPixel(x, y);
+                    difference += Math.Abs(a.R - e.R) + Math.Abs(a.G - e.G) + Math.Abs(a.B - e.B);
+                    samples += 3;
+                }
+            }
+            if (samples == 0 || difference / (double)samples > 18) throw new InvalidOperationException("Shipped installer icon differs from TianCode.ico");
+        }
+    }
+
     public static string VisibleText(int process) {
         var output = new StringBuilder();
         EnumWindows(delegate(IntPtr window, IntPtr data) {

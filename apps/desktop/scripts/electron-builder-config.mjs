@@ -238,6 +238,8 @@ export function createElectronBuilderConfig(
       target: ['AppImage'],
     },
     nsis: {
+      installerIcon: fileURLToPath(new URL('../resources/TianCode.ico', import.meta.url)),
+      uninstallerIcon: fileURLToPath(new URL('../resources/TianCode.ico', import.meta.url)),
       installerSidebar: join(buildPaths.root, 'installer-ui', 'uninstaller-sidebar.bmp'),
       uninstallerSidebar: join(buildPaths.root, 'installer-ui', 'uninstaller-sidebar.bmp'),
       include: fileURLToPath(new URL('./installer.nsh', import.meta.url)),

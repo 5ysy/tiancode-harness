@@ -16,7 +16,11 @@ TianCode（中文名“天山智码”）是企业内网 AI 编程助手。界�
 - 应用图标：`apps/desktop/resources/icon*.{png,svg}`。
 - Windows 托盘和应用 ICO：`apps/desktop/resources/tray*.ico`、`apps/desktop/resources/TianCode.ico`。
 - 欢迎页：`apps/desktop/renderer/assets/tiancode-logo-horizontal.png`。
+- 安装器欢迎、进度、完成页：`apps/desktop/installer/assets/brand{,-2x,-dark,-dark-2x}.png`，从横向组合 Logo 生成；深色页面使用浅色承载区域保留原图文字。
 - 安装器侧栏：`apps/desktop/installer/assets/uninstaller-sidebar.png`。
+- 安装器与卸载器图标：`apps/desktop/resources/TianCode.ico`。
+
+修改横向 Logo 后运行 `pnpm --dir apps/desktop run render:installer-brand`，同步生成浅色、深色与两倍分辨率资源。Windows 构建工作流检查品牌资源与 ICO 配置，并操作实际安装包，保存浅色和深色欢迎页、进度页、完成页截图。
 
 `electron-builder` 从这些路径读取 Windows、macOS、关于面板和托盘资源。Windows 资源来自仓库外的 `TianCode_Brand_Assets/repo-overrides`；只允许为打包进行格式和尺寸转换。
 

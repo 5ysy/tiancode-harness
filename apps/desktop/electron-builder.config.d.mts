@@ -54,6 +54,8 @@ export interface DesktopElectronBuilderConfig {
     }
   }
   readonly nsis: {
+    readonly installerIcon: string
+    readonly uninstallerIcon: string
     readonly include: string
     readonly oneClick: false
     readonly perMachine: false

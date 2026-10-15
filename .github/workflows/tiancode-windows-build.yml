@@ -145,6 +145,10 @@ jobs:
             pnpm install --frozen-lockfile
           }
 
+      - name: Verify installer branding assets and configuration
+        shell: pwsh
+        run: pnpm exec vitest run apps/desktop/tests/installer-brand.spec.ts apps/desktop/tests/installer-packaging.spec.ts
+
       - name: Validate Windows packaging toolchain
         shell: pwsh
         env:
@@ -156,6 +160,23 @@ jobs:
         env:
           BUILD_VERSION: ${{ inputs.build_version }}
         run: pnpm run package:desktop:win:x64:unsigned -- --build-version $env:BUILD_VERSION
+
+      - name: Verify shipped installer welcome, progress and completion
+        shell: pwsh
+        run: |
+          $root = Join-Path $env:GITHUB_WORKSPACE 'apps/desktop/.desktop-build/targets/win-x64/unsigned-artifacts'
+          $installers = @(Get-ChildItem -LiteralPath $root -Filter 'TianCode-Setup-*-win-x64-unsigned.exe' -File)
+          if ($installers.Count -ne 1) { throw 'Expected one TianCode installer for UI verification' }
+          & 'apps/desktop/tests/tiancode-installer-brand.ps1' -Installer $installers[0].FullName -OutputDirectory (Join-Path $root 'installer-brand-evidence')
+
+      - name: Upload installer branding evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: TianCode-installer-branding-${{ github.run_id }}
+          path: apps/desktop/.desktop-build/targets/win-x64/unsigned-artifacts/installer-brand-evidence/**
+          if-no-files-found: warn
+          retention-days: 14
 
       - name: Create ZIP and checksums
         id: collect

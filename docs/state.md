@@ -9,3 +9,5 @@ TianCode 品牌定制已完成源码级的应用身份、窗口/托盘/欢迎页
 客户端构建新增 `tiancode` profile，Desktop 打包流程使用 `build:tiancode`，侧栏通过用户提供的 `apps/web/public/tiancode-mark.png` 显示 TianCode 图标和名称。设置页、引导页、文档预览提示、PWA 元数据与浏览器图标会随 `DSH_CLIENT_TITLE` 和 TianCode profile 切换品牌，桌面自定义协议也会提供该静态资源。底层 DSH、DeepSeek、包名、CLI 和协议标识继续保持兼容。Windows Actions 工作流现在会从当前提交生成源码 ZIP，并创建包含 unsigned 安装器、安装器 ZIP、源码 ZIP、SHA-256 清单和构建 manifest 的 TianCode GitHub Release。
 
 Windows Actions [运行 38432723290](https://github.com/5ysy/tiancode-harness/actions/runs/38432723290) 已成功构建并发布 [TianCode 0.2.0-rc.2.20261014.1](https://github.com/5ysy/tiancode-harness/releases/tag/tiancode-v0.2.0-rc.2.20261014.1)。Release 的 8 个资产完整，安装器、安装器 ZIP 和源码 ZIP 的 GitHub digest 与 manifest、SHA-256 文件一致；Release 标签和 manifest 指向源码提交 `d6ad84879e770315609d885351fe627036fe8f3d`。Windows runtime smoke 和打包后运行时检查通过；Windows 安装、启动、卸载和企业内网模型验收仍由 Windows 环境执行。
+
+Windows 安装器欢迎、进度与完成页使用提供的 TianCode 横向组合 Logo，浅色／深色与 1x／2x 资源由 `render:installer-brand` 生成。安装器与卸载器明确使用 `TianCode.ico`。Windows 发布流程包含实际安装包的双主题页面操作与截图验证；新安装包的构建与验收结果待本轮 Windows Actions 完成。

@@ -37,6 +37,10 @@ describe('installer preparation preserves application dependencies', () => {
     try {
       const { createElectronBuilderConfig } = await import('../electron-builder.config.mjs')
       const config = createElectronBuilderConfig(env, platform, 'x64')
+      for (const icon of [config.nsis.installerIcon, config.nsis.uninstallerIcon]) {
+        expect(icon).toBeDefined()
+        expect(readFileSync(icon)).toEqual(readFileSync(new URL('../resources/TianCode.ico', import.meta.url)))
+      }
       const aboutIcon = config.extraResources.find(resource => resource.to === 'icon.png')
       expect(aboutIcon).toBeDefined()
       expect(readFileSync(aboutIcon!.from)).toEqual(readFileSync(new URL('../resources/icon-windows.png', import.meta.url)))
