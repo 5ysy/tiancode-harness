@@ -7,14 +7,14 @@ on:
   workflow_dispatch:
     inputs:
       build_version:
-        description: Build version extending the product version (for example 0.2.0-rc.2.20261012.2).
+        description: Build version extending the product version (for example 0.2.1-rc.3.20261028.1).
         required: true
-        default: 0.2.0-rc.2.20261012.2
+        default: 0.2.1-rc.3.20261028.1
         type: string
       release_tag:
         description: GitHub Release tag; it must be tiancode-v<build_version>.
         required: true
-        default: tiancode-v0.2.0-rc.2.20261012.2
+        default: tiancode-v0.2.1-rc.3.20261028.1
         type: string
       artifact_run_id:
         description: Optional successful build run ID to publish without rebuilding its Windows artifact.
@@ -58,7 +58,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 11.7.0
+          version: 11.28.5
           dest: ${{ runner.temp }}/setup-pnpm-${{ github.run_id }}-${{ github.run_attempt }}
 
       - uses: actions/setup-node@v6

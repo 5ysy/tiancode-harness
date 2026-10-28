@@ -3,6 +3,7 @@
 import { realpathSync } from 'node:fs'
 import { dirname, join, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { prepareSkillDirectory } from './skill-directory.ts'
 import { runtimeArchivePath } from './office-engine.ts'
 import type { Context } from '@deepseek-ai/cordis'
 import * as officeSkills from '@deepseek-ai/dsh-skill-office'
@@ -18,19 +19,24 @@ export interface Config {
   readonly root: string
   /** Prepared or ASAR-contained application dependency directory. */
   readonly runtimeDir: string
+  /** Absolute writable directory containing this application’s skill bundles. */
+  readonly skillDirectory: string
 }
 
 /**
- * Enable offline Office authoring and structural checks in the Desktop profile.
+ * Enable offline Office authoring and LibreOffice Kit operations in the Desktop profile.
  * @param ctx - Profile scope; child plugins declare their own service requirements.
  * @param config - Bundled payload source and Harness-home installation root.
  */
 export async function apply(ctx: Context, config: Config): Promise<void> {
+  await prepareSkillDirectory(join(dirname(config.source), 'skills'), config.skillDirectory)
   await ctx.plugin(workspaceDependencies, config)
   const archive = runtimeArchivePath(config.runtimeDir) === undefined ? undefined : dirname(realpathSync(config.runtimeDir))
   const manifest = fileURLToPath(import.meta.resolve('@deepseek-ai/libreoffice-kit/package.json'))
   const packageRoot = dirname(archive === undefined ? manifest : join(`${archive}.unpacked`, relative(archive, manifest)))
   await ctx.plugin(officeSkills, {
+    publicService: true,
+    publicSkillDir: config.skillDirectory,
     assetRoot: join(dirname(config.source), 'office-skills'),
     node: join(config.source, 'dependencies', 'node', 'bin', process.platform === 'win32' ? 'node.exe' : 'node'),
     cli: join(packageRoot, 'lib', 'cli.js'),

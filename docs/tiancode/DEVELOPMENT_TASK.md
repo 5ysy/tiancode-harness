@@ -8,7 +8,7 @@
 - 项目目录：`~/python_projects/hz_project/deepseek-harness`
 - 源码仓库：`https://github.com/deepseek-ai/deepseek-harness`
 - 基础版本：`dsh-v0.2.0-rc.2`
-- 原始 Commit：`639ed015397290b3745d163aafe02ffee4aa3f84`
+- 原始版本标签：`dsh-v0.2.0-rc.2`
 - 目标操作系统：Windows 10/11 x64
 - 使用环境：企业完全隔离互联网的内部局域网
 - 使用范围：公司内部，不对公众发布

@@ -1,0 +1,20 @@
+{
+  "assets": [
+    {
+      "file": "police-report.pptx",
+      "source": "docs/tiancode/materials/gongan/公安警察工作汇报PPT模板.pptx",
+      "sha256": "86a1e0de3cff1b45c41087c367332c166164a87c934fa68bad5371fa4e5b501a",
+      "preserved_byte_for_byte": true,
+      "slides": 28,
+      "rights": "User-supplied material; original author rights and attribution retained; no open or commercial license granted."
+    },
+    {
+      "file": "police-case.pptx",
+      "source": "docs/tiancode/materials/gongan/公案类.pptx",
+      "sha256": "d25e8e5f528b0805536643e67deba286b3a3c30cd99187347e633bc8fee78f9d",
+      "preserved_byte_for_byte": true,
+      "slides": 28,
+      "rights": "User-supplied material; original author rights and attribution retained; no open or commercial license granted."
+    }
+  ]
+}

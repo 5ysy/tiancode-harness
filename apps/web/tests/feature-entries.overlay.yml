@@ -1,0 +1,13 @@
+# Public-service resources for composer development and browser interaction tests.
+- insert:
+    - id: public-service-skills
+      name: '@deepseek-ai/dsh-skill-office'
+      config:
+        publicService: true
+        publicSkillDir: !!js process.cwd() + "/skills"
+        cli: false
+
+- id: ui-skill
+  config:
+    quickActionProviders: [tiancode]
+    quickActions: [public-ppt, public-report, public-document, public-minutes, public-summary, public-plan, public-speech, public-proofread, public-ledger]

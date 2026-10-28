@@ -1,0 +1,4006 @@
+{
+  "slide_count": 28,
+  "width_emu": 12192000,
+  "height_emu": 6858000,
+  "fonts": [
+    "",
+    "+mj-cs",
+    "+mj-ea",
+    "+mj-lt",
+    "+mn-cs",
+    "+mn-ea",
+    "+mn-lt",
+    "Angsana New",
+    "Arial",
+    "Arial Narrow",
+    "Calibri",
+    "Calibri Light",
+    "Cordia New",
+    "DaunPenh",
+    "DokChampa",
+    "Ebrima",
+    "Estrangelo Edessa",
+    "Euphemia",
+    "Gautami",
+    "Gill Sans",
+    "Helvetica",
+    "Impact",
+    "Iskoola Pota",
+    "Javanese Text",
+    "Kalinga",
+    "Kartika",
+    "Latha",
+    "Leelawadee UI",
+    "MV Boli",
+    "Mangal",
+    "Meiryo",
+    "Meiryo UI",
+    "Microsoft Himalaya",
+    "Microsoft JhengHei",
+    "Microsoft New Tai Lue",
+    "Microsoft Tai Le",
+    "Microsoft Uighur",
+    "Microsoft Yi Baiti",
+    "Mongolian Baiti",
+    "Montserrat",
+    "MoolBoran",
+    "Myanmar Text",
+    "Nirmala UI",
+    "Nyala",
+    "Open Sans",
+    "Phagspa",
+    "Plantagenet Cherokee",
+    "Raavi",
+    "Roboto Bold",
+    "Roboto Light",
+    "Roboto Regular",
+    "Segoe UI",
+    "Segoe UI Semilight",
+    "Shruti",
+    "Sylfaen",
+    "Times New Roman",
+    "Tunga",
+    "Vrinda",
+    "仿宋_GB2312",
+    "华文黑体",
+    "字魂131号-酷乐潮玩体",
+    "宋体",
+    "微软雅黑",
+    "思源黑体 CN Heavy",
+    "思源黑体 CN Medium",
+    "思源黑体 CN Regular",
+    "新細明體",
+    "游ゴシック",
+    "游ゴシック Light",
+    "等线",
+    "等线 Light",
+    "맑은 고딕",
+    "ＭＳ Ｐゴシック"
+  ],
+  "slides": [
+    {
+      "slide": 1,
+      "part": "ppt/slides/slide1.xml",
+      "slots": [
+        {
+          "shape_id": 14,
+          "shape_name": "文本框 13",
+          "paragraph": 0,
+          "text": "公安警察工作汇报",
+          "runs": [
+            {
+              "run": 0,
+              "text": "公安警察工作汇报"
+            }
+          ]
+        },
+        {
+          "shape_id": 16,
+          "shape_name": "文本框 15",
+          "paragraph": 0,
+          "text": "案件汇报/扫黑除恶/公安会议/警务系统/工作汇报",
+          "runs": [
+            {
+              "run": 0,
+              "text": "案件汇报/扫黑除恶/公安会议/警务系统/工作汇报"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "PA-文本框 26",
+          "paragraph": 0,
+          "text": "单击此处添加文字阐述，添加简短问题说明文字，具体说明文字在此处添加此处。添加简短问题说明文字，具体说明文字在此处添加此处",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加文字阐述，添加简短问题说明文字，具体说明文字在此处添加此处。添加简短问题说明文字，具体说明文字在此处添加此处"
+            }
+          ]
+        },
+        {
+          "shape_id": 24,
+          "shape_name": "文本框 23",
+          "paragraph": 0,
+          "text": "汇报人：优品PPT     时间：20XX年12月12日",
+          "runs": [
+            {
+              "run": 0,
+              "text": "汇报人"
+            },
+            {
+              "run": 1,
+              "text": "："
+            },
+            {
+              "run": 2,
+              "text": "优品"
+            },
+            {
+              "run": 3,
+              "text": "PPT     "
+            },
+            {
+              "run": 4,
+              "text": "时"
+            },
+            {
+              "run": 5,
+              "text": "间："
+            },
+            {
+              "run": 6,
+              "text": "20XX"
+            },
+            {
+              "run": 7,
+              "text": "年"
+            },
+            {
+              "run": 8,
+              "text": "12"
+            },
+            {
+              "run": 9,
+              "text": "月"
+            },
+            {
+              "run": 10,
+              "text": "12"
+            },
+            {
+              "run": 11,
+              "text": "日"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 2,
+      "part": "ppt/slides/slide2.xml",
+      "slots": [
+        {
+          "shape_id": 18,
+          "shape_name": "文本框 17",
+          "paragraph": 0,
+          "text": "CONTENTS",
+          "runs": [
+            {
+              "run": 0,
+              "text": "CONTENTS"
+            }
+          ]
+        },
+        {
+          "shape_id": 19,
+          "shape_name": "文本框 18",
+          "paragraph": 0,
+          "text": "警务工作概述 ",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作概述 "
+            }
+          ]
+        },
+        {
+          "shape_id": 20,
+          "shape_name": "文本框 19",
+          "paragraph": 0,
+          "text": "案件汇报情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "案件汇报情况"
+            }
+          ]
+        },
+        {
+          "shape_id": 21,
+          "shape_name": "文本框 20",
+          "paragraph": 0,
+          "text": "扫黑除恶情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "扫黑除恶情况"
+            }
+          ]
+        },
+        {
+          "shape_id": 22,
+          "shape_name": "文本框 21",
+          "paragraph": 0,
+          "text": "警务工作部署",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作部署"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 3,
+      "part": "ppt/slides/slide3.xml",
+      "slots": [
+        {
+          "shape_id": 26,
+          "shape_name": "文本框 25",
+          "paragraph": 0,
+          "text": "1",
+          "runs": [
+            {
+              "run": 0,
+              "text": "1"
+            }
+          ]
+        },
+        {
+          "shape_id": 22,
+          "shape_name": "文本框 21",
+          "paragraph": 0,
+          "text": "请点击录入本章节的",
+          "runs": [
+            {
+              "run": 0,
+              "text": "请点击录入本章节的"
+            }
+          ]
+        },
+        {
+          "shape_id": 22,
+          "shape_name": "文本框 21",
+          "paragraph": 1,
+          "text": "概括性描述文字",
+          "runs": [
+            {
+              "run": 0,
+              "text": "概括性描述文字"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作概述 ",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作概述 "
+            }
+          ]
+        },
+        {
+          "shape_id": 2,
+          "shape_name": "文本框 1",
+          "paragraph": 0,
+          "text": "https://www.ypppt.com/",
+          "runs": [
+            {
+              "run": 0,
+              "text": "https://www.ypppt.com/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 4,
+      "part": "ppt/slides/slide4.xml",
+      "slots": [
+        {
+          "shape_id": 33,
+          "shape_name": "Text Box 7",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 34,
+          "shape_name": "Rectangle 5",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体语言整体语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的字数控制最好控制在5分钟之内。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体语言整体语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的字数控制最好控制在"
+            },
+            {
+              "run": 1,
+              "text": "5"
+            },
+            {
+              "run": 2,
+              "text": "分钟之内。"
+            }
+          ]
+        },
+        {
+          "shape_id": 35,
+          "shape_name": "Text Box 7",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 36,
+          "shape_name": "Rectangle 5",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体整体语言语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的字数控制在最好控制在5分钟之内。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体整体语言语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的字数控制在最好控制在"
+            },
+            {
+              "run": 1,
+              "text": "5"
+            },
+            {
+              "run": 2,
+              "text": "分钟之内。"
+            }
+          ]
+        },
+        {
+          "shape_id": 37,
+          "shape_name": "Text Box 7",
+          "paragraph": 0,
+          "text": "添加标题内容",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题内容"
+            }
+          ]
+        },
+        {
+          "shape_id": 38,
+          "shape_name": "Rectangle 5",
+          "paragraph": 0,
+          "text": "      此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的字数控制在  200字以内，据统计每页幻灯片的最好控制在5分钟之内。此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的每页幻灯片的最好控制在5分钟之内。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "      此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的字数控制在  "
+            },
+            {
+              "run": 1,
+              "text": "200"
+            },
+            {
+              "run": 2,
+              "text": "字以内，据统计每页幻灯片的最好控制在"
+            },
+            {
+              "run": 3,
+              "text": "5"
+            },
+            {
+              "run": 4,
+              "text": "分钟之内。此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的每页幻灯片的最好控制在"
+            },
+            {
+              "run": 5,
+              "text": "5"
+            },
+            {
+              "run": 6,
+              "text": "分钟之内。"
+            }
+          ]
+        },
+        {
+          "shape_id": 41,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作概述 ",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作概述 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 5,
+      "part": "ppt/slides/slide5.xml",
+      "slots": [
+        {
+          "shape_id": 39,
+          "shape_name": "矩形 38",
+          "paragraph": 0,
+          "text": "标题文字添加",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文字添加"
+            }
+          ]
+        },
+        {
+          "shape_id": 44,
+          "shape_name": "矩形 43",
+          "paragraph": 0,
+          "text": "标题文字添加",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文字添加"
+            }
+          ]
+        },
+        {
+          "shape_id": 45,
+          "shape_name": "矩形 44",
+          "paragraph": 0,
+          "text": "用户可以在投影仪或者计算机上进行演示也可以将演示文稿打印出来制作成片以便应用到更广泛的领域中用户可以在投影仪或者计算机上进行演示也可以将演示文稿打印出来制作成胶片以便应用到更广泛的领域中用户可以在投影仪或者计算机上进行演示也可以将的领域中用户可以以便应用到更广泛的领域中",
+          "runs": [
+            {
+              "run": 0,
+              "text": "用户可以在投影仪或者计算机上进行演示也可以将演示文稿打印出来制作成片以便应用到更广泛的领域中用户可以在投影仪或者计算机上进行演示也可以将演示文稿打印出来制作成胶片以便应用到更广泛的领域中用户可以在投影仪或者计算机上进行演示也可以将的领域中用户可以以便应用到更广泛的领域中"
+            }
+          ]
+        },
+        {
+          "shape_id": 46,
+          "shape_name": "矩形 45",
+          "paragraph": 0,
+          "text": "文字添加",
+          "runs": [
+            {
+              "run": 0,
+              "text": "文字添加"
+            }
+          ]
+        },
+        {
+          "shape_id": 47,
+          "shape_name": "矩形 46",
+          "paragraph": 0,
+          "text": "文字添加",
+          "runs": [
+            {
+              "run": 0,
+              "text": "文字添加"
+            }
+          ]
+        },
+        {
+          "shape_id": 48,
+          "shape_name": "矩形 47",
+          "paragraph": 0,
+          "text": "文字添加",
+          "runs": [
+            {
+              "run": 0,
+              "text": "文字添加"
+            }
+          ]
+        },
+        {
+          "shape_id": 49,
+          "shape_name": "矩形 48",
+          "paragraph": 0,
+          "text": "文字添加",
+          "runs": [
+            {
+              "run": 0,
+              "text": "文字添加"
+            }
+          ]
+        },
+        {
+          "shape_id": 50,
+          "shape_name": "矩形 49",
+          "paragraph": 0,
+          "text": "文字添加",
+          "runs": [
+            {
+              "run": 0,
+              "text": "文字添加"
+            }
+          ]
+        },
+        {
+          "shape_id": 51,
+          "shape_name": "矩形 50",
+          "paragraph": 0,
+          "text": "文字添加",
+          "runs": [
+            {
+              "run": 0,
+              "text": "文字添加"
+            }
+          ]
+        },
+        {
+          "shape_id": 55,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作概述 ",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作概述 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 6,
+      "part": "ppt/slides/slide6.xml",
+      "slots": [
+        {
+          "shape_id": 71,
+          "shape_name": "矩形 70",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 72,
+          "shape_name": "矩形 71",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 75,
+          "shape_name": "文本框 74",
+          "paragraph": 0,
+          "text": "01",
+          "runs": [
+            {
+              "run": 0,
+              "text": "01"
+            }
+          ]
+        },
+        {
+          "shape_id": 78,
+          "shape_name": "文本框 77",
+          "paragraph": 0,
+          "text": "02",
+          "runs": [
+            {
+              "run": 0,
+              "text": "02"
+            }
+          ]
+        },
+        {
+          "shape_id": 81,
+          "shape_name": "文本框 80",
+          "paragraph": 0,
+          "text": "03",
+          "runs": [
+            {
+              "run": 0,
+              "text": "03"
+            }
+          ]
+        },
+        {
+          "shape_id": 84,
+          "shape_name": "文本框 83",
+          "paragraph": 0,
+          "text": "04",
+          "runs": [
+            {
+              "run": 0,
+              "text": "04"
+            }
+          ]
+        },
+        {
+          "shape_id": 94,
+          "shape_name": "文本框 93",
+          "paragraph": 0,
+          "text": "05",
+          "runs": [
+            {
+              "run": 0,
+              "text": "05"
+            }
+          ]
+        },
+        {
+          "shape_id": 96,
+          "shape_name": "矩形 95",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 97,
+          "shape_name": "矩形 96",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 99,
+          "shape_name": "矩形 98",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 100,
+          "shape_name": "矩形 99",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 102,
+          "shape_name": "矩形 101",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 103,
+          "shape_name": "矩形 102",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 105,
+          "shape_name": "矩形 104",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 106,
+          "shape_name": "矩形 105",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 48,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作概述 ",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作概述 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 7,
+      "part": "ppt/slides/slide7.xml",
+      "slots": [
+        {
+          "shape_id": 38,
+          "shape_name": "TextBox 37",
+          "paragraph": 0,
+          "text": "你的标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "你的标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 39,
+          "shape_name": "TextBox 38",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。"
+            }
+          ]
+        },
+        {
+          "shape_id": 41,
+          "shape_name": "TextBox 59",
+          "paragraph": 0,
+          "text": "2016年",
+          "runs": [
+            {
+              "run": 0,
+              "text": "2016"
+            },
+            {
+              "run": 1,
+              "text": "年"
+            }
+          ]
+        },
+        {
+          "shape_id": 43,
+          "shape_name": "TextBox 42",
+          "paragraph": 0,
+          "text": "添加标题内容",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题内容"
+            }
+          ]
+        },
+        {
+          "shape_id": 44,
+          "shape_name": "TextBox 43",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。"
+            }
+          ]
+        },
+        {
+          "shape_id": 47,
+          "shape_name": "TextBox 59",
+          "paragraph": 0,
+          "text": "2017年",
+          "runs": [
+            {
+              "run": 0,
+              "text": "2017"
+            },
+            {
+              "run": 1,
+              "text": "年"
+            }
+          ]
+        },
+        {
+          "shape_id": 49,
+          "shape_name": "TextBox 48",
+          "paragraph": 0,
+          "text": "添加标题内容",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题内容"
+            }
+          ]
+        },
+        {
+          "shape_id": 50,
+          "shape_name": "TextBox 49",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。"
+            }
+          ]
+        },
+        {
+          "shape_id": 25,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作概述 ",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作概述 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 8,
+      "part": "ppt/slides/slide8.xml",
+      "slots": [
+        {
+          "shape_id": 10,
+          "shape_name": "TextBox 59",
+          "paragraph": 0,
+          "text": "2018年",
+          "runs": [
+            {
+              "run": 0,
+              "text": "2018"
+            },
+            {
+              "run": 1,
+              "text": "年"
+            }
+          ]
+        },
+        {
+          "shape_id": 12,
+          "shape_name": "TextBox 11",
+          "paragraph": 0,
+          "text": "添加标题内容",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题内容"
+            }
+          ]
+        },
+        {
+          "shape_id": 13,
+          "shape_name": "TextBox 12",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。"
+            }
+          ]
+        },
+        {
+          "shape_id": 14,
+          "shape_name": "TextBox 59",
+          "paragraph": 0,
+          "text": "2019年",
+          "runs": [
+            {
+              "run": 0,
+              "text": "2019"
+            },
+            {
+              "run": 1,
+              "text": "年"
+            }
+          ]
+        },
+        {
+          "shape_id": 16,
+          "shape_name": "TextBox 15",
+          "paragraph": 0,
+          "text": "添加标题内容",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题内容"
+            }
+          ]
+        },
+        {
+          "shape_id": 17,
+          "shape_name": "TextBox 16",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。"
+            }
+          ]
+        },
+        {
+          "shape_id": 21,
+          "shape_name": "TextBox 59",
+          "paragraph": 0,
+          "text": "2020年",
+          "runs": [
+            {
+              "run": 0,
+              "text": "2020"
+            },
+            {
+              "run": 1,
+              "text": "年"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "TextBox 22",
+          "paragraph": 0,
+          "text": "添加标题内容",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题内容"
+            }
+          ]
+        },
+        {
+          "shape_id": 29,
+          "shape_name": "TextBox 28",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。"
+            }
+          ]
+        },
+        {
+          "shape_id": 26,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作概述 ",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作概述 "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 9,
+      "part": "ppt/slides/slide9.xml",
+      "slots": [
+        {
+          "shape_id": 26,
+          "shape_name": "文本框 25",
+          "paragraph": 0,
+          "text": "2",
+          "runs": [
+            {
+              "run": 0,
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "shape_id": 22,
+          "shape_name": "文本框 21",
+          "paragraph": 0,
+          "text": "请点击录入本章节的",
+          "runs": [
+            {
+              "run": 0,
+              "text": "请点击录入本章节的"
+            }
+          ]
+        },
+        {
+          "shape_id": 22,
+          "shape_name": "文本框 21",
+          "paragraph": 1,
+          "text": "概括性描述文字",
+          "runs": [
+            {
+              "run": 0,
+              "text": "概括性描述文字"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "案件汇报情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "案件汇报情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 10,
+      "part": "ppt/slides/slide10.xml",
+      "slots": [
+        {
+          "shape_id": 11,
+          "shape_name": "TextBox 10",
+          "paragraph": 0,
+          "text": "64.8",
+          "runs": [
+            {
+              "run": 0,
+              "text": "64.8"
+            }
+          ]
+        },
+        {
+          "shape_id": 12,
+          "shape_name": "TextBox 11",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 13,
+          "shape_name": "TextBox 12",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴"
+            }
+          ]
+        },
+        {
+          "shape_id": 14,
+          "shape_name": "TextBox 13",
+          "paragraph": 0,
+          "text": "18.4",
+          "runs": [
+            {
+              "run": 0,
+              "text": "18.4"
+            }
+          ]
+        },
+        {
+          "shape_id": 15,
+          "shape_name": "TextBox 14",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 16,
+          "shape_name": "TextBox 15",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴"
+            }
+          ]
+        },
+        {
+          "shape_id": 17,
+          "shape_name": "TextBox 16",
+          "paragraph": 0,
+          "text": "7.9",
+          "runs": [
+            {
+              "run": 0,
+              "text": "7.9"
+            }
+          ]
+        },
+        {
+          "shape_id": 18,
+          "shape_name": "TextBox 17",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 19,
+          "shape_name": "TextBox 18",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴"
+            }
+          ]
+        },
+        {
+          "shape_id": 20,
+          "shape_name": "TextBox 19",
+          "paragraph": 0,
+          "text": "4.1",
+          "runs": [
+            {
+              "run": 0,
+              "text": "4.1"
+            }
+          ]
+        },
+        {
+          "shape_id": 21,
+          "shape_name": "TextBox 20",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 22,
+          "shape_name": "TextBox 21",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "TextBox 22",
+          "paragraph": 0,
+          "text": "12.2",
+          "runs": [
+            {
+              "run": 0,
+              "text": "12.2"
+            }
+          ]
+        },
+        {
+          "shape_id": 24,
+          "shape_name": "TextBox 23",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 25,
+          "shape_name": "TextBox 24",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴"
+            }
+          ]
+        },
+        {
+          "shape_id": 26,
+          "shape_name": "TextBox 25",
+          "paragraph": 0,
+          "text": "15.3",
+          "runs": [
+            {
+              "run": 0,
+              "text": "15.3"
+            }
+          ]
+        },
+        {
+          "shape_id": 27,
+          "shape_name": "TextBox 26",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 28,
+          "shape_name": "TextBox 27",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴"
+            }
+          ]
+        },
+        {
+          "shape_id": 29,
+          "shape_name": "TextBox 28",
+          "paragraph": 0,
+          "text": "6.9",
+          "runs": [
+            {
+              "run": 0,
+              "text": "6.9"
+            }
+          ]
+        },
+        {
+          "shape_id": 43,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "案件汇报情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "案件汇报情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 11,
+      "part": "ppt/slides/slide11.xml",
+      "slots": [
+        {
+          "shape_id": 44,
+          "shape_name": "Rectangle 35",
+          "paragraph": 0,
+          "text": "”Ut wisi enim ad minim veniam, quis nostrud”",
+          "runs": [
+            {
+              "run": 0,
+              "text": "”"
+            },
+            {
+              "run": 1,
+              "text": "Ut wisi enim ad minim veniam, quis nostrud"
+            },
+            {
+              "run": 2,
+              "text": "”"
+            }
+          ]
+        },
+        {
+          "shape_id": 57,
+          "shape_name": "TextBox 45",
+          "paragraph": 0,
+          "text": "你的标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "你的标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 58,
+          "shape_name": "Rectangle 49",
+          "paragraph": 0,
+          "text": "Ut wisi enim ad minim",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Ut wisi enim ad minim"
+            }
+          ]
+        },
+        {
+          "shape_id": 64,
+          "shape_name": "文本框 63",
+          "paragraph": 0,
+          "text": "你的标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "你的标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 66,
+          "shape_name": "文本框 65",
+          "paragraph": 0,
+          "text": "请填入您的内容或复制点击右键选择只保留文本来粘贴您的内容。请填入您的内容或复后点击右键选择只您的内容。的内容或复制内容后点击右键选择只保留请填。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "请填入您的内容或复制点击右键选择只保留文本来粘贴您的内容。请填入您的内容或复后点击右键选择只您的内容。的内容或复制内容后点击右键选择只保留请填。"
+            }
+          ]
+        },
+        {
+          "shape_id": 66,
+          "shape_name": "文本框 65",
+          "paragraph": 2,
+          "text": "入您的内容或复制内容后点击右键选择只保留文本粘贴您的内容。请填入您的内或复制内容后点击右键选择只保留文本来粘贴您的内容。请填入您的内容复制内容后点击右键选择只",
+          "runs": [
+            {
+              "run": 0,
+              "text": "入您的内容或复制内容后点击右键选择只保留文本粘贴您的内容。请填入您的内或复制内容后点击右键选择只保留文本来粘贴您的内容。请填入您的内容复制内容后点击右键选择只"
+            }
+          ]
+        },
+        {
+          "shape_id": 74,
+          "shape_name": "矩形 73",
+          "paragraph": 0,
+          "text": "INTERNET MARKETING SCHEME",
+          "runs": [
+            {
+              "run": 0,
+              "text": "INTERNET MARKETING SCHEME"
+            }
+          ]
+        },
+        {
+          "shape_id": 25,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "案件汇报情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "案件汇报情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 12,
+      "part": "ppt/slides/slide12.xml",
+      "slots": [
+        {
+          "shape_id": 87,
+          "shape_name": "koppt-文本框",
+          "paragraph": 0,
+          "text": "关键词",
+          "runs": [
+            {
+              "run": 0,
+              "text": "关键词"
+            }
+          ]
+        },
+        {
+          "shape_id": 87,
+          "shape_name": "koppt-文本框",
+          "paragraph": 1,
+          "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击"
+            },
+            {
+              "run": 1,
+              "text": "此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本"
+            }
+          ]
+        },
+        {
+          "shape_id": 91,
+          "shape_name": "koppt-文本框",
+          "paragraph": 0,
+          "text": "关键词",
+          "runs": [
+            {
+              "run": 0,
+              "text": "关键词"
+            }
+          ]
+        },
+        {
+          "shape_id": 91,
+          "shape_name": "koppt-文本框",
+          "paragraph": 1,
+          "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击"
+            },
+            {
+              "run": 1,
+              "text": "此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本"
+            }
+          ]
+        },
+        {
+          "shape_id": 95,
+          "shape_name": "koppt-文本框",
+          "paragraph": 0,
+          "text": "关键词",
+          "runs": [
+            {
+              "run": 0,
+              "text": "关键词"
+            }
+          ]
+        },
+        {
+          "shape_id": 95,
+          "shape_name": "koppt-文本框",
+          "paragraph": 1,
+          "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本"
+            }
+          ]
+        },
+        {
+          "shape_id": 97,
+          "shape_name": "koppt-文本框",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 97,
+          "shape_name": "koppt-文本框",
+          "paragraph": 1,
+          "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本"
+            }
+          ]
+        },
+        {
+          "shape_id": 27,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "案件汇报情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "案件汇报情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 13,
+      "part": "ppt/slides/slide13.xml",
+      "slots": [
+        {
+          "shape_id": 22,
+          "shape_name": "TextBox 76",
+          "paragraph": 0,
+          "text": "标题文本预设",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文本预设"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "文本框 22",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 24,
+          "shape_name": "TextBox 76",
+          "paragraph": 0,
+          "text": "标题文本预设",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文本预设"
+            }
+          ]
+        },
+        {
+          "shape_id": 25,
+          "shape_name": "文本框 24",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 26,
+          "shape_name": "TextBox 76",
+          "paragraph": 0,
+          "text": "标题文本预设",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文本预设"
+            }
+          ]
+        },
+        {
+          "shape_id": 27,
+          "shape_name": "文本框 26",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 28,
+          "shape_name": "TextBox 76",
+          "paragraph": 0,
+          "text": "标题文本预设",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文本预设"
+            }
+          ]
+        },
+        {
+          "shape_id": 29,
+          "shape_name": "文本框 28",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 34,
+          "shape_name": "TextBox 83",
+          "paragraph": 0,
+          "text": "你的标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "你的标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 49,
+          "shape_name": "Oval 10",
+          "paragraph": 0,
+          "text": "1",
+          "runs": [
+            {
+              "run": 0,
+              "text": "1"
+            }
+          ]
+        },
+        {
+          "shape_id": 50,
+          "shape_name": "Oval 10",
+          "paragraph": 0,
+          "text": "2",
+          "runs": [
+            {
+              "run": 0,
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "shape_id": 51,
+          "shape_name": "Oval 10",
+          "paragraph": 0,
+          "text": "3",
+          "runs": [
+            {
+              "run": 0,
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "shape_id": 52,
+          "shape_name": "Oval 10",
+          "paragraph": 0,
+          "text": "4",
+          "runs": [
+            {
+              "run": 0,
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "shape_id": 39,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "案件汇报情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "案件汇报情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 14,
+      "part": "ppt/slides/slide14.xml",
+      "slots": [
+        {
+          "shape_id": 25,
+          "shape_name": "PPT",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 25,
+          "shape_name": "PPT",
+          "paragraph": 1,
+          "text": "单击此处添加标题单击此处添加标题单击此处添加标题单击此处添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加标题单击此处添加标题单击此处添加标题单击此处添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 26,
+          "shape_name": "PPT",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 26,
+          "shape_name": "PPT",
+          "paragraph": 1,
+          "text": "单击此处添加标题单击此处添加标题单击此处添加标题单击此处添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加标题单击此处添加标题单击此处添加标题单击此处添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 27,
+          "shape_name": "PPT",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 27,
+          "shape_name": "PPT",
+          "paragraph": 1,
+          "text": "单击此处添加标题单击此处添加标题单击此处添加标题单击此处添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加标题单击此处添加标题单击此处添加标题单击此处添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 28,
+          "shape_name": "PPT",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 28,
+          "shape_name": "PPT",
+          "paragraph": 1,
+          "text": "单击此处添加标题单击此处添加标题单击此处添加标题单击此处添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加标题单击此处添加标题单击此处添加标题单击此处添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 29,
+          "shape_name": "PPT",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 29,
+          "shape_name": "PPT",
+          "paragraph": 1,
+          "text": "单击此处添加标题单击此处添加标题单击此处添加标题单击此处添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加标题单击此处添加标题单击此处添加标题单击此处添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 33,
+          "shape_name": "PPT",
+          "paragraph": 0,
+          "text": "五要素",
+          "runs": [
+            {
+              "run": 0,
+              "text": "五要素"
+            }
+          ]
+        },
+        {
+          "shape_id": 40,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "案件汇报情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "案件汇报情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 15,
+      "part": "ppt/slides/slide15.xml",
+      "slots": [
+        {
+          "shape_id": 26,
+          "shape_name": "文本框 25",
+          "paragraph": 0,
+          "text": "3",
+          "runs": [
+            {
+              "run": 0,
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "shape_id": 22,
+          "shape_name": "文本框 21",
+          "paragraph": 0,
+          "text": "请点击录入本章节的",
+          "runs": [
+            {
+              "run": 0,
+              "text": "请点击录入本章节的"
+            }
+          ]
+        },
+        {
+          "shape_id": 22,
+          "shape_name": "文本框 21",
+          "paragraph": 1,
+          "text": "概括性描述文字",
+          "runs": [
+            {
+              "run": 0,
+              "text": "概括性描述文字"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "扫黑除恶情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "扫黑除恶情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 16,
+      "part": "ppt/slides/slide16.xml",
+      "slots": [
+        {
+          "shape_id": 39,
+          "shape_name": "Shape 1159",
+          "paragraph": 0,
+          "text": "25%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "25%"
+            }
+          ]
+        },
+        {
+          "shape_id": 40,
+          "shape_name": "Shape 1160",
+          "paragraph": 0,
+          "text": "Lorem Ipsum has been the industry.",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Lorem Ipsum has been the industry"
+            },
+            {
+              "run": 1,
+              "text": "."
+            }
+          ]
+        },
+        {
+          "shape_id": 41,
+          "shape_name": "Shape 1161",
+          "paragraph": 0,
+          "text": "80%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "80%"
+            }
+          ]
+        },
+        {
+          "shape_id": 42,
+          "shape_name": "Shape 1162",
+          "paragraph": 0,
+          "text": "Lorem Ipsum has been the industry.",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Lorem Ipsum has been the industry"
+            },
+            {
+              "run": 1,
+              "text": "."
+            }
+          ]
+        },
+        {
+          "shape_id": 43,
+          "shape_name": "Shape 1164",
+          "paragraph": 0,
+          "text": "50%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "50%"
+            }
+          ]
+        },
+        {
+          "shape_id": 44,
+          "shape_name": "Shape 1165",
+          "paragraph": 0,
+          "text": "Has been the industry's standard dummy.",
+          "runs": [
+            {
+              "run": 0,
+              "text": "H"
+            },
+            {
+              "run": 1,
+              "text": "as been the industry's standard dummy."
+            }
+          ]
+        },
+        {
+          "shape_id": 45,
+          "shape_name": "Shape 1167",
+          "paragraph": 0,
+          "text": "70%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "70%"
+            }
+          ]
+        },
+        {
+          "shape_id": 46,
+          "shape_name": "Shape 1168",
+          "paragraph": 0,
+          "text": "Lorem Ipsum has been the industry.",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Lorem Ipsum has been the industry"
+            },
+            {
+              "run": 1,
+              "text": "."
+            }
+          ]
+        },
+        {
+          "shape_id": 49,
+          "shape_name": "Shape 1172",
+          "paragraph": 0,
+          "text": "4",
+          "runs": [
+            {
+              "run": 0,
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "shape_id": 54,
+          "shape_name": "Shape 1176",
+          "paragraph": 0,
+          "text": "3",
+          "runs": [
+            {
+              "run": 0,
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "shape_id": 57,
+          "shape_name": "Shape 1180",
+          "paragraph": 0,
+          "text": "2",
+          "runs": [
+            {
+              "run": 0,
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "shape_id": 60,
+          "shape_name": "Shape 1184",
+          "paragraph": 0,
+          "text": "1",
+          "runs": [
+            {
+              "run": 0,
+              "text": "1"
+            }
+          ]
+        },
+        {
+          "shape_id": 61,
+          "shape_name": "Shape 1186",
+          "paragraph": 0,
+          "text": "60%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "60%"
+            }
+          ]
+        },
+        {
+          "shape_id": 64,
+          "shape_name": "Shape 1187",
+          "paragraph": 0,
+          "text": "Been the industry's standard.",
+          "runs": [
+            {
+              "run": 0,
+              "text": "B"
+            },
+            {
+              "run": 1,
+              "text": "een the industry's standard."
+            }
+          ]
+        },
+        {
+          "shape_id": 86,
+          "shape_name": "Shape 1191",
+          "paragraph": 0,
+          "text": "5",
+          "runs": [
+            {
+              "run": 0,
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "shape_id": 97,
+          "shape_name": "Shape 1159",
+          "paragraph": 0,
+          "text": "25%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "25%"
+            }
+          ]
+        },
+        {
+          "shape_id": 98,
+          "shape_name": "Shape 1161",
+          "paragraph": 0,
+          "text": "80%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "80%"
+            }
+          ]
+        },
+        {
+          "shape_id": 99,
+          "shape_name": "Shape 1164",
+          "paragraph": 0,
+          "text": "50%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "50%"
+            }
+          ]
+        },
+        {
+          "shape_id": 100,
+          "shape_name": "Shape 1167",
+          "paragraph": 0,
+          "text": "70%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "70%"
+            }
+          ]
+        },
+        {
+          "shape_id": 101,
+          "shape_name": "Shape 1186",
+          "paragraph": 0,
+          "text": "60%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "60%"
+            }
+          ]
+        },
+        {
+          "shape_id": 104,
+          "shape_name": "TextBox 103",
+          "paragraph": 0,
+          "text": "你的标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "你的标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 105,
+          "shape_name": "Rectangle 104",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。"
+            }
+          ]
+        },
+        {
+          "shape_id": 106,
+          "shape_name": "Rectangle 105",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。"
+            }
+          ]
+        },
+        {
+          "shape_id": 134,
+          "shape_name": "TextBox 133",
+          "paragraph": 0,
+          "text": "你的标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "你的标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 135,
+          "shape_name": "Rectangle 134",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。"
+            }
+          ]
+        },
+        {
+          "shape_id": 68,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "扫黑除恶情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "扫黑除恶情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 17,
+      "part": "ppt/slides/slide17.xml",
+      "slots": [
+        {
+          "shape_id": 9,
+          "shape_name": "Rectangle 4",
+          "paragraph": 0,
+          "text": "你的标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "你的标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 13,
+          "shape_name": "文本框 15",
+          "paragraph": 0,
+          "text": "请在此添加正文并根据需要调整字体大小，建议采用1.5倍行距和两端对齐方式。请在此添加正文并根据需要调整字体大小，建议采用1.5倍行距和两端对齐方式。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "请在此添加正文并根据需要调整字体大小，建议采用"
+            },
+            {
+              "run": 1,
+              "text": "1.5"
+            },
+            {
+              "run": 2,
+              "text": "倍行距和两端对齐方式。请在此添加正文并根据需要调整字体大小，建议采用"
+            },
+            {
+              "run": 3,
+              "text": "1.5"
+            },
+            {
+              "run": 4,
+              "text": "倍行距和两端对齐方式。"
+            }
+          ]
+        },
+        {
+          "shape_id": 16,
+          "shape_name": "TextBox 59",
+          "paragraph": 0,
+          "text": "1",
+          "runs": [
+            {
+              "run": 0,
+              "text": "1"
+            }
+          ]
+        },
+        {
+          "shape_id": 18,
+          "shape_name": "TextBox 17",
+          "paragraph": 0,
+          "text": "添加标题内容",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题内容"
+            }
+          ]
+        },
+        {
+          "shape_id": 22,
+          "shape_name": "TextBox 59",
+          "paragraph": 0,
+          "text": "2",
+          "runs": [
+            {
+              "run": 0,
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "TextBox 22",
+          "paragraph": 0,
+          "text": "添加标题内容",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题内容"
+            }
+          ]
+        },
+        {
+          "shape_id": 31,
+          "shape_name": "TextBox 59",
+          "paragraph": 0,
+          "text": "3",
+          "runs": [
+            {
+              "run": 0,
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "shape_id": 32,
+          "shape_name": "TextBox 31",
+          "paragraph": 0,
+          "text": "添加标题内容",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题内容"
+            }
+          ]
+        },
+        {
+          "shape_id": 35,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "扫黑除恶情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "扫黑除恶情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 18,
+      "part": "ppt/slides/slide18.xml",
+      "slots": [
+        {
+          "shape_id": 2,
+          "shape_name": "TextBox 12",
+          "paragraph": 0,
+          "text": "1th.QUARTER",
+          "runs": [
+            {
+              "run": 0,
+              "text": "1th.QUARTER"
+            }
+          ]
+        },
+        {
+          "shape_id": 3,
+          "shape_name": "TextBox 13",
+          "paragraph": 0,
+          "text": "100",
+          "runs": [
+            {
+              "run": 0,
+              "text": "100"
+            }
+          ]
+        },
+        {
+          "shape_id": 7,
+          "shape_name": "TextBox 17",
+          "paragraph": 0,
+          "text": "200",
+          "runs": [
+            {
+              "run": 0,
+              "text": "200"
+            }
+          ]
+        },
+        {
+          "shape_id": 8,
+          "shape_name": "TextBox 18",
+          "paragraph": 0,
+          "text": "300",
+          "runs": [
+            {
+              "run": 0,
+              "text": "300"
+            }
+          ]
+        },
+        {
+          "shape_id": 9,
+          "shape_name": "TextBox 19",
+          "paragraph": 0,
+          "text": "400",
+          "runs": [
+            {
+              "run": 0,
+              "text": "400"
+            }
+          ]
+        },
+        {
+          "shape_id": 10,
+          "shape_name": "TextBox 20",
+          "paragraph": 0,
+          "text": "500",
+          "runs": [
+            {
+              "run": 0,
+              "text": "500"
+            }
+          ]
+        },
+        {
+          "shape_id": 11,
+          "shape_name": "TextBox 21",
+          "paragraph": 0,
+          "text": "600",
+          "runs": [
+            {
+              "run": 0,
+              "text": "600"
+            }
+          ]
+        },
+        {
+          "shape_id": 12,
+          "shape_name": "TextBox 22",
+          "paragraph": 0,
+          "text": "700",
+          "runs": [
+            {
+              "run": 0,
+              "text": "700"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "TextBox 24",
+          "paragraph": 0,
+          "text": "800",
+          "runs": [
+            {
+              "run": 0,
+              "text": "800"
+            }
+          ]
+        },
+        {
+          "shape_id": 24,
+          "shape_name": "TextBox 25",
+          "paragraph": 0,
+          "text": "0",
+          "runs": [
+            {
+              "run": 0,
+              "text": "0"
+            }
+          ]
+        },
+        {
+          "shape_id": 33,
+          "shape_name": "TextBox 48",
+          "paragraph": 0,
+          "text": "输入你的标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "输入你的标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 34,
+          "shape_name": "TextBox 49",
+          "paragraph": 0,
+          "text": "12.648.258",
+          "runs": [
+            {
+              "run": 0,
+              "text": "12.648.258"
+            }
+          ]
+        },
+        {
+          "shape_id": 35,
+          "shape_name": "TextBox 51",
+          "paragraph": 0,
+          "text": "SALES VOLUME:",
+          "runs": [
+            {
+              "run": 0,
+              "text": "SALES VOLUME:"
+            }
+          ]
+        },
+        {
+          "shape_id": 38,
+          "shape_name": "TextBox 54",
+          "paragraph": 0,
+          "text": "ENTER TITLE",
+          "runs": [
+            {
+              "run": 0,
+              "text": "ENTER TITLE"
+            }
+          ]
+        },
+        {
+          "shape_id": 39,
+          "shape_name": "TextBox 55",
+          "paragraph": 0,
+          "text": "ENTER TITLE",
+          "runs": [
+            {
+              "run": 0,
+              "text": "ENTER TITLE"
+            }
+          ]
+        },
+        {
+          "shape_id": 40,
+          "shape_name": "TextBox 9",
+          "paragraph": 0,
+          "text": "53%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "53%"
+            }
+          ]
+        },
+        {
+          "shape_id": 41,
+          "shape_name": "TextBox 9",
+          "paragraph": 0,
+          "text": "72%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "72%"
+            }
+          ]
+        },
+        {
+          "shape_id": 42,
+          "shape_name": "TextBox 9",
+          "paragraph": 0,
+          "text": "60%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "60%"
+            }
+          ]
+        },
+        {
+          "shape_id": 43,
+          "shape_name": "TextBox 9",
+          "paragraph": 0,
+          "text": "90%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "90%"
+            }
+          ]
+        },
+        {
+          "shape_id": 47,
+          "shape_name": "TextBox 12",
+          "paragraph": 0,
+          "text": "2th.QUARTER",
+          "runs": [
+            {
+              "run": 0,
+              "text": "2th.QUARTER"
+            }
+          ]
+        },
+        {
+          "shape_id": 48,
+          "shape_name": "TextBox 12",
+          "paragraph": 0,
+          "text": "3th.QUARTER",
+          "runs": [
+            {
+              "run": 0,
+              "text": "3th.QUARTER"
+            }
+          ]
+        },
+        {
+          "shape_id": 49,
+          "shape_name": "TextBox 12",
+          "paragraph": 0,
+          "text": "4th.QUARTER",
+          "runs": [
+            {
+              "run": 0,
+              "text": "4th.QUARTER"
+            }
+          ]
+        },
+        {
+          "shape_id": 55,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "扫黑除恶情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "扫黑除恶情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 19,
+      "part": "ppt/slides/slide19.xml",
+      "slots": [
+        {
+          "shape_id": 15,
+          "shape_name": "TextBox 16",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 16,
+          "shape_name": "TextBox 17",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 17,
+          "shape_name": "TextBox 18",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 18,
+          "shape_name": "TextBox 19",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 19,
+          "shape_name": "TextBox 20",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 20,
+          "shape_name": "TextBox 21",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 21,
+          "shape_name": "TextBox 22",
+          "paragraph": 0,
+          "text": "标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 21,
+          "shape_name": "TextBox 22",
+          "paragraph": 1,
+          "text": "添加",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加"
+            }
+          ]
+        },
+        {
+          "shape_id": 32,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "扫黑除恶情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "扫黑除恶情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 20,
+      "part": "ppt/slides/slide20.xml",
+      "slots": [
+        {
+          "shape_id": 19,
+          "shape_name": "矩形 18",
+          "paragraph": 0,
+          "text": "标题文本预设",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文本预设"
+            }
+          ]
+        },
+        {
+          "shape_id": 9,
+          "shape_name": "TextBox 10",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 9,
+          "shape_name": "TextBox 10",
+          "paragraph": 2,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 9,
+          "shape_name": "TextBox 10",
+          "paragraph": 4,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "矩形 22",
+          "paragraph": 0,
+          "text": "标题文本预设",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文本预设"
+            }
+          ]
+        },
+        {
+          "shape_id": 14,
+          "shape_name": "TextBox 15",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 14,
+          "shape_name": "TextBox 15",
+          "paragraph": 2,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 14,
+          "shape_name": "TextBox 15",
+          "paragraph": 4,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 28,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "扫黑除恶情况",
+          "runs": [
+            {
+              "run": 0,
+              "text": "扫黑除恶情况"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 21,
+      "part": "ppt/slides/slide21.xml",
+      "slots": [
+        {
+          "shape_id": 26,
+          "shape_name": "文本框 25",
+          "paragraph": 0,
+          "text": "4",
+          "runs": [
+            {
+              "run": 0,
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "shape_id": 22,
+          "shape_name": "文本框 21",
+          "paragraph": 0,
+          "text": "请点击录入本章节的",
+          "runs": [
+            {
+              "run": 0,
+              "text": "请点击录入本章节的"
+            }
+          ]
+        },
+        {
+          "shape_id": 22,
+          "shape_name": "文本框 21",
+          "paragraph": 1,
+          "text": "概括性描述文字",
+          "runs": [
+            {
+              "run": 0,
+              "text": "概括性描述文字"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作部署",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作部署"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 22,
+      "part": "ppt/slides/slide22.xml",
+      "slots": [
+        {
+          "shape_id": 36,
+          "shape_name": "TextBox 15",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 37,
+          "shape_name": "TextBox 16",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 38,
+          "shape_name": "TextBox 17",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 32,
+          "shape_name": "TextBox 11",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 33,
+          "shape_name": "TextBox 12",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 34,
+          "shape_name": "TextBox 13",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 35,
+          "shape_name": "TextBox 14",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 50,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作部署",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作部署"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 23,
+      "part": "ppt/slides/slide23.xml",
+      "slots": [
+        {
+          "shape_id": 50,
+          "shape_name": "矩形 49",
+          "paragraph": 0,
+          "text": "标题文本",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文本"
+            }
+          ]
+        },
+        {
+          "shape_id": 83,
+          "shape_name": "矩形 82",
+          "paragraph": 0,
+          "text": "1",
+          "runs": [
+            {
+              "run": 0,
+              "text": "1"
+            }
+          ]
+        },
+        {
+          "shape_id": 88,
+          "shape_name": "矩形 87",
+          "paragraph": 0,
+          "text": "2",
+          "runs": [
+            {
+              "run": 0,
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "shape_id": 93,
+          "shape_name": "矩形 92",
+          "paragraph": 0,
+          "text": "3",
+          "runs": [
+            {
+              "run": 0,
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "shape_id": 98,
+          "shape_name": "矩形 97",
+          "paragraph": 0,
+          "text": "4",
+          "runs": [
+            {
+              "run": 0,
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "shape_id": 100,
+          "shape_name": "TextBox 52",
+          "paragraph": 0,
+          "text": "标题文本预设",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文本预设"
+            }
+          ]
+        },
+        {
+          "shape_id": 101,
+          "shape_name": "TextBox 53",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 103,
+          "shape_name": "TextBox 54",
+          "paragraph": 0,
+          "text": "标题文本预设",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文本预设"
+            }
+          ]
+        },
+        {
+          "shape_id": 104,
+          "shape_name": "TextBox 55",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 106,
+          "shape_name": "TextBox 56",
+          "paragraph": 0,
+          "text": "标题文本预设",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文本预设"
+            }
+          ]
+        },
+        {
+          "shape_id": 107,
+          "shape_name": "TextBox 57",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 109,
+          "shape_name": "TextBox 61",
+          "paragraph": 0,
+          "text": "标题文本预设",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题文本预设"
+            }
+          ]
+        },
+        {
+          "shape_id": 110,
+          "shape_name": "TextBox 62",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。"
+            }
+          ]
+        },
+        {
+          "shape_id": 59,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作部署",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作部署"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 24,
+      "part": "ppt/slides/slide24.xml",
+      "slots": [
+        {
+          "shape_id": 12484,
+          "shape_name": "Shape 12484",
+          "paragraph": 0,
+          "text": "标题添加",
+          "runs": [
+            {
+              "run": 0,
+              "text": "标题添加"
+            }
+          ]
+        },
+        {
+          "shape_id": 12485,
+          "shape_name": "Shape 12485",
+          "paragraph": 0,
+          "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。"
+            }
+          ]
+        },
+        {
+          "shape_id": 12487,
+          "shape_name": "Shape 12487",
+          "paragraph": 0,
+          "text": "12,25,3256 ml",
+          "runs": [
+            {
+              "run": 0,
+              "text": "12,25,3256 ml"
+            }
+          ]
+        },
+        {
+          "shape_id": 12487,
+          "shape_name": "Shape 12487",
+          "paragraph": 1,
+          "text": "Lorem Ipsum is simply ",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Lorem Ipsum is simply "
+            }
+          ]
+        },
+        {
+          "shape_id": 12487,
+          "shape_name": "Shape 12487",
+          "paragraph": 2,
+          "text": "and typesetting industry.",
+          "runs": [
+            {
+              "run": 0,
+              "text": "and typesetting industry."
+            }
+          ]
+        },
+        {
+          "shape_id": 12491,
+          "shape_name": "Shape 12491",
+          "paragraph": 0,
+          "text": "25648 ml",
+          "runs": [
+            {
+              "run": 0,
+              "text": "25648 ml"
+            }
+          ]
+        },
+        {
+          "shape_id": 12491,
+          "shape_name": "Shape 12491",
+          "paragraph": 1,
+          "text": "Lorem Ipsum is simply and typesetting industry.",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Lorem Ipsum is simply and typesetting industry."
+            }
+          ]
+        },
+        {
+          "shape_id": 12495,
+          "shape_name": "Shape 12495",
+          "paragraph": 0,
+          "text": "32561452 ml",
+          "runs": [
+            {
+              "run": 0,
+              "text": "32561452 ml"
+            }
+          ]
+        },
+        {
+          "shape_id": 12495,
+          "shape_name": "Shape 12495",
+          "paragraph": 1,
+          "text": "Lorem Ipsum is simply and typesetting industry.",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Lorem Ipsum is simply and typesetting industry."
+            }
+          ]
+        },
+        {
+          "shape_id": 12499,
+          "shape_name": "Shape 12499",
+          "paragraph": 0,
+          "text": "23450 ml",
+          "runs": [
+            {
+              "run": 0,
+              "text": "23450 ml"
+            }
+          ]
+        },
+        {
+          "shape_id": 12499,
+          "shape_name": "Shape 12499",
+          "paragraph": 1,
+          "text": "Lorem Ipsum is simply and typesetting industry.",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Lorem Ipsum is simply and typesetting industry."
+            }
+          ]
+        },
+        {
+          "shape_id": 12503,
+          "shape_name": "Shape 12503",
+          "paragraph": 0,
+          "text": "75%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "75%"
+            }
+          ]
+        },
+        {
+          "shape_id": 12503,
+          "shape_name": "Shape 12503",
+          "paragraph": 1,
+          "text": "Male User",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Male User"
+            }
+          ]
+        },
+        {
+          "shape_id": 12505,
+          "shape_name": "Shape 12505",
+          "paragraph": 0,
+          "text": "Lorem Ipsum is simply industry.",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Lorem Ipsum is simply industry."
+            }
+          ]
+        },
+        {
+          "shape_id": 12541,
+          "shape_name": "Shape 12541",
+          "paragraph": 0,
+          "text": "25%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "25%"
+            }
+          ]
+        },
+        {
+          "shape_id": 12541,
+          "shape_name": "Shape 12541",
+          "paragraph": 1,
+          "text": "Female User",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Female User"
+            }
+          ]
+        },
+        {
+          "shape_id": 12543,
+          "shape_name": "Shape 12543",
+          "paragraph": 0,
+          "text": "Lorem Ipsum is simply industry.",
+          "runs": [
+            {
+              "run": 0,
+              "text": "Lorem Ipsum is simply industry."
+            }
+          ]
+        },
+        {
+          "shape_id": 12546,
+          "shape_name": "Shape 12546",
+          "paragraph": 0,
+          "text": "75%",
+          "runs": [
+            {
+              "run": 0,
+              "text": "75%"
+            }
+          ]
+        },
+        {
+          "shape_id": 74,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作部署",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作部署"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 25,
+      "part": "ppt/slides/slide25.xml",
+      "slots": [
+        {
+          "shape_id": 39,
+          "shape_name": "矩形 38",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。您的内容打在这里。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。您的内容打在这里。"
+            }
+          ]
+        },
+        {
+          "shape_id": 40,
+          "shape_name": "矩形 39",
+          "paragraph": 0,
+          "text": "你的标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "你的标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 42,
+          "shape_name": "矩形 41",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。您的内容打在这里。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。您的内容打在这里。"
+            }
+          ]
+        },
+        {
+          "shape_id": 45,
+          "shape_name": "矩形 44",
+          "paragraph": 0,
+          "text": "你的标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "你的标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 47,
+          "shape_name": "矩形 46",
+          "paragraph": 0,
+          "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。您的内容打在这里。",
+          "runs": [
+            {
+              "run": 0,
+              "text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。您的内容打在这里。"
+            }
+          ]
+        },
+        {
+          "shape_id": 48,
+          "shape_name": "矩形 47",
+          "paragraph": 0,
+          "text": "你的标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "你的标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 60,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作部署",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作部署"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 26,
+      "part": "ppt/slides/slide26.xml",
+      "slots": [
+        {
+          "shape_id": 50,
+          "shape_name": "koppt-文本框",
+          "paragraph": 0,
+          "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本"
+            }
+          ]
+        },
+        {
+          "shape_id": 51,
+          "shape_name": "koppt-文本框",
+          "paragraph": 0,
+          "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本"
+            }
+          ]
+        },
+        {
+          "shape_id": 52,
+          "shape_name": "koppt-文本框",
+          "paragraph": 0,
+          "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加文本单击此处添加文本单击此处添加文本单击此处添加文本"
+            }
+          ]
+        },
+        {
+          "shape_id": 56,
+          "shape_name": "koppt-文本框",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 64,
+          "shape_name": "koppt-文本框",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 60,
+          "shape_name": "koppt-文本框",
+          "paragraph": 0,
+          "text": "添加标题",
+          "runs": [
+            {
+              "run": 0,
+              "text": "添加标题"
+            }
+          ]
+        },
+        {
+          "shape_id": 33,
+          "shape_name": "标题 4",
+          "paragraph": 0,
+          "text": "警务工作部署",
+          "runs": [
+            {
+              "run": 0,
+              "text": "警务工作部署"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 27,
+      "part": "ppt/slides/slide27.xml",
+      "slots": [
+        {
+          "shape_id": 14,
+          "shape_name": "文本框 13",
+          "paragraph": 0,
+          "text": "感谢您的聆听",
+          "runs": [
+            {
+              "run": 0,
+              "text": "感谢您的聆听"
+            }
+          ]
+        },
+        {
+          "shape_id": 16,
+          "shape_name": "文本框 15",
+          "paragraph": 0,
+          "text": "案件汇报/扫黑除恶/公安会议/警务系统/工作汇报",
+          "runs": [
+            {
+              "run": 0,
+              "text": "案件汇报/扫黑除恶/公安会议/警务系统/工作汇报"
+            }
+          ]
+        },
+        {
+          "shape_id": 23,
+          "shape_name": "PA-文本框 26",
+          "paragraph": 0,
+          "text": "单击此处添加文字阐述，添加简短问题说明文字，具体说明文字在此处添加此处。添加简短问题说明文字，具体说明文字在此处添加此处",
+          "runs": [
+            {
+              "run": 0,
+              "text": "单击此处添加文字阐述，添加简短问题说明文字，具体说明文字在此处添加此处。添加简短问题说明文字，具体说明文字在此处添加此处"
+            }
+          ]
+        },
+        {
+          "shape_id": 24,
+          "shape_name": "文本框 23",
+          "paragraph": 0,
+          "text": "汇报人：优品PPT     汇报时间：20XX年12月12日",
+          "runs": [
+            {
+              "run": 0,
+              "text": "汇报人"
+            },
+            {
+              "run": 1,
+              "text": "："
+            },
+            {
+              "run": 2,
+              "text": "优品"
+            },
+            {
+              "run": 3,
+              "text": "PPT"
+            },
+            {
+              "run": 4,
+              "text": "     "
+            },
+            {
+              "run": 5,
+              "text": "汇报时间："
+            },
+            {
+              "run": 6,
+              "text": "20XX"
+            },
+            {
+              "run": 7,
+              "text": "年"
+            },
+            {
+              "run": 8,
+              "text": "12"
+            },
+            {
+              "run": 9,
+              "text": "月"
+            },
+            {
+              "run": 10,
+              "text": "12"
+            },
+            {
+              "run": 11,
+              "text": "日"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slide": 28,
+      "part": "ppt/slides/slide28.xml",
+      "slots": [
+        {
+          "shape_id": 4,
+          "shape_name": "矩形 3",
+          "paragraph": 0,
+          "text": "                                             www.ypppt.com",
+          "runs": [
+            {
+              "run": 0,
+              "text": "                                             www.ypppt.com"
+            }
+          ]
+        },
+        {
+          "shape_id": 7,
+          "shape_name": "矩形 6",
+          "paragraph": 0,
+          "text": "                更多精品PPT资源尽在—优品PPT！",
+          "runs": [
+            {
+              "run": 0,
+              "text": "                更多"
+            },
+            {
+              "run": 1,
+              "text": "精品"
+            },
+            {
+              "run": 2,
+              "text": "PPT"
+            },
+            {
+              "run": 3,
+              "text": "资源尽在"
+            },
+            {
+              "run": 4,
+              "text": "—"
+            },
+            {
+              "run": 5,
+              "text": "优品"
+            },
+            {
+              "run": 6,
+              "text": "PPT"
+            },
+            {
+              "run": 7,
+              "text": "！"
+            }
+          ]
+        },
+        {
+          "shape_id": 12,
+          "shape_name": "矩形 11",
+          "paragraph": 0,
+          "text": "PPT模板下载：www.ypppt.com/moban/         节日PPT模板：www.ypppt.com/jieri/",
+          "runs": [
+            {
+              "run": 0,
+              "text": "PPT"
+            },
+            {
+              "run": 1,
+              "text": "模板下载"
+            },
+            {
+              "run": 2,
+              "text": "："
+            },
+            {
+              "run": 3,
+              "text": "www.ypppt.com/moban/"
+            },
+            {
+              "run": 4,
+              "text": "         "
+            },
+            {
+              "run": 5,
+              "text": "节"
+            },
+            {
+              "run": 6,
+              "text": "日"
+            },
+            {
+              "run": 7,
+              "text": "PPT"
+            },
+            {
+              "run": 8,
+              "text": "模板："
+            },
+            {
+              "run": 9,
+              "text": "www.ypppt.com/jieri/"
+            }
+          ]
+        },
+        {
+          "shape_id": 12,
+          "shape_name": "矩形 11",
+          "paragraph": 1,
+          "text": "PPT背景图片：www.ypppt.com/beijing/          PPT图表下载：www.ypppt.com/tubiao/",
+          "runs": [
+            {
+              "run": 0,
+              "text": "PPT"
+            },
+            {
+              "run": 1,
+              "text": "背景图片："
+            },
+            {
+              "run": 2,
+              "text": "www.ypppt.com/beijing/"
+            },
+            {
+              "run": 3,
+              "text": "          "
+            },
+            {
+              "run": 4,
+              "text": "PPT"
+            },
+            {
+              "run": 5,
+              "text": "图表下载："
+            },
+            {
+              "run": 6,
+              "text": "www.ypppt.com/tubiao/"
+            }
+          ]
+        },
+        {
+          "shape_id": 12,
+          "shape_name": "矩形 11",
+          "paragraph": 2,
+          "text": "PPT素材下载： www.ypppt.com/sucai/            PPT教程下载：www.ypppt.com/jiaocheng/",
+          "runs": [
+            {
+              "run": 0,
+              "text": "PPT"
+            },
+            {
+              "run": 1,
+              "text": "素材下载："
+            },
+            {
+              "run": 2,
+              "text": " "
+            },
+            {
+              "run": 3,
+              "text": "www.ypppt.com/sucai/"
+            },
+            {
+              "run": 4,
+              "text": "            "
+            },
+            {
+              "run": 5,
+              "text": "PPT"
+            },
+            {
+              "run": 6,
+              "text": "教程下载："
+            },
+            {
+              "run": 7,
+              "text": "www.ypppt.com/jiaocheng"
+            },
+            {
+              "run": 8,
+              "text": "/"
+            }
+          ]
+        },
+        {
+          "shape_id": 12,
+          "shape_name": "矩形 11",
+          "paragraph": 3,
+          "text": "字体下载：www.ypppt.com/ziti/                       绘本故事PPT：www.ypppt.com/gushi/",
+          "runs": [
+            {
+              "run": 0,
+              "text": "字"
+            },
+            {
+              "run": 1,
+              "text": "体下载："
+            },
+            {
+              "run": 2,
+              "text": "www.ypppt.com/ziti"
+            },
+            {
+              "run": 3,
+              "text": "/"
+            },
+            {
+              "run": 4,
+              "text": "                       "
+            },
+            {
+              "run": 5,
+              "text": "绘本故事"
+            },
+            {
+              "run": 6,
+              "text": "PPT"
+            },
+            {
+              "run": 7,
+              "text": "："
+            },
+            {
+              "run": 8,
+              "text": "www.ypppt.com/gushi/"
+            }
+          ]
+        },
+        {
+          "shape_id": 12,
+          "shape_name": "矩形 11",
+          "paragraph": 4,
+          "text": "PPT课件：www.ypppt.com/kejian/",
+          "runs": [
+            {
+              "run": 0,
+              "text": "PPT"
+            },
+            {
+              "run": 1,
+              "text": "课件："
+            },
+            {
+              "run": 2,
+              "text": "www.ypppt.com/kejian/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

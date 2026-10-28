@@ -8,6 +8,18 @@
     "docs/cordis-api/inherited.md",
     "docs/i18n/style-samples.md",
     "docs/i18n/terminology.md",
-    "docs/i18n/translation-prompt.md"
+    "docs/i18n/translation-prompt.md",
+    "docs/tiancode/BRANDING.md",
+    "docs/tiancode/BUILD_WINDOWS.md",
+    "docs/tiancode/DEVELOPMENT_TASK.md",
+    "docs/tiancode/LICENSE_NOTICES.md",
+    "docs/tiancode/MODIFICATIONS.md",
+    "docs/tiancode/OFFLINE_DEPLOYMENT.md",
+    "docs/tiancode/TEST_REPORT.md",
+    "docs/tiancode/materials/",
+    "docs/tiancode/prompt_code/",
+    "skills/public-ppt-business/templates/README.md",
+    "skills/public-ppt-internet/templates/README.md",
+    "skills/public-ppt-police/templates/README.md"
   ]
 }

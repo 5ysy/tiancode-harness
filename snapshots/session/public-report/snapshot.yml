@@ -1,0 +1,11 @@
+version: 1
+scenario: public-report
+profile: headless
+composition: public-report
+recording: authored
+header:
+  class: public-report
+  pin: true
+workspace:
+  setup: public-report
+  final: true

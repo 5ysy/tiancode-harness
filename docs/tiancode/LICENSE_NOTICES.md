@@ -1,6 +1,6 @@
 # 许可证与来源声明
 
-TianCode 基于 DeepSeek Harness `dsh-v0.2.0-rc.2`，基线 Commit 为 `639ed015397290b3745d163aafe02ffee4aa3f84`。上游项目及本仓库原有 LICENSE、NOTICE、第三方依赖声明和版权信息继续有效。
+TianCode 基于 DeepSeek Harness `dsh-v0.2.0-rc.2`。上游项目及本仓库原有 LICENSE、NOTICE、第三方依赖声明和版权信息继续有效。
 
 本次定制只改变桌面显示名称、应用身份、品牌资源、默认数据目录、离线更新构建选项和必要的打包路径。`@deepseek-ai/*` 包名、Cordis、插件 Manifest、Bundle 格式、插件注册接口、工具调用、权限控制和沙箱实现保持上游兼容性。
 

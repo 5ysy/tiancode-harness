@@ -1,0 +1,7 @@
+# Bilingual-pair consistency record for SKILL_RESEARCH.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/tiancode/SKILL_RESEARCH.md
+/office-skill-selection-evidence:
+  en: 3aef5879eba7c993
+  zh: b50258aa067a2cba

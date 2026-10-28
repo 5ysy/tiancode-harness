@@ -1,0 +1,16 @@
+# Bilingual-pair consistency record for SKILLS.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/tiancode/SKILLS.md
+/tiancode-software-skills:
+  en: 19d2859bdb312fc9
+  zh: efeb88cb09b9933d
+/tiancode-software-skills/add-and-update-skills:
+  en: 9ada7a2920b567da
+  zh: a15e5ee64d8a4337
+/tiancode-software-skills/workflows-and-templates:
+  en: c6ac0ae08369ede5
+  zh: 92bb3dcae0f374b4
+/tiancode-software-skills/launch-and-verification:
+  en: 84ef863e2815fe87
+  zh: 1f75e26885408c00

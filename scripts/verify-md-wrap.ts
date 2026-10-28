@@ -71,7 +71,14 @@ function findViolations(absPath: string): Violation[] {
 }
 
 const files = uniqueRepoFiles(root, PATTERNS, isArchivedAgentNotePath)
-const all = files.flatMap(file => findViolations(file.abs))
+const all = files
+  // Imported reference material is retained verbatim; its upstream prose is
+  // outside the repository's one-line paragraph convention.
+  .filter((file) => {
+    const path = relative(root, file.abs)
+    return path !== 'docs/tiancode/DEVELOPMENT_TASK.md' && !path.startsWith('docs/tiancode/materials/')
+  })
+  .flatMap(file => findViolations(file.abs))
 const checked = files.length
 
 if (all.length === 0) {

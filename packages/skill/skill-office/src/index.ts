@@ -1,20 +1,27 @@
-/** Bundled Office workflows and filesystem resources for document authoring and checks. */
+/** Bundled Office workflows and filesystem resources for document authoring and operations. */
 
 import { readFileSync, statSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
-import { dirname, isAbsolute, join } from 'node:path'
+import { dirname, isAbsolute, join, sep } from 'node:path'
 import { isSea } from 'node:sea'
 import { fileURLToPath } from 'node:url'
 import type { Context } from '@deepseek-ai/cordis'
 import z from '@deepseek-ai/schemastery'
 import { BUNDLED_SKILL_RANK, type SkillCandidate, type SkillProvider } from '@deepseek-ai/dsh-skill'
 import { parse as parseYaml } from 'yaml'
+import * as FileSystemSkills from '@deepseek-ai/dsh-skill-filesystem'
 
-const SKILL_NAMES = ['office-docx', 'office-pptx', 'office-xlsx'] as const
+const SKILL_NAMES = ['office', 'office-docx', 'office-pptx', 'office-xlsx', 'office-render', 'office-recalculate', 'office-export-pdf'] as const
 
 /** Office skill resource location. */
 export interface Config {
-  /** Absolute assets directory containing the three skill folders and shared scripts; defaults to packaged assets. */
+  /** Enable bundled public-service writing workflows; defaults to false. */
+  publicService?: boolean
+  /** Absolute application-owned skills directory; required when publicService is enabled. */
+  publicSkillDir?: string
+  /** Watch the software skills directory for additions, changes and removals; defaults to true. */
+  publicServiceWatch?: boolean
+  /** Absolute assets directory containing skill folders; defaults to packaged assets. */
   assetRoot?: string
   /** Standalone Node executable; defaults to the current executable outside Electron and SEA. */
   node?: string
@@ -24,6 +31,9 @@ export interface Config {
 
 /** Validated resource configuration. */
 export const Config: z<Config> = z.object({
+  publicService: z.boolean(),
+  publicSkillDir: z.string().min(1),
+  publicServiceWatch: z.boolean(),
   assetRoot: z.string().min(1),
   node: z.string().min(1),
   cli: z.union([z.string().min(1), z.const(false)]),
@@ -69,10 +79,16 @@ function officeRuntime(config: Config): string {
 export function apply(ctx: Context, config: Config = {}): void {
   const assetRoot = config.assetRoot ?? fileURLToPath(new URL('../assets/', import.meta.url))
   if (!isAbsolute(assetRoot)) throw new Error('skill-office: assetRoot must be an absolute directory')
-  if (!statSync(join(assetRoot, 'scripts', 'check_office.py')).isFile()) {
-    throw new Error('skill-office: assets must contain scripts/check_office.py')
+  if (config.publicService === true) {
+    const directory = config.publicSkillDir
+    if (directory === undefined || !isAbsolute(directory) || !statSync(directory).isDirectory()) {
+      throw new Error('skill-office: publicService requires an absolute publicSkillDir directory')
+    }
+    ctx.plugin(FileSystemSkills, {
+      providerName: 'tiancode', includeDefaultRoots: false, bundledSkillDir: directory,
+      watch: config.publicServiceWatch ?? true,
+    })
   }
-  const runtime = officeRuntime(config)
   const candidates: SkillCandidate[] = SKILL_NAMES.map((skillName) => {
     const directory = join(assetRoot, skillName)
     const path = join(directory, 'SKILL.md')
@@ -81,7 +97,7 @@ export function apply(ctx: Context, config: Config = {}): void {
       name: skillName, description,
       invocation: { modelInvocable: true, userInvocable: true },
       provider: 'dsh-office', source: 'bundled', rank: BUNDLED_SKILL_RANK,
-      resourceBase: { kind: 'directory', path: directory }, locator: path,
+      resourceBase: { kind: 'directory', path: directory.split(sep).join('/') }, locator: path,
     }
   })
   const provider: SkillProvider = {
@@ -90,7 +106,9 @@ export function apply(ctx: Context, config: Config = {}): void {
     async get(candidate, options) {
       const { rank: _rank, locator, ...summary } = candidate
       const raw = await readFile(locator as string, { encoding: 'utf8', signal: options.signal })
-      return { ...summary, content: parseSkill(raw, locator as string).content + runtime }
+      const content = parseSkill(raw, locator as string).content
+        + (['office-render', 'office-recalculate', 'office-export-pdf'].includes(candidate.name) ? officeRuntime(config) : '')
+      return { ...summary, content }
     },
   }
   ctx.skills.registerProvider(() => provider)

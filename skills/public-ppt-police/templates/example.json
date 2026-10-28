@@ -1,0 +1,473 @@
+{
+  "selected_slides": [
+    1,
+    2,
+    3,
+    4,
+    9,
+    10,
+    15,
+    17,
+    21,
+    22,
+    27,
+    28
+  ],
+  "edits": [
+    {
+      "slide": 1,
+      "shape_id": 14,
+      "paragraph": 0,
+      "expected_text": "公安警察工作汇报",
+      "text": "公安工作情况汇报"
+    },
+    {
+      "slide": 1,
+      "shape_id": 16,
+      "paragraph": 0,
+      "expected_text": "案件汇报/扫黑除恶/公安会议/警务系统/工作汇报",
+      "text": "工作概况 / 重点任务 / 风险问题 / 下步安排"
+    },
+    {
+      "slide": 1,
+      "shape_id": 23,
+      "paragraph": 0,
+      "expected_text": "单击此处添加文字阐述，添加简短问题说明文字，具体说明文字在此处添加此处。添加简短问题说明文字，具体说明文字在此处添加此处",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 1,
+      "shape_id": 24,
+      "paragraph": 0,
+      "expected_text": "汇报人：优品PPT     汇报时间：2020年12月12日",
+      "text": "汇报人：待补充     汇报时间：待补充"
+    },
+    {
+      "slide": 2,
+      "shape_id": 19,
+      "paragraph": 0,
+      "expected_text": "警务工作概述 ",
+      "text": "警务工作概况"
+    },
+    {
+      "slide": 2,
+      "shape_id": 20,
+      "paragraph": 0,
+      "expected_text": "案件汇报情况",
+      "text": "重点工作情况"
+    },
+    {
+      "slide": 2,
+      "shape_id": 21,
+      "paragraph": 0,
+      "expected_text": "扫黑除恶情况",
+      "text": "问题与风险"
+    },
+    {
+      "slide": 2,
+      "shape_id": 22,
+      "paragraph": 0,
+      "expected_text": "警务工作部署",
+      "text": "下步工作安排"
+    },
+    {
+      "slide": 3,
+      "shape_id": 22,
+      "paragraph": 0,
+      "expected_text": "请点击录入本章节的",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 3,
+      "shape_id": 23,
+      "paragraph": 0,
+      "expected_text": "警务工作概述 ",
+      "text": "警务工作概况"
+    },
+    {
+      "slide": 4,
+      "shape_id": 33,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 4,
+      "shape_id": 34,
+      "paragraph": 0,
+      "expected_text": "此处添加详细文本描述，建议与标题相关并符合整体语言整体语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的字数控制最好控制在5分钟之内。",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 4,
+      "shape_id": 35,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 4,
+      "shape_id": 36,
+      "paragraph": 0,
+      "expected_text": "此处添加详细文本描述，建议与标题相关并符合整体整体语言语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的字数控制在最好控制在5分钟之内。",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 4,
+      "shape_id": 37,
+      "paragraph": 0,
+      "expected_text": "添加标题内容",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 4,
+      "shape_id": 38,
+      "paragraph": 0,
+      "expected_text": "      此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的字数控制在  200字以内，据统计每页幻灯片的最好控制在5分钟之内。此处添加详细文本描述，建议与标题相关并符合整体语言风格，语言描述尽量简洁生动。尽量将每页幻灯片的每页幻灯片的最好控制在5分钟之内。",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 4,
+      "shape_id": 41,
+      "paragraph": 0,
+      "expected_text": "警务工作概述 ",
+      "text": "警务工作概况"
+    },
+    {
+      "slide": 9,
+      "shape_id": 22,
+      "paragraph": 0,
+      "expected_text": "请点击录入本章节的",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 9,
+      "shape_id": 23,
+      "paragraph": 0,
+      "expected_text": "案件汇报情况",
+      "text": "重点工作情况"
+    },
+    {
+      "slide": 10,
+      "shape_id": 11,
+      "paragraph": 0,
+      "expected_text": "64.8",
+      "text": "--"
+    },
+    {
+      "slide": 10,
+      "shape_id": 12,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 10,
+      "shape_id": 13,
+      "paragraph": 0,
+      "expected_text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 10,
+      "shape_id": 15,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 10,
+      "shape_id": 16,
+      "paragraph": 0,
+      "expected_text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 10,
+      "shape_id": 18,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 10,
+      "shape_id": 19,
+      "paragraph": 0,
+      "expected_text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 10,
+      "shape_id": 21,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 10,
+      "shape_id": 22,
+      "paragraph": 0,
+      "expected_text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 10,
+      "shape_id": 24,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 10,
+      "shape_id": 25,
+      "paragraph": 0,
+      "expected_text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 10,
+      "shape_id": 27,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 10,
+      "shape_id": 28,
+      "paragraph": 0,
+      "expected_text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 10,
+      "shape_id": 43,
+      "paragraph": 0,
+      "expected_text": "案件汇报情况",
+      "text": "重点工作情况"
+    },
+    {
+      "slide": 15,
+      "shape_id": 22,
+      "paragraph": 0,
+      "expected_text": "请点击录入本章节的",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 15,
+      "shape_id": 23,
+      "paragraph": 0,
+      "expected_text": "扫黑除恶情况",
+      "text": "问题与风险"
+    },
+    {
+      "slide": 17,
+      "shape_id": 9,
+      "paragraph": 0,
+      "expected_text": "你的标题",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 17,
+      "shape_id": 13,
+      "paragraph": 0,
+      "expected_text": "请在此添加正文并根据需要调整字体大小，建议采用1.5倍行距和两端对齐方式。请在此添加正文并根据需要调整字体大小，建议采用1.5倍行距和两端对齐方式。",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 17,
+      "shape_id": 18,
+      "paragraph": 0,
+      "expected_text": "添加标题内容",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 17,
+      "shape_id": 23,
+      "paragraph": 0,
+      "expected_text": "添加标题内容",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 17,
+      "shape_id": 32,
+      "paragraph": 0,
+      "expected_text": "添加标题内容",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 17,
+      "shape_id": 35,
+      "paragraph": 0,
+      "expected_text": "扫黑除恶情况",
+      "text": "问题与风险"
+    },
+    {
+      "slide": 21,
+      "shape_id": 22,
+      "paragraph": 0,
+      "expected_text": "请点击录入本章节的",
+      "text": "事项待补充"
+    },
+    {
+      "slide": 21,
+      "shape_id": 23,
+      "paragraph": 0,
+      "expected_text": "警务工作部署",
+      "text": "下步工作安排"
+    },
+    {
+      "slide": 22,
+      "shape_id": 36,
+      "paragraph": 0,
+      "expected_text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 22,
+      "shape_id": 37,
+      "paragraph": 0,
+      "expected_text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 22,
+      "shape_id": 38,
+      "paragraph": 0,
+      "expected_text": "您的内容打在这里，或者通过复制您的文本后，在此框中选择粘贴，并选择只保留文字。",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 22,
+      "shape_id": 32,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项"
+    },
+    {
+      "slide": 22,
+      "shape_id": 33,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项"
+    },
+    {
+      "slide": 22,
+      "shape_id": 34,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项"
+    },
+    {
+      "slide": 22,
+      "shape_id": 35,
+      "paragraph": 0,
+      "expected_text": "添加标题",
+      "text": "事项"
+    },
+    {
+      "slide": 22,
+      "shape_id": 50,
+      "paragraph": 0,
+      "expected_text": "警务工作部署",
+      "text": "下步工作安排"
+    },
+    {
+      "slide": 27,
+      "shape_id": 14,
+      "paragraph": 0,
+      "expected_text": "感谢您的聆听",
+      "text": "请予指导"
+    },
+    {
+      "slide": 27,
+      "shape_id": 16,
+      "paragraph": 0,
+      "expected_text": "案件汇报/扫黑除恶/公安会议/警务系统/工作汇报",
+      "text": "工作概况 / 重点任务 / 风险问题 / 下步安排"
+    },
+    {
+      "slide": 27,
+      "shape_id": 23,
+      "paragraph": 0,
+      "expected_text": "单击此处添加文字阐述，添加简短问题说明文字，具体说明文字在此处添加此处。添加简短问题说明文字，具体说明文字在此处添加此处",
+      "text": "工作情况、材料依据与统计口径待补充。"
+    },
+    {
+      "slide": 27,
+      "shape_id": 24,
+      "paragraph": 0,
+      "expected_text": "汇报人：熊猫警察     汇报时间：2020年12月12日",
+      "text": "汇报人：待补充     汇报时间：待补充"
+    },
+    {
+      "slide": 3,
+      "shape_id": 22,
+      "paragraph": 1,
+      "expected_text": "概括性描述文字",
+      "text": "材料待补充"
+    },
+    {
+      "slide": 9,
+      "shape_id": 22,
+      "paragraph": 1,
+      "expected_text": "概括性描述文字",
+      "text": "材料待补充"
+    },
+    {
+      "slide": 10,
+      "shape_id": 14,
+      "paragraph": 0,
+      "expected_text": "18.4",
+      "text": "--"
+    },
+    {
+      "slide": 10,
+      "shape_id": 17,
+      "paragraph": 0,
+      "expected_text": "7.9",
+      "text": "--"
+    },
+    {
+      "slide": 10,
+      "shape_id": 20,
+      "paragraph": 0,
+      "expected_text": "4.1",
+      "text": "--"
+    },
+    {
+      "slide": 10,
+      "shape_id": 23,
+      "paragraph": 0,
+      "expected_text": "12.2",
+      "text": "--"
+    },
+    {
+      "slide": 10,
+      "shape_id": 26,
+      "paragraph": 0,
+      "expected_text": "15.3",
+      "text": "--"
+    },
+    {
+      "slide": 10,
+      "shape_id": 29,
+      "paragraph": 0,
+      "expected_text": "6.9",
+      "text": "--"
+    },
+    {
+      "slide": 15,
+      "shape_id": 22,
+      "paragraph": 1,
+      "expected_text": "概括性描述文字",
+      "text": "材料待补充"
+    },
+    {
+      "slide": 21,
+      "shape_id": 22,
+      "paragraph": 1,
+      "expected_text": "概括性描述文字",
+      "text": "材料待补充"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+# Bilingual-pair consistency record for UPSTREAM_SYNC_REPORT.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/tiancode/UPSTREAM_SYNC_REPORT.md
+/tiancode-upstream-synchronization-record:
+  en: 95d938da4fc2a7af
+  zh: cdb6c9a0f3208f10
+/tiancode-upstream-synchronization-record/source-and-retained-customizations:
+  en: 5f07cbe7380ccf30
+  zh: 51e1b0d9dc0b16f8
+/tiancode-upstream-synchronization-record/integration-decisions:
+  en: 405baf6511287ab5
+  zh: 4a67ab2f5f6cbccc
+/tiancode-upstream-synchronization-record/verification:
+  en: 875968176c8eb6d2
+  zh: 24e60b3afc818597
+/tiancode-upstream-synchronization-record/local-use-and-recovery:
+  en: a3f581a2abbfe5d5
+  zh: d4a79bdd33a10226
+/tiancode-upstream-synchronization-record/desktop-launch-verification:
+  en: 771af06773952394
+  zh: 1882776b7f9af4d4

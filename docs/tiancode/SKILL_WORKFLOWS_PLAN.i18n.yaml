@@ -1,0 +1,7 @@
+# Bilingual-pair consistency record for SKILL_WORKFLOWS_PLAN.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/tiancode/SKILL_WORKFLOWS_PLAN.md
+/tiancode-skill-workflow-plan:
+  en: 47249a162d441fa0
+  zh: 5df7e1db0e980fed

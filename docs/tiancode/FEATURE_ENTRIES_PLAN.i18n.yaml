@@ -1,0 +1,13 @@
+# Bilingual-pair consistency record for FEATURE_ENTRIES_PLAN.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/tiancode/FEATURE_ENTRIES_PLAN.md
+/tiancode-workflow-entry-implementation-plan:
+  en: d45fd54de060b157
+  zh: cff7ac5169871d59
+/tiancode-workflow-entry-implementation-plan/development-preview:
+  en: 5d16433e37c978f4
+  zh: ed4048315e60bd90
+/tiancode-workflow-entry-implementation-plan/verification-record:
+  en: 54355928f6b48f68
+  zh: 51a3dd53b18cdbd9

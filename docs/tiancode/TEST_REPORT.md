@@ -19,7 +19,7 @@
 - [GitHub Actions run 38432723290](https://github.com/5ysy/tiancode-harness/actions/runs/38432723290) 的 Windows x64 构建与 Release 作业均成功。打包日志确认 `runtime:primary-smoke`、`runtime:smoke` 和 `smoke-packaged-runtime.ts --unsigned` 通过。
 - [Release tiancode-v0.2.0-rc.2.20261014.1](https://github.com/5ysy/tiancode-harness/releases/tag/tiancode-v0.2.0-rc.2.20261014.1) 包含 8 个完整资产：安装器、安装器 ZIP、源码 ZIP、三个 `.sha256` 文件、`SHA256SUMS.txt` 和 `build-manifest.json`。安装器大小为 291,396,775 字节，界面显示版本为 `v0.0.2`。
 - 已下载 manifest 和校验文件，并核对 GitHub asset digest、manifest、`SHA256SUMS.txt` 与各 `.sha256` 文件。安装器 SHA-256 为 `260b376e8153025a787c04303b83233febd8082b6f5b1c9da88b5d46d30c2add`，安装器 ZIP 为 `9dd3aaa0906270dcc9bb644795b9d664a130f726e8110b72585de81ef42d7b10`，源码 ZIP 为 `fde54c60c3d9ea7d0d080aca3768c5dd725c5fe91451f785481001859d032e08`，全部一致。
-- manifest 的产品为 TianCode、目标为 `win-x64`、`unsigned` 为 true、构建版本为 `0.2.0-rc.2.20261014.1`；manifest 和 Release Git 标签均指向提交 `d6ad84879e770315609d885351fe627036fe8f3d`。
+- manifest 的产品为 TianCode、目标为 `win-x64`、`unsigned` 为 true、构建版本为 `0.2.0-rc.2.20261014.1`；manifest 和 Release Git 标签均指向该次发布提交。
 
 报告基于当前工作区、macOS 实际界面和 Windows Actions；测试结果只记录已经执行的命令。Windows 安装器的已验证范围见 2026-10-15 记录，企业内网验收范围见“未完成或未验证”。
 
@@ -50,7 +50,7 @@
 - Windows Actions `38165951276` 已成功完成构建、ZIP/校验和生成与 artifact 上传。运行地址：[GitHub Actions run 38165951276](https://github.com/5ysy/tiancode-harness/actions/runs/38165951276)。
 - 已下载 artifact 并检查 `TianCode-Setup-0.2.0-rc.2.20261012.1-win-x64-unsigned.exe`、同名 ZIP、`.sha256`、`SHA256SUMS.txt` 和 `build-manifest.json`；本地计算的 installer SHA-256 为 `c4533e9ace7f15e6e8131ecce5dd9c95a1aa5234fd3c6c777d36b593c2a0768d`，ZIP SHA-256 为 `588c9bfb7a55b9a408a9295344cdbe6b0a2c923e9fb9efdff4ed8a3e1ed8a30e`，均与清单一致。ZIP 内含 `.exe` 和 installer `.sha256` 文件。
 - Windows Actions run `38275517275` 的构建作业已在 `windows-2025` 上成功生成 unsigned TianCode installer、安装器 ZIP、源码 ZIP、SHA-256 文件和 manifest；同一次运行的合并 Release 请求收到 GitHub API HTTP 500。修复为先创建 Release、再逐项上传资产后，run `38279554627` 复用该成功 artifact 并完成 Release 发布。
-- GitHub Release [tiancode-v0.2.0-rc.2.20261012.2](https://github.com/5ysy/tiancode-harness/releases/tag/tiancode-v0.2.0-rc.2.20261012.2) 已创建为预发布版本，指向构建提交 `3b3f436b04dd4ae8d4014d498da8e60b96d19a22`，包含安装器、安装器 ZIP、源码 ZIP、三个 `.sha256` 文件、`SHA256SUMS.txt` 和 `build-manifest.json`。
+- GitHub Release [tiancode-v0.2.0-rc.2.20261012.2](https://github.com/5ysy/tiancode-harness/releases/tag/tiancode-v0.2.0-rc.2.20261012.2) 已创建为预发布版本，指向该次构建提交，包含安装器、安装器 ZIP、源码 ZIP、三个 `.sha256` 文件、`SHA256SUMS.txt` 和 `build-manifest.json`。
 - 已下载 Release 中的校验文件和 manifest，并核对 GitHub asset digest 与 `SHA256SUMS.txt`：installer 为 `41013dd80d55dbf0875309a723a81765475d6143f987bc11df21940753188dda`，installer ZIP 为 `659ea55c28bcef4777ea20e5db406288c4c9a671edea26d381ee817d463e8a53`，source ZIP 为 `5dd2b08183f0d478a94d53eebe882e09f5e9c2faa94bbb3e859b8bdc71566d04`；manifest 的 `product`、`target`、`unsigned`、文件名和 commit 与构建参数一致。
 
 ## 未完成或未验证

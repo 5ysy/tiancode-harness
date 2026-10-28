@@ -1,0 +1,9 @@
+- insert:
+    - id: office-skills
+      name: '@deepseek-ai/dsh-skill-office'
+      config:
+        publicService: true
+        publicSkillDir: !!js process.cwd() + '/.dsh/tiancode-skills'
+        publicServiceWatch: false
+        assetRoot: !!js process.cwd() + '/.dsh/office-skills'
+        cli: false

@@ -19,12 +19,13 @@
  * snapshot locally, so one session costs one RPC. The scope-birth warm hook
  * prewarms the session's key; a preset switch drops that one key (the
  * catalog is the preset's, and a blank session may switch after the warm);
- * connection/reset clears everything — the host
- * catalog may differ across generations. A shared in-flight fetch
- * deliberately outlives any single menu interaction: closing the menu must
- * not kill the prewarm other consumers will hit, so it carries its own
- * abort (fired only on invalidation/teardown) while a candidates caller
- * with an aborted signal just returns early.
+ * plugin-manager/changed clears everything — a manager operation may add or
+ * remove providers any session's catalog reads; connection/reset clears
+ * everything — the host catalog may differ across generations. A shared
+ * in-flight fetch deliberately outlives any single menu interaction: closing
+ * the menu must not kill the prewarm other consumers will hit, so it carries
+ * its own abort (fired only on invalidation/teardown) while a candidates
+ * caller with an aborted signal just returns early.
  * Catalog RPCs retain an existing Client Session through completion and
  * wait for its initial history open to succeed before contacting the Host.
  *
@@ -36,6 +37,8 @@ import type {} from '@deepseek-ai/dsh-client-ui-sidebar-right/client'
 import type { Context as ClientContext } from '@deepseek-ai/cordis'
 import type { SkillEntry } from '@deepseek-ai/dsh-api-remotes/client'
 import type {} from '@deepseek-ai/dsh-api-session-controller/client'
+// Type-only: the forwarded `plugin-manager/changed` declaration.
+import type {} from '@deepseek-ai/dsh-plugin-manager/types'
 import type { SessionId } from '@deepseek-ai/dsh-session/types'
 import type { InputTriggerServiceContract, InputTriggerSource } from '@deepseek-ai/dsh-client-ui-input-trigger/client'
 import { fileAddressFor } from '@deepseek-ai/dsh-util-workspace-path'
@@ -44,7 +47,13 @@ import { rankByName } from '@deepseek-ai/dsh-client-ui-primitives'
 import type {} from '@deepseek-ai/dsh-client-locale/client'
 // Type-only: pulls the SlotRegistry service merge (ctx.slots).
 import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
+import type {} from '@deepseek-ai/dsh-client-ui-settings/client'
+import { FeatureBar, type FeatureBarInjected, type FeatureCatalog } from './FeatureBar.tsx'
+import type {} from '@deepseek-ai/dsh-client-ui-conversation/client'
 import { SkillRow } from './SkillRow.tsx'
+import { SkillReference, type SkillReferenceInjected } from './SkillReference.tsx'
+import { skillReferenceRule } from './user-text-rules.ts'
+export type {} from './user-text-rules.ts'
 import { en, NS, zh, type SkillKey } from './locales.ts'
 
 declare module '@deepseek-ai/dsh-api-session-controller/client' {
@@ -70,7 +79,7 @@ interface CatalogFetch {
 }
 
 /** Required services: reference source faces plus the tool-row and locale registries. */
-export const inject = ['inputTriggers', 'sessions', 'slots', 'locale', 'remote', 'remote.skills', 'sidebarRight']
+export const inject = ['inputTriggers', 'sessions', 'slots', 'locale', 'remote', 'remote.skills', 'sidebarRight', 'configForms', 'uiConversation']
 
 /**
  * Client plugin body: register the '/' source, dictionaries, and keyed tool row.
@@ -78,6 +87,7 @@ export const inject = ['inputTriggers', 'sessions', 'slots', 'locale', 'remote',
  */
 export function apply(ctx: ClientContext): void {
   ctx.effect(() => ctx.locale.register(NS, { zh, en }), 'ui-skill: dictionaries')
+  ctx.uiConversation.userText.register(skillReferenceRule)
   ctx.slots.inject('tool.call.toolview', () => ctx.slots.register(
     { name: 'tool.call.toolview', key: 'skill', locale: NS },
     SkillRow,
@@ -88,6 +98,9 @@ export function apply(ctx: ClientContext): void {
   // Session-keyed catalog cache; single-flight per key. Plugin-closure state:
   // the fiber effect below is its teardown boundary.
   const fetches = new Map<SessionId, CatalogFetch>()
+  const catalogStates = new Map<SessionId, FeatureCatalog>()
+  const idle: FeatureCatalog = { status: 'idle', skills: [] }
+  const absent: FeatureCatalog = { status: 'ready', skills: [] }
   // Per-session lexicon invalidation listeners (subscribeLexicon consumers).
   const lexiconListeners = new Map<SessionId, Set<() => void>>()
 
@@ -126,37 +139,83 @@ export function apply(ctx: ClientContext): void {
     })()
     const entry: CatalogFetch = { promise, abort }
     fetches.set(sessionId, entry)
+    catalogStates.set(sessionId, { status: 'loading', skills: catalogStates.get(sessionId)?.skills ?? [] })
     promise.then(
       // Settled snapshot backs the synchronous lexicon reads.
       (skills) => {
+        if (fetches.get(sessionId) !== entry) return
         entry.settled = skills
+        catalogStates.set(sessionId, { status: 'ready', skills })
         notifyLexicon(sessionId)
       },
       // A failed fetch must not poison the key: the next consumer retries.
       () => {
-        if (fetches.get(sessionId) === entry) fetches.delete(sessionId)
+        if (fetches.get(sessionId) === entry) {
+          fetches.delete(sessionId)
+          catalogStates.set(sessionId, { status: 'error', skills: [] })
+          notifyLexicon(sessionId)
+        }
       },
     )
     return entry
   }
 
-  const invalidate = (key: SessionId): void => {
+  const invalidate = (key: SessionId, retainSkills = false): void => {
     const entry = fetches.get(key)
-    if (entry === undefined) return
     fetches.delete(key)
-    entry.abort.abort()
+    const previous = catalogStates.get(key)
+    if (retainSkills && previous !== undefined) catalogStates.set(key, { status: 'idle', skills: previous.skills })
+    else catalogStates.delete(key)
+    entry?.abort.abort()
     notifyLexicon(key)
   }
 
-  const clearAll = (): void => {
-    for (const key of [...fetches.keys()]) invalidate(key)
+  const clearAll = (retainSkills = false): void => {
+    for (const key of new Set([...fetches.keys(), ...catalogStates.keys()])) invalidate(key, retainSkills)
   }
+
+  const subscribe = (key: SessionId, listener: () => void): (() => void) => {
+    const listeners = lexiconListeners.get(key) ?? new Set()
+    listeners.add(listener)
+    lexiconListeners.set(key, listeners)
+    return () => {
+      listeners.delete(listener)
+      if (listeners.size === 0) lexiconListeners.delete(key)
+    }
+  }
+
+  const options = ctx.configForms.get<{ quickActions: string[]; quickActionProviders: string[] }>('ui-skill')
+  const noActions: readonly string[] = []
+  ctx.slots.inject('conversation.input.features', () => ctx.slots.register({
+    name: 'conversation.input.features', locale: NS,
+    inject: (sessionId: SessionId | undefined): FeatureBarInjected => {
+      const unavailable = sessionId === undefined || sessions.subagentAddress(sessionId) !== undefined
+      return {
+        loadCatalog: () => {
+          if (unavailable) return
+          void fetchCatalog(sessionId).promise.catch((error: unknown) => {
+            if (!(error instanceof Error && error.name === 'AbortError')) console.error('[ui-skill] feature catalog failed:', error)
+          })
+        },
+        hooks: { quickActions: {
+          getSnapshot: () => options.getSnapshot().value?.quickActions ?? noActions,
+          subscribe: listener => options.subscribe(listener),
+        }, quickActionProviders: {
+          getSnapshot: () => options.getSnapshot().value?.quickActionProviders ?? noActions,
+          subscribe: listener => options.subscribe(listener),
+        }, featureCatalog: {
+          getSnapshot: () => unavailable ? absent : catalogStates.get(sessionId) ?? idle,
+          subscribe: listener => unavailable ? () => {} : subscribe(sessionId, listener),
+        } },
+      }
+    },
+  }, FeatureBar))
 
   // The bound translate resolves against the registered dictionaries with the
   // locale service's own fallback ladder; candidate-time reads stay plain text.
   const t = ctx.locale.bind(NS)
 
-  const source: InputTriggerSource = {
+  const source = {
     trigger: '/',
     name: 'skill',
     order: 2,
@@ -185,14 +244,7 @@ export function apply(ctx: ClientContext): void {
       return fetches.get(session.sessionId)?.settled?.map(skill => skill.name)
     },
     subscribeLexicon(session, listener) {
-      const key = session.sessionId
-      const listeners = lexiconListeners.get(key) ?? new Set()
-      listeners.add(listener)
-      lexiconListeners.set(key, listeners)
-      return () => {
-        listeners.delete(listener)
-        if (listeners.size === 0) lexiconListeners.delete(key)
-      }
+      return subscribe(session.sessionId, listener)
     },
     openReference(session, { ref }) {
       if (sessions.subagentAddress(session.sessionId) !== undefined) return false
@@ -223,12 +275,30 @@ export function apply(ctx: ClientContext): void {
       // line client-side before it ever becomes a prompt.
       return { text: `/${candidate.name} ` }
     },
-  }
+  } satisfies InputTriggerSource
+
+  ctx.slots.inject('conversation.user.text.node', () => ctx.slots.register({
+    name: 'conversation.user.text.node',
+    key: 'skill',
+    priority: 100,
+    inject: (sessionId): SkillReferenceInjected => ({
+      openSkill: (name) => {
+        if (sessions.scope(sessionId) === undefined) return
+        source.openReference({ sessionId }, { ref: `/${name}` })
+      },
+    }),
+  }, SkillReference))
+
   const inputTriggers = ctx.get('inputTriggers') as InputTriggerServiceContract
   // A preset decides which skill providers an agent reads, so a switched
   // session's cached catalog belongs to the composition it no longer runs.
-  ctx.remote.$on('agent-preset/selected', invalidate)
-  ctx.on('connection/reset', clearAll)
+  ctx.remote.$on('agent-preset/selected', (key) => { invalidate(key) })
+  // The Host announces every manager operation after its reload without
+  // naming what changed, and a switched plugin may register providers in the
+  // global layer every session reads, so each one drops every cached catalog.
+  ctx.remote.$on('plugin-manager/changed', () => { clearAll() })
+  ctx.remote.$on('api-session/skills-changed', () => { clearAll(true) })
+  ctx.on('connection/reset', () => { clearAll() })
   ctx.effect(() => {
     const unregister = inputTriggers.registerSource(source)
     return () => {

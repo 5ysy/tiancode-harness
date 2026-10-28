@@ -1,0 +1,7 @@
+# Bilingual-pair consistency record for state.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/state.md
+/current-development-state:
+  en: 0a4f1aeeec79b928
+  zh: e9c2fe7ec0877b80

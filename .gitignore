@@ -39,6 +39,7 @@ packages/**/__pycache__/
 apps/web/dist/
 .artifacts/
 .dsh-build/
+.dsh-report/
 .playwright-mcp/
 .orig
 .worktrees/
@@ -46,3 +47,5 @@ worktrees/
 .agents/worktrees/
 .typert-*/
 native/system/test/bin/
+# Local upstream release inputs; exclude nested copies from repository discovery.
+/docs/tiancode/version-history/
