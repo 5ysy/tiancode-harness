@@ -38,6 +38,7 @@ const FACT_KEYS = {
   repository: 'factRepository',
   commit: 'factCommit',
   directory: 'factDirectory',
+  tarball: 'factTarball',
 } as const satisfies Record<SourceFact['kind'], string>
 
 function MarketIcon({ src, size }: { readonly src: string | undefined; readonly size: number }): ReactNode {

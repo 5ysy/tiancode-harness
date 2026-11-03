@@ -45,6 +45,13 @@ function versionRejection(overrides: Record<string, unknown>): string {
 }
 
 describe('parseMarketIndex', () => {
+  it('accepts an HTTP(S) tarball source and preserves its URL', () => {
+    for (const url of ['http://intranet.example/plugins/dsh-foo-1.2.3.tgz', 'https://cdn.example.com/releases/dsh-foo-1.2.3.tar.gz']) {
+      const parsed = parseMarketIndex(document({ plugins: [entry({ versions: [npmVersion({ source: { type: 'tarball', url } })] })] }), INDEX_URL)
+      expect(parsed.plugins[0]?.versions[0]?.source).toEqual({ type: 'tarball', url })
+    }
+  })
+
   it('accepts a complete index, fills absent groups, resolves relative icons, orders versions, and drops unknown members', () => {
     const index = parseMarketIndex(document({
       description: 'Community bundles',
@@ -206,7 +213,8 @@ describe('parseMarketIndex', () => {
   it('rejects malformed sources', () => {
     const at = '$.plugins[0].versions[0].source'
     const npm = (fields: Record<string, unknown>): string => versionRejection({ source: { type: 'npm', ...fields } })
-    expect(versionRejection({ source: { type: 'tarball' } })).toBe(`${at}.type must be "npm" or "git"`)
+    expect(versionRejection({ source: { type: 'tarball' } })).toBe(`${at}.url must be a string with a non-whitespace character`)
+    expect(versionRejection({ source: { type: 'other' } })).toBe(`${at}.type must be "npm", "git", or "tarball"`)
     expect(npm({ registry: 'not a url' })).toBe(`${at}.registry must be an absolute URL`)
     expect(npm({ registry: 'ftp://registry.example/' })).toBe(`${at}.registry must use https: or http:`)
     expect(npm({ registry: 'https://user:pw@registry.example/' })).toBe(`${at}.registry must not contain credentials`)
@@ -226,6 +234,13 @@ describe('parseMarketIndex', () => {
     for (const path of ['../x', 'a/./b', 'a//b', 'a&b', 'a b']) {
       expect(git({ path })).toBe(`${at}.path must be a relative directory of letters, digits, and ._@+- segments without . or ..`)
     }
+    const tarball = (url: unknown): string => versionRejection({ source: { type: 'tarball', url } })
+    expect(tarball('not a url')).toBe(`${at}.url must be an absolute URL`)
+    expect(tarball('ftp://intranet.example/dsh-foo.tgz')).toBe(`${at}.url must use https: or http:`)
+    expect(tarball('https://user:pw@intranet.example/dsh-foo.tgz')).toBe(`${at}.url must not contain credentials`)
+    expect(tarball('https://intranet.example/dsh-foo.tgz?token=secret')).toBe(`${at}.url must not contain a query or fragment`)
+    expect(tarball('https://intranet.example/dsh-foo.tgz#fragment')).toBe(`${at}.url must not contain a query or fragment`)
+    expect(tarball('https://intranet.example/dsh-foo.zip')).toBe(`${at}.url must end in .tgz or .tar.gz`)
   })
 
   it('rejects malformed icons and market values', () => {
@@ -278,5 +293,11 @@ describe('marketInstallTarget', () => {
       .toEqual({ spec: `git+https://github.com/o/r.git#${COMMIT}` })
     expect(marketInstallTarget('a', { version: '1.0.0', source: { type: 'git', url: 'https://gitlab.example/g/s/r.git', commit: COMMIT, path: 'packages/a' } }))
       .toEqual({ spec: `git+https://gitlab.example/g/s/r.git#${COMMIT}&path:/packages/a` })
+  })
+
+  it('installs tarball versions from their exact URL', () => {
+    const url = 'https://cdn.example.com/releases/dsh-foo-1.2.3.tar.gz'
+    expect(marketInstallTarget('dsh-foo', { version: '1.2.3', source: { type: 'tarball', url } }))
+      .toEqual({ spec: url })
   })
 })

@@ -172,6 +172,12 @@ function gitUrl(value: unknown, path: string): string {
   return url.href
 }
 
+function tarballUrl(value: unknown, path: string): string {
+  const url = httpUrl(value, path, ['https:', 'http:'])
+  if (!/\.(?:tgz|tar\.gz)$/iu.test(url.pathname)) fail(path, 'must end in .tgz or .tar.gz')
+  return url.href
+}
+
 function packagePath(value: unknown, path: string): string {
   const text = stringAt(value, path)
   const segments = text.split('/')
@@ -201,7 +207,8 @@ function source(value: unknown, path: string): MarketSource {
       const packageDir = optional(object, 'path', path, packagePath)
       return { type: 'git', url: gitUrl(object.url, `${path}.url`), commit, ...packageDir === undefined ? {} : { path: packageDir } }
     }
-    default: return fail(`${path}.type`, 'must be "npm" or "git"')
+    case 'tarball': return { type: 'tarball', url: tarballUrl(object.url, `${path}.url`) }
+    default: return fail(`${path}.type`, 'must be "npm", "git", or "tarball"')
   }
 }
 
@@ -316,8 +323,8 @@ export function parseMarketIndex(value: unknown, indexUrl: string): MarketIndex 
 }
 
 /**
- * Build the arguments that install one exact version: `name@version` for npm, and a `git+https` URL pinned to the
- * commit, with pnpm's `path:` parameter for a package directory, for Git.
+ * Build the arguments that install one exact version: `name@version` for npm, the source URL for a tarball, and a
+ * `git+https` URL pinned to the commit, with pnpm's `path:` parameter for a package directory, for Git.
  * @param name - the plugin's package name.
  * @param version - a validated version of that plugin.
  * @returns the install spec and the registry to ask first, when the version names one.
@@ -325,6 +332,7 @@ export function parseMarketIndex(value: unknown, indexUrl: string): MarketIndex 
 export function marketInstallTarget(name: string, version: Pick<MarketVersion, 'version' | 'source'>): MarketInstallTarget {
   const { source: from } = version
   if (from.type === 'npm') return { spec: `${name}@${version.version}`, ...from.registry === undefined ? {} : { registry: from.registry } }
+  if (from.type === 'tarball') return { spec: from.url }
   const repository = from.url.endsWith('.git') ? from.url : `${from.url}.git`
   return { spec: `git+${repository}#${from.commit}${from.path === undefined ? '' : `&path:/${from.path}`}` }
 }

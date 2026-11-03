@@ -141,10 +141,11 @@ Category, label, and sort-key ids are non-empty strings. Readers look ids up as 
 
 A relative `icon` reference resolves against the index URL, as an HTML image reference resolves against its page. For an index at `https://market.example/dsh/index.json`, `"icon": "icons/foo.svg"` names `https://market.example/dsh/icons/foo.svg`. A generator can therefore publish the index and its icon files as one directory on any static host without knowing the final URL. Absolute icon URLs on other origins must use `https:`; the same-origin allowance lets an `http:` index on a loopback or intranet host serve its own icons. Readers resolve the reference when they read the index, so clients receive absolute URLs.
 
-`source` takes one of two forms, and readers reject any other `type`:
+`source` takes one of three forms, and readers reject any other `type`:
 
 - `{ "type": "npm", "registry"?: string }`. `registry` is an `http:` or `https:` URL without credentials, query, or fragment; `http:` is admitted for intranet mirrors, as in DSH's [install registries](../../implemented/architecture/2026-09-18-plugin-install-registries.md).
 - `{ "type": "git", "url": string, "commit": string, "path"?: string }`. `url` is a canonical `https:` URL (equal to its WHATWG URL serialization) with at least two non-empty path segments and no trailing slash, without credentials, query, or fragment, and not ending in `.tgz` or `.tar.gz`. `commit` is a lowercase 40-hex-digit SHA. `path` is a `/`-separated relative directory whose segments contain only ASCII letters, digits, and `._@+-`, and are neither `.` nor `..`; absent means the repository root.
+- `{ "type": "tarball", "url": string }`. `url` is an absolute `http:` or `https:` URL without credentials, query, or fragment, whose path ends in `.tgz` or `.tar.gz`. The URL is the exact pnpm install spec.
 
 ### Install arguments
 
@@ -152,6 +153,7 @@ A client installs one version with exactly these pnpm arguments:
 
 - npm: the spec `<name>@<version>`. Without `registry`, the client asks its configured registries as it does for any install. With `registry`, the client follows DSH's [registry plan](../../implemented/architecture/2026-09-18-plugin-install-registries.md): it asks `registry` first and falls back to its other configured registries only when `registry` is one of them; any other `registry` is asked alone, so a private registry never falls through to a public one that may publish a different package under the same name and version.
 - git: the spec `git+<url>.git#<commit>`, without doubling a trailing `.git`, followed by `&path:/<path>` when `path` is present. The `git+` prefix makes pnpm treat URLs with more than two path segments, such as GitLab subgroups, as Git repositories.
+- tarball: the source URL exactly as listed; pnpm fetches the HTTP(S) tarball directly.
 
 ### DSH compatibility
 

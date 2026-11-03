@@ -56,6 +56,11 @@ export type MarketSource =
     /** Relative POSIX package directory; absent means the repository root. */
     readonly path?: string
   }
+  | {
+    readonly type: 'tarball'
+    /** Absolute http(s) tarball URL ending in `.tgz` or `.tar.gz`, without credentials, query, or fragment. */
+    readonly url: string
+  }
 
 /** Runtime requirements of one version. */
 export interface MarketEngines {

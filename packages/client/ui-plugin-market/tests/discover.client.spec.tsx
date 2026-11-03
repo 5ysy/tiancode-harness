@@ -309,6 +309,27 @@ describe('DiscoverSection', () => {
     expect(screen.getAllByText(en.exempted)).toHaveLength(2)
   })
 
+  it('shows a tarball URL in the entry details and install confirmation', () => {
+    const name = 'dsh-tarball'
+    const url = 'http://intranet.example/plugins/dsh-tarball-1.0.0.tgz'
+    const version = release(name, '1.0.0', { source: { type: 'tarball', url }, install: { spec: url } })
+    const tarballEntry: MarketListingEntry = {
+      name, versions: [version], defaultVersion: version.version, installation: { status: 'not-installed' },
+      metadata: { keywords: [], labels: [], sortKeys: {} },
+    }
+    const { install } = renderTab({ listing: { url: A, query: INITIAL_QUERY, status: 'ready', value: { ...LISTING, entries: [tarballEntry] }, answered: INITIAL_QUERY, failure: null } })
+    fireEvent.click(card(name).getByRole('button', { name: `View ${name}` }))
+    const detail = within(document.querySelector(`[data-market-detail="${name}"]`) as HTMLElement)
+    expect(detail.getByText(en.factTarball)).toBeTruthy()
+    expect(detail.getByText(url)).toBeTruthy()
+    fireEvent.click(detail.getByRole('button', { name: `Install ${name}` }))
+    const dialog = within(screen.getByRole('dialog'))
+    expect(dialog.getByText(en.factTarball)).toBeTruthy()
+    expect(dialog.getByText(url)).toBeTruthy()
+    fireEvent.click(dialog.getByRole('button', { name: en.install }))
+    expect(install).toHaveBeenCalledWith({ spec: url, title: name, version: '1.0.0' })
+  })
+
   it('links a repository without a directory', () => {
     renderTab()
     fireEvent.click(card('dsh-c').getByRole('button', { name: 'View dsh-c' }))

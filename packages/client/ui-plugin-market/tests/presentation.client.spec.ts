@@ -61,7 +61,7 @@ describe('presentedVersion', () => {
 })
 
 describe('sourceFacts', () => {
-  it('names the npm package and registry, or the Git repository, commit, and directory', () => {
+  it('names the npm package and registry, the Git pin, or the tarball URL', () => {
     const commit = 'abcdef0'.padEnd(40, '1')
     expect(sourceFacts('dsh-a', release('1.0.0'))).toEqual([{ kind: 'package', value: 'dsh-a@1.0.0' }])
     const registry = release('1.0.0', { source: { type: 'npm', registry: 'https://registry.example:8443/npm/' } })
@@ -70,6 +70,9 @@ describe('sourceFacts', () => {
     expect(sourceFacts('dsh-a', git)).toEqual([{ kind: 'repository', value: 'https://github.com/o/r' }, { kind: 'commit', value: commit }])
     expect(sourceFacts('dsh-a', release('1.0.0', { source: { type: 'git', url: 'https://github.com/o/r', commit, path: 'packages/a' } })).at(-1))
       .toEqual({ kind: 'directory', value: 'packages/a' })
+    const tarball = 'https://intranet.example/plugins/dsh-a-1.0.0.tgz'
+    expect(sourceFacts('dsh-a', release('1.0.0', { source: { type: 'tarball', url: tarball } })))
+      .toEqual([{ kind: 'tarball', value: tarball }])
   })
 })
 

@@ -78,7 +78,7 @@ export function presentedVersion(entry: MarketListingEntry): MarketListingVersio
 
 /** One fact about where an entry installs from, keyed for its localized label. */
 export interface SourceFact {
-  readonly kind: 'package' | 'registry' | 'repository' | 'commit' | 'directory'
+  readonly kind: 'package' | 'registry' | 'repository' | 'commit' | 'directory' | 'tarball'
   readonly value: string
 }
 
@@ -86,7 +86,7 @@ export interface SourceFact {
  * List where a version installs from, so users can check its origin before installing.
  * @param name - the entry's package name.
  * @param version - the version to install.
- * @returns the npm package and registry, or the repository, full commit, and package directory.
+ * @returns the npm package and registry, the repository pin, or the tarball URL.
  */
 export function sourceFacts(name: string, version: MarketListingVersion): SourceFact[] {
   const { source } = version
@@ -96,6 +96,7 @@ export function sourceFacts(name: string, version: MarketListingVersion): Source
       ...source.registry === undefined ? [] : [{ kind: 'registry' as const, value: source.registry }],
     ]
   }
+  if (source.type === 'tarball') return [{ kind: 'tarball', value: source.url }]
   return [
     { kind: 'repository', value: source.url },
     { kind: 'commit', value: source.commit },

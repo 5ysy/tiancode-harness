@@ -141,10 +141,11 @@ DSH 只能从用户已知的 spec 安装第三方组合包（bundle）：npm 包
 
 相对的 `icon` 引用相对于索引 URL 解析，与 HTML 图片引用相对于所在页面解析的方式相同。对于位于 `https://market.example/dsh/index.json` 的索引，`"icon": "icons/foo.svg"` 指向 `https://market.example/dsh/icons/foo.svg`。因此，生成器可以把索引和图标文件作为一个目录发布到任意静态主机，无需知道最终 URL。指向其他源的绝对图标 URL 必须使用 `https:`；同源规则允许位于 loopback 或内网主机上的 `http:` 索引提供自己的图标。读取器在读取索引时解析该引用，因此客户端收到的是绝对 URL。
 
-`source` 采用以下两种形式之一，读取器拒绝其他任何 `type`：
+`source` 采用以下三种形式之一，读取器拒绝其他任何 `type`：
 
 - `{ "type": "npm", "registry"?: string }`。`registry` 是不含凭据、查询或片段的 `http:` 或 `https:` URL；允许 `http:` 是为了支持内网镜像，与 DSH 的[安装 registry](../../implemented/architecture/2026-09-18-plugin-install-registries.zh.md) 一致。
 - `{ "type": "git", "url": string, "commit": string, "path"?: string }`。`url` 是规范的 `https:` URL（等于其 WHATWG URL 序列化结果），至少包含两个非空路径段且不以斜杠结尾，不含凭据、查询或片段，且不以 `.tgz` 或 `.tar.gz` 结尾。`commit` 是 40 位小写十六进制 SHA。`path` 是以 `/` 分隔的相对目录，各段只包含 ASCII 字母、数字和 `._@+-`，且不是 `.` 或 `..`；缺省表示仓库根目录。
+- `{ "type": "tarball", "url": string }`。`url` 是不含凭据、查询或片段的绝对 `http:` 或 `https:` URL，路径以 `.tgz` 或 `.tar.gz` 结尾。该 URL 就是精确的 pnpm 安装 spec。
 
 ### 安装参数
 
@@ -152,6 +153,7 @@ DSH 只能从用户已知的 spec 安装第三方组合包（bundle）：npm 包
 
 - npm：spec 为 `<name>@<version>`。没有 `registry` 时，客户端像任何安装一样询问它配置的 registry。存在 `registry` 时，客户端遵循 DSH 的 [registry 计划](../../implemented/architecture/2026-09-18-plugin-install-registries.zh.md)：先询问 `registry`，仅当它属于客户端配置的 registry 之一时才回退到其他已配置 registry；其他 `registry` 单独询问，因此私有 registry 不会回退到可能以相同名称和版本发布不同包的公共 registry。
 - git：spec 为 `git+<url>.git#<commit>`，`url` 已以 `.git` 结尾时不重复添加；存在 `path` 时在其后追加 `&path:/<path>`。`git+` 前缀使 pnpm 将路径段多于两个的 URL（例如 GitLab 子组）视为 Git 仓库。
+- tarball：原样使用索引中列出的来源 URL；pnpm 直接获取 HTTP(S) tarball。
 
 ### DSH 兼容性
 
