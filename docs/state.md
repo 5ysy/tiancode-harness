@@ -15,3 +15,5 @@ The preexisting uncommitted Office-entry work is retained. The original ZIP and 
 The Desktop development launch has been verified through the native TianCode welcome window. Retired workspace links left in pnpm’s virtual-hoist directory were removed after checking their targets against the sync backup; `pnpm install --frozen-lockfile --offline --optimistic-repeat-install=false` reconciled installation state. The virtual-hoist directory has no dangling links, and four development-project/application tests pass.
 
 The skill workflow change is covered by 42 focused Vitest tests, `pnpm run typecheck`, `pnpm run lint`, `pnpm run build:tiancode`, `pnpm run build:check`, `pnpm run test:docs` (21 gates), and `git diff --check`. `uv run pytest` remains blocked during collection because the local Python packages are not installed; `uv run ruff .` cannot start because `ruff` is unavailable in the environment.
+
+The static plugin-market procedure, format-1 tarball example, Windows Discover flow, offline dependency requirements, and observable Desktop checks are documented in [PLUGIN_MARKET.md](tiancode/PLUGIN_MARKET.md).

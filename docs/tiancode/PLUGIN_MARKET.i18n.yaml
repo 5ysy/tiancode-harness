@@ -1,0 +1,16 @@
+# Bilingual-pair consistency record for PLUGIN_MARKET.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/tiancode/PLUGIN_MARKET.md
+/tiancode-plugin-market:
+  en: ed8a0f5648626c75
+  zh: 103941351617eb57
+/tiancode-plugin-market/publish-a-static-market-directory:
+  en: 04a49068557b96fe
+  zh: ae1d6b007c196794
+/tiancode-plugin-market/add-and-install-a-source-in-windows-desktop:
+  en: 33aa710d1cda69c5
+  zh: d81952489e236da4
+/tiancode-plugin-market/web-experiment-and-development-verification:
+  en: 3a5727346b53afb1
+  zh: ee6c40d13473385d

@@ -15,3 +15,5 @@ Desktop 使用 TianCode 身份与提供的素材、`com.tiancode.desktop`、独�
 已实际启动 Desktop 开发版并确认原生 TianCode 欢迎窗口可见。pnpm 虚拟提升目录中残留的旧工作区链接，已对照同步备份核实目标后清理，并通过 `pnpm install --frozen-lockfile --offline --optimistic-repeat-install=false` 校正安装状态。虚拟提升目录已无失效链接，四项开发项目与应用测试通过。
 
 技能工作流改动已由 42 项定向 Vitest、`pnpm run typecheck`、`pnpm run lint`、`pnpm run build:tiancode`、`pnpm run build:check`、`pnpm run test:docs`（21 项门禁）和 `git diff --check` 验证。`uv run pytest` 仍在收集阶段因本地 Python 包未安装而受阻；`uv run ruff .` 因环境没有 `ruff` 可执行文件而无法启动。
+
+静态插件市场流程、格式 1 tarball 示例、Windows Discover 流程、离线依赖要求和可观察的 Desktop 检查见[PLUGIN_MARKET.md](tiancode/PLUGIN_MARKET.zh.md)。
