@@ -318,6 +318,16 @@
     - id: ui-plugin-manager
       name: '@deepseek-ai/dsh-client-ui-plugin-manager'
 
+    # Desktop's built-in market service and its Discover tab. Web profiles
+    # keep the experimental bundle opt-in and therefore leave both rows off.
+    - id: plugin-market
+      name: '@deepseek-ai/dsh-plugin-market'
+      disabled: !!js "ctx.get('profileContext')?.name !== 'desktop'"
+
+    - id: ui-plugin-market
+      name: '@deepseek-ai/dsh-client-ui-plugin-market'
+      disabled: !!js "ctx.get('profileContext')?.name !== 'desktop'"
+
     # Read-only Plugin list tab in the Settings Plugins section; the built-in
     # bundles the sidebar page leaves out are inspected here.
     - id: ui-settings-plugin-inventory

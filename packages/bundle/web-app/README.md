@@ -90,6 +90,8 @@ When you launch `dsh --profile web` over SSH, the URL line still prints but the 
 
 Each browser session selects a shipped preset (`standard` by default). The Agent presets settings page changes the default and edits preset child plugins; saves persist in `$DSH_HOME/profiles/web/cordis.patch.yml`. Creator's plugin-management tool is enabled only when the Host provides an editable profile.
 
+TianCode Desktop exposes **Plugins > Discover**, where you can add an internal `index.json` URL and install the listed bundles. The ordinary Web profile keeps this feature experimental; enable the custom plugin markets bundle before using Discover there.
+
 -----
 
 <a id="understand-the-implementation"></a>
