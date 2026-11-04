@@ -6,7 +6,7 @@ TianCode 已集成官方 DeepSeek Harness `0.2.1-rc.3`。工作区版本、依�
 
 Desktop 使用 TianCode 身份与提供的素材、`com.tiancode.desktop`、独立的 `TianCode` 用户数据目录及默认 Harness home，监听 IPv4 loopback 的系统分配端口。离线构建将禁用更新策略写入安装包元数据，Windows 发布工作流使用当前运行时版本与 pnpm 固定版本。
 
-输入区从开发项目根目录 `skills/` 或安装版 `$DSH_HOME/skills` 读取可编辑工作流，应用提供方包含九类独立编报模板、三类 PPT 风格及补充办公技能。文件变化会刷新菜单和后续调用，目录配置与使用方式见[软件专用技能](tiancode/SKILLS.zh.md)。
+输入框上方通过八个可见分类菜单组织 26 个应用工作流。开发时读取仓库根目录 `skills/`，安装版 Desktop 读取 `$DSH_HOME/skills`。显式分类元数据支持自定义 Skill 与实时重新分类；内置名称映射保留既有用户技能文件的分类。目录配置、分类标识和支持的工作流见[软件专用技能](tiancode/SKILLS.zh.md)。
 
 使用 `pnpm run build:tiancode` 构建定制客户端，通过 `DSH_DESKTOP_OPEN_DEVTOOLS=0 pnpm run start:desktop` 启动已构建桌面端。`docs/tiancode/TEST_REPORT.md`保留此前 Windows 安装器验收证据；当前版本的 Windows 安装与实际业务模型生成需在目标环境验收。
 
@@ -14,6 +14,6 @@ Desktop 使用 TianCode 身份与提供的素材、`com.tiancode.desktop`、独�
 
 已实际启动 Desktop 开发版并确认原生 TianCode 欢迎窗口可见。pnpm 虚拟提升目录中残留的旧工作区链接，已对照同步备份核实目标后清理，并通过 `pnpm install --frozen-lockfile --offline --optimistic-repeat-install=false` 校正安装状态。虚拟提升目录已无失效链接，四项开发项目与应用测试通过。
 
-技能工作流改动已由 42 项定向 Vitest、`pnpm run typecheck`、`pnpm run lint`、`pnpm run build:tiancode`、`pnpm run build:check`、`pnpm run test:docs`（21 项门禁）和 `git diff --check` 验证。`uv run pytest` 仍在收集阶段因本地 Python 包未安装而受阻；`uv run ruff .` 因环境没有 `ruff` 可执行文件而无法启动。
+分类元数据、菜单交互与 Office 发现通过 108 项定向 Vitest，离线插件市场通过 45 项定向测试。真实浏览器场景验证了八个分类菜单、草稿保留、自定义 Skill 实时变化，以及 390px 和 760px 下的两种主题。`public-report` 会话记录回放已通过，目录包含当前应用技能。`pnpm run build:tiancode` 的九项构建与聚合编译检查全部通过；从该命令环境中移除继承的 SOCKS 代理变量后，`pnpm run doc-sync` 的 43 项检查全部通过。`uv run pytest` 仍在收集阶段因本地 Python 包未安装而受阻；`uv run ruff .` 因环境没有 `ruff` 可执行文件而无法启动。
 
 静态插件市场流程、格式 1 tarball 示例、Windows Discover 流程、离线依赖要求和可观察的 Desktop 检查见[PLUGIN_MARKET.md](tiancode/PLUGIN_MARKET.zh.md)。

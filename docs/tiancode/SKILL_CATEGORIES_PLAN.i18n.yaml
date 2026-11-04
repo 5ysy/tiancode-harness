@@ -1,0 +1,7 @@
+# Bilingual-pair consistency record for SKILL_CATEGORIES_PLAN.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/tiancode/SKILL_CATEGORIES_PLAN.md
+/tiancode-skill-category-implementation-plan:
+  en: a0f84440503c7da0
+  zh: 77cf9c1e1db80e3a

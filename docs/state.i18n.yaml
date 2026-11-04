@@ -3,5 +3,5 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/state.md
 /current-development-state:
-  en: 17fb762573c85596
-  zh: e100a3416ed98599
+  en: 683d1241fc4b18ec
+  zh: 85fa1f7b27ca6912
