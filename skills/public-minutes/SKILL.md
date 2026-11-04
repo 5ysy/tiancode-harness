@@ -3,6 +3,7 @@ name: public-minutes
 description: 从会议记录或已有转写稿中提炼议题、决定、责任分工与待办事项。
 metadata:
   tiancode:
+    category: document
     label:
       zh: 会议纪要
       en: Meeting minutes

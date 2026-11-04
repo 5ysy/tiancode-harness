@@ -52,7 +52,7 @@ describe('SessionSkillCatalog', () => {
     try {
       const sessionId = SessionId('software-skills')
       ctx.provide('sessionQuery', { observeSession: () => Promise.resolve(observation(sessionId)) } as never)
-      const shortcut = { label: { zh: '国别单篇', en: 'Country brief' }, parent: 'public-report', order: 10 }
+      const shortcut = { label: { zh: '国别单篇', en: 'Country brief' }, parent: 'public-report', order: 10, category: 'report' }
       ctx.provide('skills', { list: async () => [{
         name: 'country-brief', description: 'Write a sourced country brief.', provider: 'tiancode',
         invocation: { modelInvocable: true, userInvocable: true }, metadata: { tiancode: shortcut, privateSetting: 'excluded' },
@@ -65,7 +65,9 @@ describe('SessionSkillCatalog', () => {
 
   it.each([
     { label: { zh: '', en: 'Brief' } }, { label: { zh: '简报', en: 'Brief' }, parent: '../escape' },
-    { label: { zh: '简报', en: 'Brief' }, order: 1.5 }, { label: { zh: '简报', en: 'Brief' }, command: 'unexpected' },
+    { label: { zh: '简报', en: 'Brief' }, order: 1.5 },
+    { label: { zh: '简报', en: 'Brief' }, category: 'unknown' },
+    { label: { zh: '简报', en: 'Brief' }, category: 1 }, { label: { zh: '简报', en: 'Brief' }, command: 'unexpected' },
   ])('rejects malformed shortcut metadata %j', async (shortcut) => {
     const ctx = await context()
     try {

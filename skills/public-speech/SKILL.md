@@ -3,6 +3,7 @@ name: public-speech
 description: 根据主题、场合与听众起草汇报发言、动员讲话或培训讲稿。
 metadata:
   tiancode:
+    category: document
     label:
       zh: 讲话材料
       en: Speeches

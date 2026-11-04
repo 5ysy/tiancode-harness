@@ -3,6 +3,7 @@ name: public-plan
 description: 围绕具体任务编制工作方案或应急预案，明确流程、职责、资源与检查条件。
 metadata:
   tiancode:
+    category: document
     label:
       zh: 方案预案
       en: Plans and procedures

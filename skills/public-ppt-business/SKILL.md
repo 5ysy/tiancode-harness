@@ -3,6 +3,7 @@ name: public-ppt-business
 description: 使用原创12页国企商务模板制作经营工作、重点项目、预算资源和提请决策汇报，生成可编辑PPTX并逐页预览。
 metadata:
   tiancode:
+    category: ppt
     label:
       zh: 国企商务
       en: Business briefing

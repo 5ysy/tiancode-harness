@@ -3,6 +3,7 @@ name: public-ppt-police
 description: 使用用户提供的两套公安工作汇报PPTX模板制作警务、案件与专项工作汇报，保留母版、配图及署名，交付可编辑PPTX并逐页预览。
 metadata:
   tiancode:
+    category: ppt
     label:
       zh: 公安汇报
       en: Police briefing

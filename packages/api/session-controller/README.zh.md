@@ -60,6 +60,8 @@ Session 对象还承载本地提交回显：`session.beginSubmission` 在调用�
 
 面向用户调用的 `skills/list` 元数据包含胜出提供方可选的指令文件 `path`。输入框可据此预览文件，无需加载每个 skill 的正文或激活冷态 Agent。
 
+目录将 `metadata.tiancode` 投影为可选的 `shortcut`，其中必须提供非空的 `label.zh` 和 `label.en`，可选 `category`（`chat`、`ppt`、`document`、`report`、`data`、`law`、`proofread`、`other`）、技能名称 `parent` 和安全整数 `order`。未知字段、不支持的分类及格式错误的值会使列表读取明确失败。作者的其他元数据保持私有。[输入框分类](../../client/ui-skill/README.zh.md)负责分类继承和内置名称映射；`skills/change` 为实时使用方发布 `api-session/skills-changed`。
+
 Fork 复制 `atSeq` 所选的精确事件前缀，包含切点事件，允许在开放轮次内截取。子会话在合成的 fork 结果和结束事件之前记录继承标记。省略 `atSeq` 时选择最近已结束轮次及其独立尾部，在下一轮次或排队输入之前停止；不存在的事件会被拒绝。聊天操作选择已结束轮次。
 
 恢复会话时若已有写句柄占用，返回 `session/writer-held`，并携带会话 id；其他恢复失败仍返回 `gateway/internal`。

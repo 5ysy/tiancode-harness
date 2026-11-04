@@ -3,6 +3,7 @@ name: public-summary
 description: 汇总阶段工作、完成情况、存在问题及后续安排，形成有据可查的总结材料。
 metadata:
   tiancode:
+    category: document
     label:
       zh: 工作总结
       en: Work summary

@@ -3,6 +3,7 @@ name: public-report-country-brief
 description: 围绕一个国家或地区的具体议题，撰写有公开来源、趋势研判与对我国利益影响分析的国别单篇。
 metadata:
   tiancode:
+    category: report
     label:
       zh: 国别单篇
       en: Country brief

@@ -3,6 +3,7 @@ name: public-document
 description: 起草通知、请示、报告、函、纪要等公文，并检查文种、结构与行文用语。
 metadata:
   tiancode:
+    category: document
     label:
       zh: 公文写作
       en: Official documents

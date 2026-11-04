@@ -3,6 +3,7 @@ name: public-ppt
 description: 制作可编辑汇报PPT，按公安汇报、国企商务、互联网大厂三类独立模板完成材料核对、逐页编排、PPTX生成和预览检查。
 metadata:
   tiancode:
+    category: ppt
     label:
       zh: 汇报PPT
       en: Briefing PPT

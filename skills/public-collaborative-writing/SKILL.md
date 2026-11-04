@@ -3,6 +3,7 @@ name: public-collaborative-writing
 description: 整理多份材料和审稿意见，形成可追踪的调研报告、实施方案或综合材料。
 metadata:
   tiancode:
+    category: document
     label:
       zh: 协同撰稿
       en: Collaborative writing

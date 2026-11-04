@@ -3,6 +3,7 @@ name: public-report-country-hotspot
 description: 分析特定国家或地区正在发展的热点议题，核验最新节点、各方公开立场、外溢影响与观察指标。
 metadata:
   tiancode:
+    category: report
     label:
       zh: 国别热点
       en: Country hotspot

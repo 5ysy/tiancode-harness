@@ -13,18 +13,25 @@ function record(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
+function isCategory(value: unknown): value is NonNullable<SkillShortcut['category']> {
+  return ['chat', 'ppt', 'document', 'report', 'data', 'law', 'proofread', 'other'].some(category => category === value)
+}
+
 function shortcutMetadata(metadata: Readonly<Record<string, unknown>> | undefined, name: string): SkillShortcut | undefined {
   const value = metadata?.tiancode
   if (value === undefined) return undefined
-  const invalid = (): never => { throw new Error(`skill "${name}" shortcut must contain zh/en labels, an optional skill-name parent and an integer order`) }
-  if (!record(value) || Object.keys(value).some(key => !['label', 'parent', 'order'].includes(key))) return invalid()
+  const invalid = (): never => { throw new Error(`skill "${name}" shortcut must contain zh/en labels, an optional category (chat, ppt, document, report, data, law, proofread, other), a skill-name parent and an integer order`) }
+  if (!record(value) || Object.keys(value).some(key => !['label', 'parent', 'order', 'category'].includes(key))) return invalid()
   const label = value.label
   if (!record(label) || Object.keys(label).some(key => key !== 'zh' && key !== 'en')
     || typeof label.zh !== 'string' || label.zh.trim() === '' || typeof label.en !== 'string' || label.en.trim() === '') return invalid()
   if (value.parent !== undefined && (typeof value.parent !== 'string' || !isSkillName(value.parent) || value.parent === name)) return invalid()
   if (value.order !== undefined && (typeof value.order !== 'number' || !Number.isSafeInteger(value.order))) return invalid()
+  const category = value.category
+  if (category !== undefined && !isCategory(category)) return invalid()
   return {
     label: { zh: label.zh, en: label.en },
+    ...category === undefined ? {} : { category },
     ...typeof value.parent === 'string' ? { parent: value.parent } : {},
     ...typeof value.order === 'number' ? { order: value.order } : {},
   }

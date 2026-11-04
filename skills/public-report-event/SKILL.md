@@ -3,6 +3,7 @@ name: public-report-event
 description: 围绕跨国、跨地区或多主体热点事件，编写事实时间线、影响评估、条件研判与行动建议。
 metadata:
   tiancode:
+    category: report
     label:
       zh: 热点事件
       en: Hotspot event

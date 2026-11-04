@@ -3,6 +3,7 @@ name: public-proofread
 description: 检查工作区材料中的事实一致性、数据口径、引文、格式与文字问题，提供修改建议。
 metadata:
   tiancode:
+    category: proofread
     label:
       zh: 材料校核
       en: Proofreading

@@ -3,6 +3,7 @@ name: public-report
 description: 按国别、组织、事件、月度、年度和邮件九类独立模板编写可核验、可编辑的报告与邮件草稿。
 metadata:
   tiancode:
+    category: report
     label:
       zh: 编报生成
       en: Report writing

@@ -1226,6 +1226,22 @@ Types: [SessionId](core.zh.md)
 
 Source: [`packages/api/session-controller/src/types.ts`](../../packages/api/session-controller/src/types.ts)
 
+<a id="api-sessionskills-changed--emit"></a>
+
+#### `api-session/skills-changed` — emit
+
+A skill catalog changed; clients refetch their retained Session catalogs.
+
+```ts cordis-catalog
+/**
+ * A skill catalog changed; clients refetch their retained Session catalogs.
+ * @mode emit
+ */
+'api-session/skills-changed'(): void
+```
+
+Source: [`packages/api/session-controller/src/types.ts`](../../packages/api/session-controller/src/types.ts)
+
 <a id="api-sessionstatus--emit"></a>
 
 #### `api-session/status` — emit

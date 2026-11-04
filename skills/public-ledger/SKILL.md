@@ -3,6 +3,7 @@ name: public-ledger
 description: 将工作区材料整理为任务、问题、整改或项目台账，核对字段和汇总数据。
 metadata:
   tiancode:
+    category: data
     label:
       zh: 台账整理
       en: Registers

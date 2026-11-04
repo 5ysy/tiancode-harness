@@ -3,6 +3,7 @@ name: public-policy-research
 description: 按主题检索公开政策原文，核对效力、时点和适用范围，形成带引用的政策依据表与研判。
 metadata:
   tiancode:
+    category: law
     label:
       zh: 政策检索
       en: Policy research

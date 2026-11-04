@@ -3,6 +3,7 @@ name: public-report-email
 description: 将已核实的报告或工作事项整理为含主题、收件角色、正文和附件清单的待签署邮件草稿。
 metadata:
   tiancode:
+    category: report
     label:
       zh: 邮件
       en: Email draft

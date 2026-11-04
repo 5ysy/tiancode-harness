@@ -3,6 +3,7 @@ name: public-report-country-monthly
 description: 按完整月份汇总一国或地区的主要变化，核对上期口径，分析政治、经济、安全与涉华事项的月度趋势。
 metadata:
   tiancode:
+    category: report
     label:
       zh: 国别月度综述
       en: Country monthly review

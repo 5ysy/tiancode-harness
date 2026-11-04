@@ -244,11 +244,13 @@ export interface SkillListRequest {
   readonly sessionId: SessionId
 }
 
-/** File-owned localized label and optional parent for a software skill shortcut. */
+/** File-owned localized label, category and optional parent for a software skill shortcut. */
 export interface SkillShortcut {
   /** Display text supplied by the skill author for both supported locales. */
   readonly label: { readonly zh: string; readonly en: string }
-  /** Root skill whose menu includes this skill; absent means a standalone entry. */
+  /** Composer category; absent inherits a parent category or the bundled-name classification. */
+  readonly category?: 'chat' | 'ppt' | 'document' | 'report' | 'data' | 'law' | 'proofread' | 'other'
+  /** Parent skill used for category inheritance and menu context. */
   readonly parent?: string
   /** Stable sibling ordering; absent sorts after explicitly ordered entries. */
   readonly order?: number

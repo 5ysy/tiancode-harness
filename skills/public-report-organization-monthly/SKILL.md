@@ -3,6 +3,7 @@ name: public-report-organization-monthly
 description: 汇总指定组织在完整月份内的决策、活动、执行与对外互动，进行上期比较及涉华影响评估。
 metadata:
   tiancode:
+    category: report
     label:
       zh: 组织月度综述
       en: Organization monthly review

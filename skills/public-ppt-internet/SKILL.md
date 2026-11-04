@@ -3,6 +3,7 @@ name: public-ppt-internet
 description: 使用原创12页互联网企业模板完成产品、增长、运营与技术项目复盘，包含指标、留存、实验、路线图和资源决策的可编辑PPTX。
 metadata:
   tiancode:
+    category: ppt
     label:
       zh: 互联网大厂
       en: Internet company briefing

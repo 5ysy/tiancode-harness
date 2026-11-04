@@ -3,6 +3,7 @@ name: public-report-annual
 description: 基于全年材料与可比历史数据，形成年度主要变化、长期趋势、涉华影响及下一年度条件展望。
 metadata:
   tiancode:
+    category: report
     label:
       zh: 年度综述
       en: Annual review

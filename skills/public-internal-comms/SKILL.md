@@ -3,6 +3,7 @@ name: public-internal-comms
 description: 生成工作周报、领导简报、工作动态与内部通知，明确行动、责任和事实来源。
 metadata:
   tiancode:
+    category: document
     label:
       zh: 内部简报
       en: Internal communications

@@ -3,6 +3,7 @@ name: public-document-format
 description: 检查并修复 DOCX 字体、标题、段落、页码和表格格式，保留原件及修订清单。
 metadata:
   tiancode:
+    category: proofread
     label:
       zh: 公文排版
       en: Document formatting

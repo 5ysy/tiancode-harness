@@ -3,6 +3,7 @@ name: public-pdf
 description: 提取 PDF 文字、核对页数与表单字段，按指定页码拆分或合并，保留原件。
 metadata:
   tiancode:
+    category: other
     label:
       zh: PDF处理
       en: PDF processing

@@ -3,6 +3,7 @@ name: public-report-organization-brief
 description: 围绕一个组织的单项公开政策、活动或决定，形成包含制度背景、实际影响与应对建议的专题编报。
 metadata:
   tiancode:
+    category: report
     label:
       zh: 组织单篇
       en: Organization brief

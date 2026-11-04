@@ -3,6 +3,7 @@ name: public-report-organization-research
 description: 依据公开登记、章程、报告与活动材料，研究组织治理、资源、行为机制及与我国相关的合作和风险。
 metadata:
   tiancode:
+    category: report
     label:
       zh: 组织调研
       en: Organization research
