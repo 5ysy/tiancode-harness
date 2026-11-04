@@ -5,7 +5,7 @@ import z from '@deepseek-ai/schemastery'
 
 /** Composer shortcut configuration forwarded to the browser plugin. */
 export interface Config {
-  /** Ordered skill names; empty or omitted hides the shortcut bar. */
+  /** Ordered skill names prioritized within the eight composer categories; empty or omitted hides the bar. */
   quickActions: Volatile<string[]>
   /** Allowed shortcut providers; empty includes every provider. */
   quickActionProviders: Volatile<string[]>

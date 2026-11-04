@@ -6,8 +6,9 @@ import type { HostObservable, InjectFace, PropsLocale, PropsRuntime } from '@dee
 import {
   IconNewChatOutlineRegular, IconDeliverDocRegular, IconListPenOutlineRegular,
   IconEditOutlineRegular, IconChecklistOutlineRegular, IconEllipsisOutlineRegular,
-  IconSkillOutlineRegular, Menu,
+  IconSkillOutlineRegular, Menu, type MenuItem,
 } from '@deepseek-ai/dsh-client-ui-primitives'
+import { featureCategories, featureCategory } from './feature-categories.ts'
 import { featureDraft, selectedFeature } from './feature-draft.ts'
 import css from './FeatureBar.module.css'
 
@@ -34,12 +35,16 @@ export interface FeatureBarInjected {
 /** Slot-derived input state, catalog and localized text. */
 export type FeatureBarProps = PropsRuntime<'conversation.input.features'> & InjectFace<FeatureBarInjected> & PropsLocale<'skill'>
 
-const icons = [IconDeliverDocRegular, IconListPenOutlineRegular, IconEditOutlineRegular, IconChecklistOutlineRegular]
+const icons = {
+  chat: IconNewChatOutlineRegular, ppt: IconDeliverDocRegular, document: IconEditOutlineRegular,
+  report: IconListPenOutlineRegular, data: IconChecklistOutlineRegular, law: IconSkillOutlineRegular,
+  proofread: IconChecklistOutlineRegular, other: IconEllipsisOutlineRegular,
+}
 
 /**
  * Select a workflow by writing its visible slash invocation into the draft.
  * @param props - Composer lock, standard input actions, catalog and dictionary.
- * @returns Available workflow buttons, template choices and an installed-skills menu.
+ * @returns Eight category menus containing the available user-invocable skills.
  */
 export function FeatureBar({
   locked, useInput, inputActions, useFeatureCatalog, loadCatalog, useQuickActions, useQuickActionProviders, t,
@@ -56,9 +61,6 @@ export function FeatureBar({
     || (skill.provider !== undefined && providers.includes(skill.provider)))
   const names = skills.map(skill => skill.name)
   const byName = new Map(skills.map(skill => [skill.name, skill]))
-  const children = (name: string): readonly SkillEntry[] => skills.filter(skill => skill.shortcut?.parent === name)
-    .sort((a, b) => (a.shortcut?.order ?? Number.MAX_SAFE_INTEGER)
-      - (b.shortcut?.order ?? Number.MAX_SAFE_INTEGER) || a.name.localeCompare(b.name))
   const draft = input?.draft ?? ''
   const selected = selectedFeature(draft, names)
   const command = draft.startsWith('/') && selected === null
@@ -72,39 +74,31 @@ export function FeatureBar({
     if (updated !== null) inputActions.setDraft(updated)
     setMenu(null)
   }
-  const primary = quickActions.slice(0, 4)
-  const more = skills.filter(skill => !primary.includes(skill.name)
-    && !primary.some(name => byName.has(name) && name === skill.shortcut?.parent))
-    .sort((a, b) => (a.shortcut?.order ?? Number.MAX_SAFE_INTEGER)
-      - (b.shortcut?.order ?? Number.MAX_SAFE_INTEGER) || a.name.localeCompare(b.name))
-  const active = (name: string): boolean => selected === name || byName.get(selected ?? '')?.shortcut?.parent === name
+  const categoryByName = new Map(skills.map(skill => [skill.name, featureCategory(skill, byName)]))
+  const priority = new Map(quickActions.map((name, index) => [name, index]))
+  const ordered = [...skills].sort((a, b) => (priority.get(a.name) ?? Number.MAX_SAFE_INTEGER)
+    - (priority.get(b.name) ?? Number.MAX_SAFE_INTEGER) || (a.shortcut?.order ?? Number.MAX_SAFE_INTEGER)
+    - (b.shortcut?.order ?? Number.MAX_SAFE_INTEGER) || a.name.localeCompare(b.name))
   if (quickActions.length === 0) return null
   return <div className={css.root} aria-label={t('features.label')}>
     <div className={css.row}>
-      <button type="button" className={css.entry} aria-pressed={selected === null && !command} disabled={disabled} onClick={() => { choose(null) }}>
-        <IconNewChatOutlineRegular size={16} />{t('features.chat')}
-      </button>
-      {primary.map((name, index) => {
-        const Icon = icons[index] ?? IconSkillOutlineRegular
-        const options = children(name)
-        const button = <button key={name} type="button" className={css.entry} aria-pressed={active(name)}
-          aria-haspopup={options.length > 0 ? 'menu' : undefined}
-          aria-expanded={options.length > 0 ? menu === name : undefined}
-          disabled={disabled || !names.includes(name)} title={names.includes(name) ? label(name) : t('features.unavailable')}
-          onClick={() => {
-            choose(name)
-            if (options.length > 0) setMenu(menu === name ? null : name)
-          }}><Icon size={16} /><span className={css.entryLabel}>{label(name)}</span></button>
-        return options.length > 0
-          ? <Menu key={name} open={!disabled && menu === name} portal side="top" align="start" anchor={button}
-            selectedId={selected ?? undefined} onClose={() => { setMenu(null) }} onSelect={choose}
-            items={options.map(skill => ({ id: skill.name, label: label(skill.name) }))} />
-          : button
+      {featureCategories.map((category) => {
+        const Icon = icons[category]
+        const options: MenuItem[] = ordered.filter(skill => categoryByName.get(skill.name) === category)
+          .map(skill => ({ id: skill.name, label: skill.shortcut?.parent !== undefined && byName.has(skill.shortcut.parent)
+            ? `${label(skill.shortcut.parent)} · ${label(skill.name)}` : label(skill.name) }))
+        if (category === 'chat') options.unshift({ id: ':ordinary-chat', label: t('features.ordinaryChat') })
+        if (options.length === 0) options.push({ id: 'empty-category', label: t('features.empty'), disabled: true })
+        const active = selected === null ? category === 'chat' && !command : categoryByName.get(selected) === category
+        return <Menu key={category} open={!disabled && menu === category} portal side="top" align="start"
+          selectedId={selected ?? (category === 'chat' && !command ? ':ordinary-chat' : undefined)}
+          onClose={() => { setMenu(null) }} onSelect={(name) => { choose(name === ':ordinary-chat' ? null : name) }} items={options}
+          anchor={<button type="button" className={css.entry} aria-pressed={active}
+            aria-haspopup="menu" aria-expanded={!disabled && menu === category} disabled={disabled}
+            onClick={() => { setMenu(menu === category ? null : category) }}>
+            <Icon size={16} /><span className={css.entryLabel}>{t(`features.${category}`)}</span>
+          </button>} />
       })}
-      <Menu open={!disabled && menu === 'more'} portal side="top" align="end" selectedId={selected ?? undefined} onClose={() => { setMenu(null) }}
-        onSelect={choose} items={more.map(skill => ({ id: skill.name, label: skill.shortcut?.parent === undefined ? label(skill.name) : `${label(skill.shortcut.parent)} · ${label(skill.name)}`, icon: <IconSkillOutlineRegular size={16} /> }))}
-        anchor={<button type="button" className={css.entry} aria-expanded={menu === 'more'} aria-haspopup="menu"
-          disabled={disabled || more.length === 0} onClick={() => { setMenu(menu === 'more' ? null : 'more') }}><IconEllipsisOutlineRegular size={16} />{t('features.more')}</button>} />
     </div>
     {catalog.status === 'error' && <div className={css.hint} role="status">{t('features.error')} <button type="button" className={css.retry} onClick={loadCatalog}>{t('features.retry')}</button></div>}
     {command && <div className={css.hint}>{t('features.command')}</div>}

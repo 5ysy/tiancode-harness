@@ -7,7 +7,7 @@
   font-size: 13px; font-weight: 400; line-height: 20px; cursor: pointer;
 }
 .entry svg { flex-shrink: 0; }
-.entry:hover:not(:disabled), .retry:hover { background: var(--dsw-alias-interactive-bg-hover); color: var(--dsw-alias-label-primary); }
+@media (hover: hover) { .entry:hover:not(:disabled), .retry:hover { background: var(--dsw-alias-interactive-bg-hover); color: var(--dsw-alias-label-primary); } }
 .entry[aria-pressed='true'] { background: var(--dsw-alias-interactive-bg-hover); color: var(--dsw-alias-label-primary); border-color: var(--dsw-alias-border-l2); font-weight: 500; }
 .entry:disabled { opacity: 0.45; cursor: default; }
 .entry:focus-visible, .retry:focus-visible { outline: var(--dsw-focus-ring-width) solid var(--dsw-focus-ring-color); outline-offset: 2px; }
