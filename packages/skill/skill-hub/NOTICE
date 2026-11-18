@@ -1,0 +1,9 @@
+TianCode Skill Hub contains adaptations of dsh-skills-manager.
+Upstream: https://github.com/MichengAI/dsh-skills-manager
+Copyright MichengAI and dsh-skills-manager contributors.
+Licensed under the Apache License, Version 2.0 (LICENSE.Apache-2.0).
+
+The JSON package format (name plus base64 path/data entries), bounded streaming
+reader, and whole-directory import approach are adapted from catalog-skill.ts
+and core.ts in dsh-skills-manager v1.4.2. TianCode's private catalog, checksum
+verification, metadata merge, deployment builder, and UI are maintained here.

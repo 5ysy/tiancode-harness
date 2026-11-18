@@ -1,5 +1,12 @@
 # TianCode 测试报告
 
+## 2026-11-04 Windows 分类菜单与内网插件市场发布
+
+- [GitHub Actions run 41786147195](https://github.com/5ysy/tiancode-harness/actions/runs/41786147195) 为该版本新鲜构建成功，没有复用旧构建产物；Windows 安装器构建与 Release 发布作业均成功。
+- [Release `tiancode-v0.2.1-rc.3.20261104.1`](https://github.com/5ysy/tiancode-harness/releases/tag/tiancode-v0.2.1-rc.3.20261104.1) 提供 Windows x64 无签名安装器 `TianCode-Setup-0.2.1-rc.3.20261104.1-win-x64-unsigned.exe`，大小为 294,277,841 字节。GitHub asset SHA-256 为 `23fffe8ffde1e4b5af264749b005fc231dd67df7027e66c214eae6b2e47145f0`；installer ZIP SHA-256 为 `d8f1719e0d1bf74eb7525cc9dd3e7ef64e014ec0424ce220fb9bf943a51ca4eb`。Release 含安装器、ZIP、源码 ZIP、三项独立校验文件、SHA256SUMS 与 manifest，共八项资产。
+- Manifest 的版本、`win-x64` 目标、unsigned 标志和构建提交与 Release 一致。GitHub Actions 验证脚本在浅色和深色主题下完成欢迎页、进度页、100% 完成状态、`TianCode.exe` 存在、安装器退出与卸载清理。
+- 发布提交包含离线 tarball 插件市场、输入框上方八类 Skill 菜单、26 个分类 Skill 及自定义分类元数据；打包审计确认 Desktop 配置、客户端 bundle 和运行时 Skill 资源均进入构建链。安装器中的插件市场需连接用户内网配置的索引与 `.tgz` 服务器；实际组织网络、模型调用及插件依赖源仍待目标环境验收。
+
 ## 2026-10-14 界面与共存验证
 
 - `pnpm run build:tiancode` 与 Desktop build 已通过；客户端构建记录包含 TianCode profile、产品名称与显示版本 `v0.0.2`。

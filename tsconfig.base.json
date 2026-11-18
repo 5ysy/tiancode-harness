@@ -366,6 +366,9 @@
       "@deepseek-ai/dsh-compaction-image-offload/projection": ["./packages/compaction/compaction-image-offload/src/projection.ts"],
       "@deepseek-ai/dsh-session-format-catalog/message-projections": ["./packages/session/session-format-catalog/src/message-projections.ts"],
       "@deepseek-ai/dsh-native-command/types": ["./packages/util/native-command/src/types.ts"],
+      "@deepseek-ai/dsh-client-ui-skill-hub": ["./packages/client/ui-skill-hub/src"],
+      "@deepseek-ai/dsh-experimental-skill-hub-bundle": ["./packages/experimental/skill-hub-bundle/src"],
+      "@deepseek-ai/dsh-skill-hub/types": ["./packages/skill/skill-hub/src/types.ts"],
       // BEGIN generated package aliases — pnpm run gen-tsconfig-paths
       "@deepseek-ai/dsh-acp": ["./packages/acp/acp/src"],
       "@deepseek-ai/dsh-acp-app": ["./packages/bundle/acp-app/src"],
@@ -491,6 +494,7 @@
       "@deepseek-ai/dsh-skill": ["./packages/skill/skill/src"],
       "@deepseek-ai/dsh-skill-badge": ["./packages/experimental/skill-badge/src"],
       "@deepseek-ai/dsh-skill-filesystem": ["./packages/skill/skill-filesystem/src"],
+      "@deepseek-ai/dsh-skill-hub": ["./packages/skill/skill-hub/src"],
       "@deepseek-ai/dsh-skill-office": ["./packages/skill/skill-office/src"],
       "@deepseek-ai/dsh-spill": ["./packages/spill/spill/src"],
       "@deepseek-ai/dsh-spill-local": ["./packages/spill/spill-local/src"],

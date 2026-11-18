@@ -1,0 +1,22 @@
+# Bilingual-pair consistency record for SKILL_HUB.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/tiancode/SKILL_HUB.md
+/tiancode-skill-hub:
+  en: f0db148c4c4e0d44
+  zh: 6bbbce5b53394fe0
+/tiancode-skill-hub/prepare-the-server-directory:
+  en: f7b75ef10bd856c6
+  zh: 98f0871d3174366d
+/tiancode-skill-hub/start-the-static-service:
+  en: 0f9c27f77bdcf107
+  zh: a143df91a33d3177
+/tiancode-skill-hub/install-the-plugin-in-tiancode:
+  en: 6283962fbe021c41
+  zh: 9c7f2bc8826c7426
+/tiancode-skill-hub/install-and-classify-a-skill:
+  en: f32770c7f1c18df6
+  zh: 7e398d8144357e1b
+/tiancode-skill-hub/connection-and-installation-failures:
+  en: b07e987b2ab45839
+  zh: 0ed05f8710b953eb

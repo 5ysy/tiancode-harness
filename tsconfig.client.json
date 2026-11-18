@@ -108,6 +108,7 @@
     { "path": "./packages/client/ui-input-trigger" },
     { "path": "./packages/client/ui-commands" },
     { "path": "./packages/client/ui-skill/tsconfig.client.json" },
+    { "path": "./packages/client/ui-skill-hub" },
     { "path": "./packages/client/ui-reference" },
     { "path": "./packages/client/ui-secret-mask" },
     { "path": "./packages/client/ui-subagent" },

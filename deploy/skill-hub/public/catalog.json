@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "id": "frontend-design",
+      "name": "frontend-design",
+      "title": "frontend-design",
+      "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.",
+      "package": "packages/frontend-design-b0bf79e9ffcd9be54670073ef65152d7f03f71e8a2d0fa26e12da6effa405b0d.json",
+      "sha256": "b0bf79e9ffcd9be54670073ef65152d7f03f71e8a2d0fa26e12da6effa405b0d"
+    }
+  ]
+}

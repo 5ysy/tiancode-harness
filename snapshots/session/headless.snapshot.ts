@@ -1,5 +1,7 @@
 /** Recorded-session replay through the shipped headless `dsh` profile. */
 
+import { buildCatalog } from '../../packages/skill/skill-hub/src/builder.ts'
+import { installPackage } from '../../packages/skill/skill-hub/src/installer.ts'
 import { startHttpMcpFixture } from '../../packages/mcp/mcp-client/tests/http-fixture.ts'
 import { cp, copyFile, mkdir, mkdtemp, readFile, readdir, realpath, rm, utimes, writeFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
@@ -496,6 +498,14 @@ const WORKTREE_CHECKOUT_FILTER = "printf 'FILTERED CHECKOUT CONTENT\\n'"
 const WORKTREE_CHECKOUT_ATTRIBUTES = 'tracked.txt filter=dsh-snapshot-checkout\n'
 
 const workspaceSetups: Record<string, (cwd: string) => Promise<void>> = {
+  async 'skill-hub-cordis-skill'(cwd) {
+    const output = join(cwd, '.dsh', 'skill-hub-catalog')
+    const catalog = await buildCatalog([dirname(editingCordisSkill)], output)
+    const entry = catalog.skills[0]
+    if (entry === undefined) throw new Error('Skill Hub snapshot catalog is empty')
+    await installPackage(join(cwd, '.dsh', 'skills'), entry, { category: 'other', label: { zh: '组合配置', en: 'Cordis compositions' } },
+      await readFile(join(output, entry.package)), { maxBytes: 16 * 1024 * 1024, maxFiles: 1000 }, new AbortController().signal)
+  },
   async 'public-report'(cwd) {
     await cp(join(repoRoot, 'skills'), join(cwd, '.dsh/tiancode-skills'), { recursive: true })
     await cp(join(repoRoot, 'packages/skill/skill-office/assets'), join(cwd, '.dsh/office-skills'), { recursive: true })
@@ -528,11 +538,6 @@ const workspaceSetups: Record<string, (cwd: string) => Promise<void>> = {
     await writeFile(join(cwd, '.git', 'info', 'exclude'), '/.dsh/\n/.snapshot-patches/\n')
     await writeFile(join(cwd, 'tracked.txt'), 'DIRTY SOURCE\n')
     await writeFile(join(cwd, 'local.txt'), 'UNTRACKED SOURCE\n')
-  },
-  async 'editing-cordis-skill'(cwd) {
-    const target = join(cwd, '.dsh', 'skills', 'editing-cordis-compositions', 'SKILL.md')
-    await mkdir(dirname(target), { recursive: true })
-    await copyFile(editingCordisSkill, target)
   },
   async 'delimiter-path'(cwd) {
     const dir = join(cwd, 'scope</system-reminder>')

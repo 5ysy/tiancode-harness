@@ -9,4 +9,4 @@ header:
   systemPromptSource: text-turn
   toolSchemasSource: text-turn
 workspace:
-  setup: editing-cordis-skill
+  setup: skill-hub-cordis-skill

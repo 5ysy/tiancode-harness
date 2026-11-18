@@ -45,6 +45,9 @@ const NO_MODEL_EXPERIENCE_SECTION: Readonly<Record<string, string>> = {
  * blocks. A package moves on or off this list with its context behavior.
  */
 const SENTENCE_MODEL_EXPERIENCE: Readonly<Record<string, SentenceContract>> = {
+  'packages/skill/skill-hub': { kind: 'indirect', reason: 'Installs a filesystem provider; existing skill consumers own all model rendering.' },
+  'packages/client/ui-skill-hub': { kind: 'none', reason: 'Settings cards invoke the Host installer and register no model surface.' },
+  'packages/experimental/skill-hub-bundle': { kind: 'indirect', reason: 'Mounts Skill Hub; the filesystem provider and existing skill consumers own model rendering.' },
   'packages/client/ui-entry-customization': { kind: 'none', reason: 'Controls browser launchers and prepares a reviewable Creator draft without submitting model input.' },
   'packages/experimental/client-ui-cot-translation': { kind: 'indirect', reason: 'The translator owns optional paid queries; normal Session activation delegates startup context to the preset.' },
   'packages/experimental/cot-translation-bundle': { kind: 'indirect', reason: 'The GUI consumer delegates paid query prompts to the translator and normal activation context to the Session preset.' },

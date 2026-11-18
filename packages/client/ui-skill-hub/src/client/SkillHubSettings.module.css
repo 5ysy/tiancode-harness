@@ -1,0 +1,23 @@
+.section { display: flex; flex-direction: column; gap: 16px; width: 100%; min-width: 0; max-width: 900px; color: var(--dsw-alias-label-primary); container-type: inline-size; }
+.intro, .status { margin: 0; color: var(--dsw-alias-label-tertiary); font-size: 13px; line-height: 1.6; }
+.connection { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.connection > label { flex: 1 1 320px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; font-size: 13px; }
+.field > span { color: var(--dsw-alias-label-secondary); }
+.field input, .toolbar input { box-sizing: border-box; width: 100%; min-width: 0; border: 1px solid var(--dsw-alias-border-l3); border-radius: var(--dsw-radius-md); padding: 9px 12px; background: var(--dsw-alias-bg-base); color: inherit; font: inherit; }
+.field input:focus-visible, .toolbar input:focus-visible, .installForm summary:focus-visible { outline: 2px solid var(--dsw-focus-ring-color, var(--dsw-alias-state-business-primary)); outline-offset: 2px; }
+.error { margin: 0; color: var(--dsw-alias-state-error-primary); font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.toolbar { display: flex; align-items: center; gap: 12px; }
+.toolbar input { flex: 1; font-size: 13px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.card { display: flex; flex-direction: column; align-items: stretch; gap: 12px; min-width: 0; padding: 20px; border: 1px solid var(--dsw-alias-settings-card-stroke); border-radius: var(--dsw-radius-xl); background: var(--dsw-alias-settings-card-fill); }
+.card h3 { margin: 0; min-width: 0; font-size: 16px; line-height: 1.5; font-weight: 500; overflow-wrap: anywhere; }
+.card p { margin: 0; color: var(--dsw-alias-label-secondary); font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; white-space: pre-wrap; }
+.card > button { margin-top: auto; }
+.cardHeader { display: flex; justify-content: space-between; gap: 8px; align-items: start; }
+.identity { font-size: 12px; color: var(--dsw-alias-label-tertiary); overflow-wrap: anywhere; }
+.badge { flex: none; padding: 3px 8px; border-radius: var(--dsw-radius-md); background: var(--dsw-alias-settings-card-fill); color: var(--dsw-alias-label-secondary); font-size: 12px; }
+.installForm, .advanced { display: flex; flex-direction: column; gap: 12px; }
+.installForm { padding-top: 12px; border-top: 1px solid var(--dsw-alias-border-l3); }
+.installForm summary { color: var(--dsw-alias-label-secondary); font-size: 13px; cursor: pointer; padding: 6px 0; }
+.installActions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }

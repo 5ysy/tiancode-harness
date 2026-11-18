@@ -1,0 +1,12 @@
+# Optional TianCode Skill Hub bundle. The Host owns downloads and writes;
+# the browser package contributes the Settings sidebar entry.
+- insert:
+    - id: skill-hub
+      name: '@deepseek-ai/dsh-skill-hub'
+    - id: ui-skill-hub
+      name: '@deepseek-ai/dsh-client-ui-skill-hub'
+# TianCode's existing category bar admits the dedicated marketplace provider.
+- id: ui-skill
+  config:
+    quickActions: !!js "ctx.get('profileContext')?.name === 'desktop' ? ['public-ppt', 'public-report', 'public-document', 'public-minutes', 'public-summary', 'public-plan', 'public-speech', 'public-proofread', 'public-ledger'] : []"
+    quickActionProviders: !!js "ctx.get('profileContext')?.name === 'desktop' ? ['tiancode', 'skill-hub'] : []"

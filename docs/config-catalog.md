@@ -3105,6 +3105,34 @@ export interface Config {
 ```
 <!-- END GENERATED config-catalog:@deepseek-ai/dsh-skill-filesystem -->
 
+<!-- BEGIN GENERATED config-catalog:@deepseek-ai/dsh-skill-hub -->
+<a id="deepseek-aidsh-skill-hub"></a>
+
+## `@deepseek-ai/dsh-skill-hub`
+
+- `inject`: `connection` · `skills`
+- `refs`: `Volatile` (`@deepseek-ai/cordis`)
+- `source`: [`packages/skill/skill-hub/src/index.ts:20`](../packages/skill/skill-hub/src/index.ts)
+
+```ts config-catalog
+/** Deployment settings; changing installRoot remounts the provider. */
+export interface Config {
+  /** HTTP(S) URL of the private static catalog; editable without remounting. */
+  catalogUrl: Volatile<string>
+  /** Plugin-owned directory on the current Host receiving installed skills. */
+  installRoot: string
+  /** Maximum wire response and aggregate decoded package bytes. */
+  maxBytes: number
+  /** Maximum file entries accepted per skill package. */
+  maxFiles: number
+  /** Maximum milliseconds for one complete catalog or install operation. */
+  fetchTimeoutMs: number
+  /** Optional environment variable containing the private server bearer token. */
+  tokenEnv: string
+}
+```
+<!-- END GENERATED config-catalog:@deepseek-ai/dsh-skill-hub -->
+
 <!-- BEGIN GENERATED config-catalog:@deepseek-ai/dsh-skill-office -->
 <a id="deepseek-aidsh-skill-office"></a>
 
@@ -4641,6 +4669,7 @@ These load from a `cordis.yml` entry with no `config:` block; they declare no co
 | `@deepseek-ai/dsh-client-ui-sidebar-right` | — | [`packages/client/ui-sidebar-right/src/index.ts`](../packages/client/ui-sidebar-right/src/index.ts) |
 | `@deepseek-ai/dsh-client-ui-sidebar-terminal` | — | [`packages/client/ui-sidebar-terminal/src/index.ts`](../packages/client/ui-sidebar-terminal/src/index.ts) |
 | `@deepseek-ai/dsh-client-ui-skill` | — | [`packages/client/ui-skill/src/index.ts`](../packages/client/ui-skill/src/index.ts) |
+| `@deepseek-ai/dsh-client-ui-skill-hub` | — | [`packages/client/ui-skill-hub/src/index.ts`](../packages/client/ui-skill-hub/src/index.ts) |
 | `@deepseek-ai/dsh-client-ui-subagent` | — | [`packages/client/ui-subagent/src/index.ts`](../packages/client/ui-subagent/src/index.ts) |
 | `@deepseek-ai/dsh-client-ui-tool` | — | [`packages/client/ui-tool/src/index.ts`](../packages/client/ui-tool/src/index.ts) |
 | `@deepseek-ai/dsh-client-ui-trajectory` | — | [`packages/client/ui-trajectory/src/index.ts`](../packages/client/ui-trajectory/src/index.ts) |
@@ -4753,6 +4782,7 @@ Imported as libraries by other packages; a `cordis.yml` cannot load them.
 | `@deepseek-ai/dsh-experimental-ralph-bundle` | — | [`packages/experimental/ralph-bundle/src/index.ts`](../packages/experimental/ralph-bundle/src/index.ts) |
 | `@deepseek-ai/dsh-experimental-session-search` | — | [`packages/experimental/session-search/src/index.ts`](../packages/experimental/session-search/src/index.ts) |
 | `@deepseek-ai/dsh-experimental-session-titles-bundle` | — | [`packages/experimental/session-titles-bundle/src/index.ts`](../packages/experimental/session-titles-bundle/src/index.ts) |
+| `@deepseek-ai/dsh-experimental-skill-hub-bundle` | — | [`packages/experimental/skill-hub-bundle/src/index.ts`](../packages/experimental/skill-hub-bundle/src/index.ts) |
 | `@deepseek-ai/dsh-experimental-terminal-bundle` | — | [`packages/experimental/terminal-bundle/src/index.ts`](../packages/experimental/terminal-bundle/src/index.ts) |
 | `@deepseek-ai/dsh-experimental-voice-input-bundle` | — | [`packages/experimental/voice-input-bundle/src/index.ts`](../packages/experimental/voice-input-bundle/src/index.ts) |
 | `@deepseek-ai/dsh-experimental-webworker-packer` | — | [`packages/experimental/webworker-packer/src/index.ts`](../packages/experimental/webworker-packer/src/index.ts) |

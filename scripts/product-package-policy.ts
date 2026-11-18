@@ -16,6 +16,8 @@ export interface ProductPackagePolicy {
  * Optional integrations may be reached by an optional bundle without becoming default capabilities.
  */
 export const PRODUCT_PACKAGE_POLICY: Readonly<Record<string, ProductPackagePolicy>> = {
+  'packages/skill/skill-hub': { category: 'optional', reason: 'Private community skill catalog installed through the optional Skill Hub bundle.' },
+  'packages/client/ui-skill-hub': { category: 'optional', reason: 'Settings page supplied by the separately installed Skill Hub bundle.' },
   'packages/browser-use/browser-use': { category: 'optional', reason: 'Service definition used by explicitly selected browser providers.' },
   'packages/computer-use/computer-use': { category: 'optional', reason: 'Service definition used by explicitly selected computer providers.' },
   'packages/lsp/lsp': { category: 'optional', reason: 'Service definition for deployment-configured language servers.' },
