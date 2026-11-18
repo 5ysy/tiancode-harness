@@ -10,4 +10,4 @@ Desktop 保留提供的 TianCode 图形、`com.tiancode.desktop`、独立用户�
 
 [TianCode 技能中心](tiancode/SKILL_HUB.zh.md)保留为可离线安装的可选插件，提供设置侧栏入口、私有目录连接配置、可搜索卡片，以及安装时的分类和 metadata 编辑。完整目录格式基于 MichengAI/dsh-skills-manager 适配并保留署名。服务器通过静态 HTTP 分发目录与包；安装时保留下载的脚本且不执行。
 
-rc.4 TianCode 构建通过全部十项产物与聚合编译检查。Desktop、打包、插件市场、Office 和 Skill Hub 定向测试通过。真实浏览器中的 Skill Hub 安装和工作流分类刷新通过；public-report 与经 Skill Hub 安装的 skill-load 录制 Session 通过无密钥刷新。Python 测试在显式源码路径下通过；仓库 Ruff 检查仍有本次同步未修改的 Python 问题。Windows 包校验通过不受区域设置影响的归档读取器保留所提供模板的中文文件名。同步记录跟踪最终回放、文档及 Windows 构建证据。目标内网模型和部署验收需要组织环境。
+rc.4 TianCode 构建通过全部十项产物与聚合编译检查。Desktop、打包、插件市场、Office 和 Skill Hub 定向测试通过。真实浏览器中的 Skill Hub 安装和工作流分类刷新通过；public-report 与经 Skill Hub 安装的 skill-load 录制 Session 通过无密钥刷新。Python 测试在显式源码路径下通过；仓库 Ruff 检查仍有本次同步未修改的 Python 问题。Windows 包校验通过不受区域设置影响的归档读取器保留所提供模板的中文文件名。未签名 Windows x64 安装器已发布为 `tiancode-v0.2.2-rc.4.20261118.1`；Windows 打包与双主题安装器均通过 Actions 验证。同步记录集中保存 Release 链接、校验和与实际验证结果。目标内网模型和部署验收需要组织环境。

@@ -1,5 +1,9 @@
 # TianCode 测试报告
 
+## 2026-11-18 rc.4 与 Skill Hub 发布
+
+当前发布、已执行检查及目标环境验收范围见[上游同步记录](UPSTREAM_SYNC_REPORT.zh.md)。该记录包含 rc.4 集成、Skill Hub 安装与分类、Windows 安装器验证和 Release 校验。下列历史记录按各自日期保留，旧版本的失败和待验收项以当前记录为准。
+
 ## 2026-11-04 Windows 分类菜单与内网插件市场发布
 
 - [GitHub Actions run 41786147195](https://github.com/5ysy/tiancode-harness/actions/runs/41786147195) 为该版本新鲜构建成功，没有复用旧构建产物；Windows 安装器构建与 Release 发布作业均成功。

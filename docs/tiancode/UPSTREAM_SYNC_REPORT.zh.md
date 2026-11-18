@@ -33,7 +33,23 @@ TianCode 已集成官方 tag `dsh-v0.2.2-rc.4`，该版本于北京时间 2026 �
 | `pnpm run hygiene` | 23 项检查通过；vendor rescope 报告三个与官方目标字节一致的文件。 |
 | 保护资源 | 55 个文件中 45 个字节一致；十个 Skill 指令文件仅适配 Office 工具流程。图形、模板与脚本保持原样。 |
 
-直接执行 `uv run pytest` 时，缺少源码路径导致本地 SDK 导入无法收集。`uv run ruff .` 因环境没有 Ruff 无法启动；`uv run --with ruff ruff check .` 在仓库 Python 文件中报告 261 项问题。本次同步未修改 Python 实现。源码与安装器审查已完成，Windows PowerShell 实际执行由触发的 Actions 运行验证。目标内网连通性与模型生成需要部署验收。
+直接执行 `uv run pytest` 时，缺少源码路径导致本地 SDK 导入无法收集。`uv run ruff .` 因环境没有 Ruff 无法启动；`uv run --with ruff ruff check .` 在仓库 Python 文件中报告 261 项问题。本次同步未修改 Python 实现。Windows 构建及安装器界面验证通过，发布结果见下节。目标内网连通性与模型生成需要部署验收。
+
+## Windows 发布
+
+[Actions 44251183359](https://github.com/5ysy/tiancode-harness/actions/runs/44251183359) 的 Windows 构建和 Release 发布作业均成功。[Release `tiancode-v0.2.2-rc.4.20261118.1`](https://github.com/5ysy/tiancode-harness/releases/tag/tiancode-v0.2.2-rc.4.20261118.1) 包含未签名 Windows x64 安装器、安装器 ZIP、源码 ZIP、三个独立校验文件、`SHA256SUMS.txt` 和 `build-manifest.json`。Release 标签与 manifest 指向同一构建提交；后续文档提交不改变已发布二进制。
+
+已下载全部八项资产，并与 GitHub 资产大小及摘要逐一核对。三个归档的哈希与 manifest、独立校验文件和 `SHA256SUMS.txt` 一致。安装器 ZIP 内含匹配的可执行文件与校验文件；源码 ZIP 标识构建提交，抽查的源码文件与该提交一致。
+
+| 产物 | 字节数 | SHA-256 |
+|---|---:|---|
+| Windows x64 未签名安装器 | 511818016 | `e251f3ff3aa6eb54fd09bb556c0b517cd5a604010854b1113735975a164bc1ba` |
+| 安装器 ZIP | 511553850 | `7c92b800c6076704aefe636d95afa952e5119fb1be2f64780a54c7d03f8876cd` |
+| 源码 ZIP | 249390628 | `54a1629f41ae38b882bfc820a367edf92ced512f1ed408cd1194443ea31541f8` |
+
+Windows 打包日志确认离线 CLI 插件安装和移除、Office Skill 列表与加载、DOCX/XLSX/PPTX 转 PDF、图片渲染、格式转换及重算均通过。实际安装器在浅色和深色主题下通过欢迎页、进度页、100% 完成、应用文件存在、完成退出与卸载清理检查；六张截图已逐张查看。应用快捷方式、任务栏与企业内网模型仍需目标环境验收。
+
+安装器验证脚本读取与打包过程一致的生成字符串目录。归档校验使用已有 Node `tar` 依赖，保留中文模板文件名。相关发布与本地打包测试共 52 项通过，后续包准备消费者 28 项通过，安装器打包 7 项通过。
 
 ## 本地使用与恢复
 
