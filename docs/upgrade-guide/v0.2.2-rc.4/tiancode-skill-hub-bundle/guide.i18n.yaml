@@ -1,0 +1,16 @@
+# Bilingual-pair consistency record for guide.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/upgrade-guide/v0.2.2-rc.4/tiancode-skill-hub-bundle/guide.md
+/:
+  en: fcb08268a591bab2
+  zh: 32d5d0a9ab3ca530
+/tiancode-skill-hub-bundle-package-name:
+  en: 3b1eda2f4a0611bc
+  zh: 33103630e0b7b20e
+/tiancode-skill-hub-bundle-package-name/change:
+  en: 0598b603a4155970
+  zh: 2b24980c448d0988
+/tiancode-skill-hub-bundle-package-name/migration:
+  en: e5cbd8a7472b6743
+  zh: b45c79b8bee39c3c

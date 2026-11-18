@@ -1,11 +1,9 @@
 # Public-service resources for composer development and browser interaction tests.
-- insert:
-    - id: public-service-skills
-      name: '@deepseek-ai/dsh-skill-office'
-      config:
-        publicService: true
-        publicSkillDir: !!js process.cwd() + "/skills"
-        cli: false
+- id: skill-office
+  config:
+    publicService: true
+    publicSkillDir: !!js process.cwd() + "/skills"
+    pythonEnvironment: user
 
 - id: ui-skill
   config:

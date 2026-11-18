@@ -13,7 +13,7 @@ metadata:
 
 # 公安汇报
 
-先调用 `load_workspace_dependencies`，使用返回的 bundled Python 和环境。读取 [模板说明与页型地图](templates/README.md)、所选 `templates/police-report.pptx` 或 `templates/police-case.pptx`、对应 `.inventory.json`、`templates/example.json` 及 [操作说明](../public-ppt/references/workflow.md)。加载 `office-pptx`、`office-render`，需要 PDF 时加载 `office-export-pdf`。运行命令使用技能提供的绝对路径，不安装包、下载素材或运行更新器。
+先调用 `load_workspace_dependencies`，使用返回的 bundled Python 和环境。读取 [模板说明与页型地图](templates/README.md)、所选 `templates/police-report.pptx` 或 `templates/police-case.pptx`、对应 `.inventory.json`、`templates/example.json` 及 [操作说明](../public-ppt/references/workflow.md)。加载 `office-pptx` 和 `office`，在下一步使用 `office_render` 预览，需要 PDF 时使用 `office_convert` 并设置 `format: "pdf"`。将转换返回的临时文件复制到工作区的新输出路径，运行脚本使用技能提供的绝对路径，不安装包、下载素材或运行更新器。
 
 ## 材料与页面
 
@@ -27,7 +27,7 @@ metadata:
 
 保留母版、背景、警徽原图、配色、页型和署名。图片里的文字、示意图数值与装饰图形无法通过文字槽编辑；来源模板无原生数据图表。涉及真实统计时应选用适合的文字页，使用已加载的 Office 工具新增原生图表及嵌入工作簿，核对数据与单位；移除含无依据演示数字的图片对象。不能把图片内的演示数值保留为事实。检查所有分组内文字、年份、汇报人、模板广告及英文样例；署名信息留在来源页。
 
-保持新稿正文可编辑，图像素材与原件保持比例。选择和重排页面后更新目录与页码。逐页渲染最终PPTX，读取每张预览图，核对警徽比例、文字边缘、图表、分组、字体替换和剩余样例文字。按材料压缩重复内容、修正溢出，再检查来源。需要 PDF 时用 `office-export-pdf` 转换并核对签名。交付实际生成的可编辑PPTX、讲稿与要求的预览/PDF；说明材料缺口和影响使用的检查限制。
+保持新稿正文可编辑，图像素材与原件保持比例。选择和重排页面后更新目录与页码。逐页渲染最终PPTX，读取每张预览图，核对警徽比例、文字边缘、图表、分组、字体替换和剩余样例文字。按材料压缩重复内容、修正溢出，再检查来源。需要 PDF 时用 `office_convert` 并设置 `format: "pdf"` 转换并核对签名。交付实际生成的可编辑PPTX、讲稿与要求的预览/PDF；说明材料缺口和影响使用的检查限制。
 
 ## 资源使用范围
 

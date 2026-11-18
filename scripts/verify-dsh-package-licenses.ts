@@ -1,12 +1,14 @@
 /**
- * Enforce the MIT license declaration for repository-owned DSH npm packages.
+ * Check repository MIT declarations and retained Apache notices in adapted Skill Hub sources.
  * @module scripts/verify-dsh-package-licenses
  */
 
-import { globSync, readFileSync } from 'node:fs'
+import { existsSync, globSync, readFileSync } from 'node:fs'
 import { resolve, sep } from 'node:path'
 
 const ROOT = resolve(import.meta.dirname, '..')
+// These packages adapt Apache-2.0 code from MichengAI/dsh-skills-manager.
+const ADAPTED_SKILL_HUB_PACKAGES = new Set(['packages/skill/skill-hub/package.json', 'packages/client/ui-skill-hub/package.json'])
 const DSH_PACKAGE_NAME = /^@deepseek-ai\/dsh(?:-|$)/
 
 /** Result of checking every DSH package reachable through the root workspace list. */
@@ -64,11 +66,16 @@ export function inspectDshPackageLicenses(root: string): DshPackageLicenseReport
     if (typeof name !== 'string' || !DSH_PACKAGE_NAME.test(name)) continue
 
     packageCount++
-    if (manifest.license !== 'MIT') {
-      const normalizedFile = file.split(sep).join('/')
+    const normalizedFile = file.split(sep).join('/')
+    const adapted = ADAPTED_SKILL_HUB_PACKAGES.has(normalizedFile)
+    const expected = adapted ? 'MIT AND Apache-2.0' : 'MIT'
+    if (manifest.license !== expected) {
       failures.push(
-        `${normalizedFile}: ${name} must declare "license": "MIT"; found ${printable(manifest.license)}.`,
+        `${normalizedFile}: ${name} must declare "license": "${expected}"; found ${printable(manifest.license)}.`,
       )
+    }
+    if (adapted && !['NOTICE', 'LICENSE.Apache-2.0'].every(notice => existsSync(resolve(root, normalizedFile, '..', notice)))) {
+      failures.push(`${normalizedFile}: adapted sources require NOTICE and LICENSE.Apache-2.0.`)
     }
   }
 
@@ -83,7 +90,7 @@ if (process.argv[1] && import.meta.filename === resolve(process.argv[1])) {
     process.exitCode = 1
   } else {
     process.stdout.write(
-      `verify-dsh-package-licenses: ${String(report.packageCount)} DSH package(s) checked; all declare MIT.\n`,
+      `verify-dsh-package-licenses: ${String(report.packageCount)} DSH package(s) checked; license declarations and required notices verified.\n`,
     )
   }
 }

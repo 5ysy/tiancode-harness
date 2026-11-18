@@ -3,6 +3,7 @@ import type { AfterPackContext, BeforePackContext } from 'app-builder-lib'
 /** Electron-builder fields asserted by the Desktop release tests. */
 export interface DesktopElectronBuilderConfig {
   readonly appId: string
+  readonly copyright: string
   readonly artifactName: string
   readonly protocols: readonly [{ readonly name: 'TianCode'; readonly schemes: readonly ['dsh'] }]
   readonly directories: {
@@ -28,7 +29,7 @@ export interface DesktopElectronBuilderConfig {
   ]
   readonly mac: {
     readonly extendInfo: {
-      readonly CFBundleLocalizations: readonly ['en', 'zh_CN']
+      readonly CFBundleLocalizations: readonly string[]
       readonly NSMicrophoneUsageDescription: string
     }
     readonly entitlements: string
@@ -54,12 +55,13 @@ export interface DesktopElectronBuilderConfig {
   readonly nsis: {
     readonly installerIcon: string
     readonly uninstallerIcon: string
+    readonly uninstallDisplayName: '${productName}'
     readonly include: string
     readonly oneClick: false
     readonly perMachine: false
     readonly allowElevation: false
     readonly allowToChangeInstallationDirectory: false
-    readonly installerLanguages: readonly ['en_US', 'zh_CN']
+    readonly installerLanguages: readonly string[]
   }
   readonly beforeBuild: () => Promise<boolean>
   readonly beforePack: (context: BeforePackContext) => Promise<void>

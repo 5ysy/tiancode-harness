@@ -3,7 +3,7 @@ description: "安装包含设置页面和私有目录 provider 的 TianCode Skil
 kind: "package-bundle"
 ---
 
-# @deepseek-ai/dsh-experimental-skill-hub-bundle
+# @deepseek-ai/dsh-skill-hub-bundle
 
 [English](README.md) | 中文
 

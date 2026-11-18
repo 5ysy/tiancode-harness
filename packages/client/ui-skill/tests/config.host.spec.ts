@@ -9,13 +9,13 @@ it('hides shortcuts by default and accepts only skill names on live updates', as
   const ctx = new Context()
   onTestFinished(() => ctx.fiber.dispose())
   const configuration = await liveConfig(ctx, HostPlugin)
-  expect(plainConfig(configuration.fiber.config)).toEqual({ quickActions: [], quickActionProviders: [] })
+  expect(plainConfig(configuration.fiber.effectiveConfig)).toEqual({ quickActions: [], quickActionProviders: [] })
   await configuration.update({ quickActions: ['public-report', 'custom-workflow'], quickActionProviders: [] })
-  expect(plainConfig(configuration.fiber.config)).toEqual({ quickActions: ['public-report', 'custom-workflow'], quickActionProviders: [] })
+  expect(plainConfig(configuration.fiber.effectiveConfig)).toEqual({ quickActions: ['public-report', 'custom-workflow'], quickActionProviders: [] })
   for (const quickActions of [['../outside'], ['/public-report'], ['public report'], 'public-report']) {
     await expect(configuration.update({ quickActions })).rejects.toThrow()
   }
-  expect(plainConfig(configuration.fiber.config)).toEqual({ quickActions: ['public-report', 'custom-workflow'], quickActionProviders: [] })
+  expect(plainConfig(configuration.fiber.effectiveConfig)).toEqual({ quickActions: ['public-report', 'custom-workflow'], quickActionProviders: [] })
 })
 
 it('keeps its instance off generated Settings pages', () => omitsGeneratedPage(ctx => ctx.plugin(HostPlugin)))

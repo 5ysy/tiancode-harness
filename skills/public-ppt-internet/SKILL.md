@@ -13,7 +13,7 @@ metadata:
 
 # 互联网大厂
 
-先调用 `load_workspace_dependencies`，使用返回的 bundled Python 和环境，读取 [模板说明](templates/README.md)、`templates/template.pptx`、`templates/example.json` 及 [操作说明](../public-ppt/references/workflow.md)。同时加载 `office-pptx`、`office-render`，需要 PDF 时加载 `office-export-pdf`；使用技能提供的 Office 引擎路径，不安装包或下载模板。
+先调用 `load_workspace_dependencies`，使用返回的 bundled Python 和环境，读取 [模板说明](templates/README.md)、`templates/template.pptx`、`templates/example.json` 及 [操作说明](../public-ppt/references/workflow.md)。加载 `office-pptx` 和 `office`；在下一步使用 `office_render` 预览，需要 PDF 时使用 `office_convert` 并设置 `format: "pdf"`，将转换返回的临时文件复制到工作区的新输出路径，不安装包或下载模板。
 
 ## 编排
 
@@ -25,4 +25,4 @@ metadata:
 
 以 `templates/example.json` 为底稿，在任务目录编写 `content.json`。替换全部 `{{...}}` 标记，填充原生表格及分类图表，并同步嵌入工作簿。演示漏斗100/60/35/12仅展示版式；正式交付使用材料数据，缺失时移除该图并写“待补充”，保持口径说明。禁止编造公司标识、客户故事、转化提升与实验显著性。
 
-按 [共享脚本](../public-ppt/scripts/deck.py) 的 `inspect`、`fill`、`validate` 命令输出新的可编辑PPTX，JSON字段见操作说明。用 `office-render` 渲染全部页并读取每张图，检查文字溢出、图表轴与分母、表格对齐、字体替换和页面留白。压缩重复内容后调整版式，保留可编辑文字、表格、图表。用户要求 PDF 时用 `office-export-pdf` 导出并核对签名。交付实际生成的PPTX、讲稿及要求的预览/PDF，说明影响结论的待核实项。
+按 [共享脚本](../public-ppt/scripts/deck.py) 的 `inspect`、`fill`、`validate` 命令输出新的可编辑PPTX，JSON字段见操作说明。用 `office_render` 渲染全部页并读取每张图，检查文字溢出、图表轴与分母、表格对齐、字体替换和页面留白。压缩重复内容后调整版式，保留可编辑文字、表格、图表。用户要求 PDF 时用 `office_convert` 并设置 `format: "pdf"` 导出并核对签名。交付实际生成的PPTX、讲稿及要求的预览/PDF，说明影响结论的待核实项。

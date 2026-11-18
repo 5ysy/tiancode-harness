@@ -1,7 +1,7 @@
 {
   "name": "@deepseek-ai/dsh-skill-hub",
   "description": "TianCode Skill Hub catalog and server-side community skill installer",
-  "version": "0.2.1-rc.3",
+  "version": "0.2.2-rc.4",
   "publishConfig": {
     "access": "public"
   },
@@ -27,12 +27,15 @@
     "./locale/*.json": "./locale/*.json"
   },
   "files": [
+    "locale/*.json",
     "lib/index.js",
-    "lib/types/**/*.js",
-    "lib/types/**/*.d.ts",
     "NOTICE",
     "LICENSE.Apache-2.0",
-    "locale/*.json"
+    "lib/types/**/*.js",
+    "lib/types/**/*.d.ts",
+    "lib/types/**/*.d.ts.map",
+    "lib/**/*.js.map",
+    "src"
   ],
   "scripts": {
     "bundle": "tsdown"

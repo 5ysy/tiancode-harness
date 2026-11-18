@@ -28,7 +28,7 @@ cp .artifacts/skill-hub-release/*.tgz deploy/skill-hub/public/plugins/
 cp .artifacts/skill-hub-release/plugin-market.json deploy/skill-hub/public/plugins/
 ```
 
-The tarball embeds both new plugin packages and their non-core runtime dependencies. It requires the existing TianCode `0.2.1-rc.3` core services; it does not need an external npm registry for these bundled packages. The configured plugin installer still supplies pnpm and the application's ordinary installation checks.
+The tarball embeds both new plugin packages and their non-core runtime dependencies. It requires the existing TianCode `0.2.2-rc.4` core services; it does not need an external npm registry for these bundled packages. The configured plugin installer still supplies pnpm and the application's ordinary installation checks.
 
 ## Start the static service
 
@@ -56,3 +56,5 @@ The installer preserves community frontmatter and resources, and writes the exac
 ## Connection and installation failures
 
 Refresh after a timeout to confirm whether publication completed. An invalid catalog/package report requires checking the checksum, `SKILL.md` identity, resource paths, limits, and metadata. A missing file or access refusal requires checking static server paths and access rules. A conflict requires managing the existing local skill before retrying. Removing the plugin retains installed files; enabling it again registers them. Keep user settings that override `ui-skill.quickActionProviders` inclusive of `skill-hub` so marketplace entries appear in Desktop category menus.
+
+Earlier bundle archives use a different package name. Follow the [bundle migration](../upgrade-guide/v0.2.2-rc.4/tiancode-skill-hub-bundle/guide.md) when replacing an installed older archive; installed skill files remain in place.

@@ -2,7 +2,7 @@
 
 English | [中文](README.zh.md)
 
-The server needs Docker Compose or Python 3. The client needs TianCode `0.2.1-rc.3` with its existing plugin market installer. The plugin tarball contains the Skill Hub Host, UI and non-core runtime dependencies.
+The server needs Docker Compose or Python 3. The client needs TianCode `0.2.2-rc.4` with its existing plugin market installer. The plugin tarball contains the Skill Hub Host, UI and non-core runtime dependencies.
 
 1. Extract and copy the entire directory to the server, for example `/srv/skill-hub`.
 2. Replace the address with a server URL accessible to clients and run `python3 configure-market.py http://skills.internal:8088`. The script updates the plugin download URL and prints the plugin source and skill catalog addresses.

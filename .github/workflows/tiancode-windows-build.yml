@@ -7,14 +7,14 @@ on:
   workflow_dispatch:
     inputs:
       build_version:
-        description: Build version extending the product version (for example 0.2.1-rc.3.20261028.1).
+        description: Build version extending the product version (for example 0.2.2-rc.4.20261118.1).
         required: true
-        default: 0.2.1-rc.3.20261028.1
+        default: 0.2.2-rc.4.20261118.1
         type: string
       release_tag:
         description: GitHub Release tag; it must be tiancode-v<build_version>.
         required: true
-        default: tiancode-v0.2.1-rc.3.20261028.1
+        default: tiancode-v0.2.2-rc.4.20261118.1
         type: string
       artifact_run_id:
         description: Optional successful build run ID to publish without rebuilding its Windows artifact.
@@ -273,7 +273,29 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write
+      actions: read
     steps:
+      - name: Validate release inputs
+        shell: pwsh
+        env:
+          BUILD_VERSION: ${{ inputs.build_version }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          ARTIFACT_RUN_ID: ${{ inputs.artifact_run_id }}
+        run: |
+          if ($env:BUILD_VERSION -notmatch '^\d+\.\d+\.\d+(?:-[0-9A-Za-z][0-9A-Za-z.-]*)?$') {
+            throw 'build_version must be a semantic version with an optional prerelease suffix'
+          }
+          if ($env:RELEASE_TAG -notmatch '^tiancode-v\d+\.\d+\.\d+(?:-[0-9A-Za-z][0-9A-Za-z.-]*)?$') {
+            throw 'release_tag must use the tiancode-v<version> format'
+          }
+          if ($env:ARTIFACT_RUN_ID -ne '' -and $env:ARTIFACT_RUN_ID -notmatch '^\d+$') {
+            throw 'artifact_run_id must contain only decimal digits'
+          }
+          $expectedTag = "tiancode-v$($env:BUILD_VERSION)"
+          if ($env:RELEASE_TAG -ne $expectedTag) {
+            throw "release_tag must equal $expectedTag"
+          }
+
       - name: Download TianCode installer artifacts
         uses: actions/download-artifact@v8
         with:
@@ -314,6 +336,46 @@ jobs:
             }
           )
 
+          $targetSha = $env:GITHUB_SHA
+          if ($env:ARTIFACT_RUN_ID -ne '') {
+            $runJson = gh run view $env:ARTIFACT_RUN_ID --repo $env:GITHUB_REPOSITORY --json headSha,status,workflowName,jobs
+            if ($LASTEXITCODE -ne 0) { throw 'Unable to resolve the artifact source run' }
+            $sourceRun = $runJson | ConvertFrom-Json
+            $sourceBuild = @($sourceRun.jobs | Where-Object name -eq 'TianCode Windows x64 installer')
+            if ($sourceRun.status -ne 'completed' -or $sourceRun.workflowName -ne 'Build TianCode Windows installer' -or $sourceBuild.Count -ne 1 -or $sourceBuild[0].conclusion -ne 'success') {
+              throw 'artifact_run_id must identify a completed TianCode workflow with a successful Windows build job'
+            }
+            $targetSha = $sourceRun.headSha
+          }
+          if ($targetSha -notmatch '^[0-9a-f]{40}$') { throw 'Invalid artifact source commit' }
+          $manifestFile = $assets | Where-Object Name -eq 'build-manifest.json'
+          $manifest = Get-Content -LiteralPath $manifestFile.FullName -Raw | ConvertFrom-Json
+          if ($manifest.schemaVersion -ne 1 -or $manifest.product -ne 'TianCode' -or $manifest.target -ne 'win-x64' -or $manifest.unsigned -cne $true -or $manifest.buildVersion -cne $env:BUILD_VERSION -or $manifest.commit -cne $targetSha) {
+            throw 'Build manifest does not match the requested version and artifact source commit'
+          }
+          $expectedFiles = [ordered]@{
+            installer = "TianCode-Setup-$($env:BUILD_VERSION)-win-x64-unsigned.exe"
+            zip = "TianCode-Setup-$($env:BUILD_VERSION)-win-x64-unsigned.zip"
+            sourceZip = "TianCode-source-$($env:BUILD_VERSION).zip"
+          }
+          $expectedSums = @(
+            foreach ($key in $expectedFiles.Keys) {
+              $name = $expectedFiles[$key]
+              if ($manifest.$key -cne $name) { throw "Unexpected manifest filename for $key" }
+              $file = @($assets | Where-Object Name -eq $name)
+              if ($file.Count -ne 1) { throw "Missing release asset $name" }
+              $hash = (Get-FileHash -LiteralPath $file[0].FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+              if ($manifest.sha256.$key -cne $hash) { throw "Manifest checksum mismatch for $name" }
+              $sidecar = $assets | Where-Object Name -eq "$name.sha256"
+              $expected = "$hash  $name"
+              if ((Get-Content -LiteralPath $sidecar.FullName -Raw).Trim() -cne $expected) { throw "Checksum file mismatch for $name" }
+              $expected
+            }
+          )
+          $sumsFile = $assets | Where-Object Name -eq 'SHA256SUMS.txt'
+          $actualSums = @(Get-Content -LiteralPath $sumsFile.FullName | Where-Object { $_.Trim() -ne '' })
+          if (($actualSums -join "`n") -cne ($expectedSums -join "`n")) { throw 'SHA256SUMS.txt does not match the verified artifacts' }
+
           $notesFile = Join-Path $env:RUNNER_TEMP 'tiancode-release-notes.md'
           @"
           ## TianCode Windows x64
@@ -323,20 +385,25 @@ jobs:
           The installer is unsigned and may require the enterprise signing process before distribution. Verify downloaded files with SHA256SUMS.txt.
           "@ | Set-Content -LiteralPath $notesFile -Encoding utf8
 
-          gh release view $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY *> $null
+          $releaseJson = gh release view $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --json assets 2>$null
           $releaseExists = $LASTEXITCODE -eq 0
-          gh api "repos/$($env:GITHUB_REPOSITORY)/git/ref/tags/$($env:RELEASE_TAG)" *> $null
+          $existingAssets = @()
+          if ($releaseExists) { $existingAssets = @(($releaseJson | ConvertFrom-Json).assets) }
+          $tagJson = gh api "repos/$($env:GITHUB_REPOSITORY)/git/ref/tags/$($env:RELEASE_TAG)" 2>$null
           $tagExists = $LASTEXITCODE -eq 0
+          if ($tagExists) {
+            $tagObject = ($tagJson | ConvertFrom-Json).object
+            for ($depth = 0; $tagObject.type -eq 'tag' -and $depth -lt 5; $depth++) {
+              $peeledJson = gh api "repos/$($env:GITHUB_REPOSITORY)/git/tags/$($tagObject.sha)"
+              if ($LASTEXITCODE -ne 0) { throw 'Unable to resolve the existing release tag' }
+              $tagObject = ($peeledJson | ConvertFrom-Json).object
+            }
+            if ($tagObject.type -ne 'commit' -or $tagObject.sha -cne $targetSha) {
+              throw 'Existing release tag points to a different source commit; choose a new build version and release tag'
+            }
+          }
           if ($tagExists -and -not $releaseExists) {
             throw "Git tag $($env:RELEASE_TAG) already exists without a Release; choose a new release_tag."
-          }
-
-          $targetSha = $env:GITHUB_SHA
-          if ($env:ARTIFACT_RUN_ID -ne '') {
-            $targetSha = gh run view $env:ARTIFACT_RUN_ID --repo $env:GITHUB_REPOSITORY --json headSha --jq .headSha
-            if ($LASTEXITCODE -ne 0 -or $targetSha -notmatch '^[0-9a-f]{40}$') {
-              throw "Unable to resolve the artifact run commit for $($env:ARTIFACT_RUN_ID)"
-            }
           }
 
           if (-not $releaseExists) {
@@ -354,8 +421,25 @@ jobs:
             }
           }
 
-          foreach ($asset in $assets) {
-            & gh release upload $env:RELEASE_TAG $asset.FullName --repo $env:GITHUB_REPOSITORY --clobber
+          $pendingAssets = @(
+            foreach ($asset in $assets) {
+              $existing = @($existingAssets | Where-Object name -eq $asset.Name)
+              if ($existing.Count -gt 1) { throw "Duplicate existing Release asset $($asset.Name)" }
+              if ($existing.Count -eq 1) {
+                $downloadDir = Join-Path $env:RUNNER_TEMP "existing-release-$([Guid]::NewGuid().ToString('N'))"
+                New-Item -ItemType Directory -Path $downloadDir | Out-Null
+                & gh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern $asset.Name --dir $downloadDir
+                if ($LASTEXITCODE -ne 0) { throw "Unable to verify existing Release asset $($asset.Name)" }
+                $existingHash = (Get-FileHash -LiteralPath (Join-Path $downloadDir $asset.Name) -Algorithm SHA256).Hash
+                $localHash = (Get-FileHash -LiteralPath $asset.FullName -Algorithm SHA256).Hash
+                if ($existingHash -cne $localHash) { throw "Existing Release asset differs: $($asset.Name)" }
+              } else {
+                $asset
+              }
+            }
+          )
+          foreach ($asset in $pendingAssets) {
+            & gh release upload $env:RELEASE_TAG $asset.FullName --repo $env:GITHUB_REPOSITORY
             if ($LASTEXITCODE -ne 0) {
               throw "gh release upload failed for $($asset.Name)"
             }

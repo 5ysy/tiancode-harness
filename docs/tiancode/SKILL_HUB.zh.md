@@ -28,7 +28,7 @@ cp .artifacts/skill-hub-release/*.tgz deploy/skill-hub/public/plugins/
 cp .artifacts/skill-hub-release/plugin-market.json deploy/skill-hub/public/plugins/
 ```
 
-Tarball 内嵌两个新插件包及其非核心运行时依赖。它需要 TianCode `0.2.1-rc.3` 现有核心服务，内嵌包无需外部 npm 仓库。插件安装器仍提供 pnpm，并执行应用已有的安装检查。
+Tarball 内嵌两个新插件包及其非核心运行时依赖。它需要 TianCode `0.2.2-rc.4` 现有核心服务，内嵌包无需外部 npm 仓库。插件安装器仍提供 pnpm，并执行应用已有的安装检查。
 
 ## 启动静态服务
 
@@ -56,3 +56,5 @@ docker compose up -d
 ## 连接与安装失败
 
 超时后刷新目录，确认发布是否完成。目录或安装包无效时，检查校验和、`SKILL.md` 身份、资源路径、上限和元数据。文件缺失或访问拒绝时，检查静态服务器路径与访问规则。冲突时，先管理已有本地技能再重试。移除插件会保留安装文件，重新启用后重新注册。用户设置覆盖 `ui-skill.quickActionProviders` 时，应包含 `skill-hub`，以便在桌面分类菜单显示市场技能。
+
+较早的 bundle 归档使用不同包名。替换已安装的旧归档时遵循[bundle 迁移说明](../upgrade-guide/v0.2.2-rc.4/tiancode-skill-hub-bundle/guide.zh.md)，已安装技能文件保留在原位。

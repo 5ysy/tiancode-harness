@@ -13,7 +13,7 @@ metadata:
 
 # 国企商务
 
-先调用 `load_workspace_dependencies`，使用返回的 bundled Python 和环境，读取 [模板说明](templates/README.md)、`templates/template.pptx`、`templates/example.json` 及 [操作说明](../public-ppt/references/workflow.md)。同时加载 `office-pptx`、`office-render`，需要 PDF 时加载 `office-export-pdf`；使用技能提供的 Office 引擎路径，不安装包或下载模板。
+先调用 `load_workspace_dependencies`，使用返回的 bundled Python 和环境，读取 [模板说明](templates/README.md)、`templates/template.pptx`、`templates/example.json` 及 [操作说明](../public-ppt/references/workflow.md)。加载 `office-pptx` 和 `office`；在下一步使用 `office_render` 预览，需要 PDF 时使用 `office_convert` 并设置 `format: "pdf"`，将转换返回的临时文件复制到工作区的新输出路径，不安装包或下载模板。
 
 ## 编排
 
@@ -25,4 +25,4 @@ metadata:
 
 以 `templates/example.json` 为底稿写入任务目录的 `content.json`，替换全部 `{{...}}` 标记。原生图表使用已核实分类与数值，同时更新嵌入工作簿；表格填写事项、进展、责任和截止日期。所有示例数字都有“演示数据”标记，正式交付前替换并核验来源。用户缺少数据时保留待补充文字，移除无依据图表并注明材料缺口。
 
-使用 [共享脚本](../public-ppt/scripts/deck.py) 的 `inspect`、`fill`、`validate` 命令生成新文件；命令及JSON字段见操作说明。将文稿与可编辑PPTX保存在工作区任务目录。使用 `office-render` 渲染全部页并读取每张图，修正文字溢出、表格拥挤、图表单位和字体问题；几何风险估算不能替代预览。用户要求 PDF 时用 `office-export-pdf` 导出并核对签名。交付实际生成的PPTX、讲稿及要求的预览/PDF，列出影响使用的待补充事项。
+使用 [共享脚本](../public-ppt/scripts/deck.py) 的 `inspect`、`fill`、`validate` 命令生成新文件；命令及JSON字段见操作说明。将文稿与可编辑PPTX保存在工作区任务目录。使用 `office_render` 渲染全部页并读取每张图，修正文字溢出、表格拥挤、图表单位和字体问题；几何风险估算不能替代预览。用户要求 PDF 时用 `office_convert` 并设置 `format: "pdf"` 导出并核对签名。交付实际生成的PPTX、讲稿及要求的预览/PDF，列出影响使用的待补充事项。

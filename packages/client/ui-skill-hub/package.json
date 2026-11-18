@@ -1,7 +1,7 @@
 {
   "name": "@deepseek-ai/dsh-client-ui-skill-hub",
   "description": "TianCode Skill Hub settings page with catalog cards and metadata-aware installation",
-  "version": "0.2.1-rc.3",
+  "version": "0.2.2-rc.4",
   "publishConfig": {
     "access": "public"
   },
@@ -44,9 +44,12 @@
     "locale/*.json",
     "lib/index.js",
     "lib/client.js",
-    "lib/types/**/*.d.ts",
     "NOTICE",
-    "LICENSE.Apache-2.0"
+    "LICENSE.Apache-2.0",
+    "lib/types/**/*.d.ts",
+    "lib/types/**/*.d.ts.map",
+    "lib/**/*.js.map",
+    "src"
   ],
   "license": "MIT AND Apache-2.0",
   "peerDependencies": {

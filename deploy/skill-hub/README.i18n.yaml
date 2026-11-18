@@ -3,5 +3,5 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write deploy/skill-hub/README.md
 /tiancode-skill-hub-deployment-package:
-  en: fd600731989fec70
-  zh: 71c74c525b65a912
+  en: dd395597e238e023
+  zh: 30adbe2cf98c6c34

@@ -3,5 +3,5 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/tiancode/UPSTREAM_SYNC_PLAN.md
 /tiancode-upstream-synchronization-plan:
-  en: ad7530ca251003e9
-  zh: 8bd8b47f21f951c7
+  en: b4586cf1163b973d
+  zh: 2a74ae566258c564

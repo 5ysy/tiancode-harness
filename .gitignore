@@ -37,9 +37,11 @@ python/**/__pycache__/
 python/**/.pytest_cache/
 packages/**/__pycache__/
 apps/web/dist/
+apps/cli/docs/
 .artifacts/
 .dsh-build/
 .dsh-report/
+.ui-review/
 .playwright-mcp/
 .orig
 .worktrees/
@@ -49,3 +51,6 @@ worktrees/
 native/system/test/bin/
 # Local upstream release inputs; exclude nested copies from repository discovery.
 /docs/tiancode/version-history/
+
+# Generated company-signed CUA release record.
+/packages/experimental/cua-macos/cua-helper.json

@@ -2,7 +2,7 @@
 
 [English](README.md) | 中文
 
-服务器需要 Docker Compose 或 Python 3。客户端需要 TianCode `0.2.1-rc.3`，并使用已有插件市场安装器。插件包内已包含 Skill Hub 的 Host、UI 与非核心运行时依赖。
+服务器需要 Docker Compose 或 Python 3。客户端需要 TianCode `0.2.2-rc.4`，并使用已有插件市场安装器。插件包内已包含 Skill Hub 的 Host、UI 与非核心运行时依赖。
 
 1. 解压后将整个目录复制到服务器，例如 `/srv/skill-hub`。
 2. 将地址替换成客户端可访问的服务器地址，运行 `python3 configure-market.py http://skills.internal:8088`。脚本更新插件下载链接，并显示插件来源和技能目录地址。

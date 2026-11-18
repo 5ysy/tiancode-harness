@@ -6,4 +6,3 @@
         publicSkillDir: !!js process.cwd() + '/.dsh/tiancode-skills'
         publicServiceWatch: false
         assetRoot: !!js process.cwd() + '/.dsh/office-skills'
-        cli: false

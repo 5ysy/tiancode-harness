@@ -2,14 +2,12 @@
 
 English | [中文](UPSTREAM_SYNC_PLAN.zh.md)
 
-The target is the local official `dsh-v0.2.1-rc.3` source archive. The common upstream baseline is `dsh-v0.2.0-rc.2`. Both committed TianCode customizations and the existing uncommitted Office shortcuts participate in the three-way merge.
+The target is official `dsh-v0.2.2-rc.4`, published on November 18, 2026 in China Standard Time. The previously imported release is `dsh-v0.2.1-rc.3`. The synchronization preserves TianCode customizations and the optional Skill Hub plugin.
 
-1. Save the working files and Git tree identifiers, then calculate the merge with temporary indexes while retaining the current branch and real index.
-2. Synchronize official additions, modifications, removals, tests, dependencies, migrations and upgrade guides; retain TianCode identity, artwork, offline policy, data directories, release workflow and Office resources.
-3. Resolve Desktop startup, packaging, client registration and Office skill conflicts against the updated service APIs, then regenerate derived catalogs.
-4. Install the declared dependencies; run TianCode build, unit tests, recorded-session replay, browser checks, lint, documentation checks and Python checks.
-5. Record executed verification and limitations in the [sync report](UPSTREAM_SYNC_REPORT.md) and update the [current state](../state.md).
+1. Archive tracked and untracked work, commit Skill Hub, and record the previously imported release's Git ancestry without changing its tree.
+2. Merge the official release delta, preserving TianCode identity, artwork, data isolation, offline policy, application Skills and plugin installation.
+3. Adapt Desktop runtime resource copying and Office workflows to rc.4, then regenerate catalogs and the lockfile.
+4. Run focused behavior tests, shipped-profile recorded Sessions, browser installation/category checks, artifact and aggregate compiler checks, documentation checks and Python checks.
+5. Commit and push the reviewed integration to the TianCode fork, dispatch its Windows workflow and verify the exact run's installer, source archive, manifest, checksums and installer evidence.
 
-The original ZIP remains in `version-history/`. The extracted source remains accessible at its original path through a relative symlink into ignored `.artifacts/upstream/`, keeping the nested repository out of recursive documentation discovery.
-
-The pre-sync backup and merge metadata are retained under `.artifacts/upstream-sync/20261028/`. Ignored credentials and build outputs are excluded from the backup.
+The pre-sync working files, patch, tree identifiers and protected-file hashes are retained under ignored `.artifacts/upstream-sync/20261118/`. Executed results belong in the [synchronization record](UPSTREAM_SYNC_REPORT.md) and [current state](../state.md).

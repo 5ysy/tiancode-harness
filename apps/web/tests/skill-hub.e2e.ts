@@ -70,7 +70,8 @@ it('installs a complete community skill and refreshes its selected category', as
     await page.setViewportSize({ width: 1100, height: 900 })
     await page.keyboard.press('Escape')
     await page.getByRole('button', { name: 'Official documents', exact: true }).click()
-    await page.getByRole('menuitem', { name: 'Internal writer', exact: true }).waitFor()
+    await page.screenshot({ path: join(screenshotDir, 'skill-hub-category-menu.png'), fullPage: true })
+    await expect.poll(() => page.getByRole('menuitem').allTextContents(), { timeout: 30_000 }).toContain('Internal writer')
     expect(console.pageErrors).toEqual([])
   } finally {
     await browser?.close()

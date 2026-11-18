@@ -29,19 +29,19 @@ async function main(): Promise<void> {
     await mkdir(bundle)
     const bundleSource = join(root, 'packages/experimental/skill-hub-bundle')
     const manifest = JSON.parse(await readFile(join(bundleSource, 'package.json'), 'utf8')) as ReleaseManifest
-    manifest.files = ['LICENSE', 'lib', 'locale', 'cordis.patch.yml', 'README.md', 'README.zh.md', 'node_modules']
+    manifest.files = ['LICENSE', 'lib', 'src', 'locale', 'cordis.patch.yml', 'README.md', 'README.zh.md', 'node_modules']
     manifest.bundledDependencies = Object.keys(manifest.dependencies)
     manifest.devDependencies = {}
-    manifest.engines = { dsh: '>=0.2.1-rc.3 <0.3.0' }
+    manifest.engines = { dsh: '>=0.2.2-rc.4 <0.3.0' }
     manifest.peerDependenciesMeta = Object.fromEntries(Object.keys(manifest.peerDependencies).map(name => [name, { optional: true }]))
     await writeFile(join(bundle, 'package.json'), JSON.stringify(manifest, null, 2))
-    for (const file of ['LICENSE', 'lib', 'locale', 'cordis.patch.yml', 'README.md', 'README.zh.md']) await cp(join(bundleSource, file), join(bundle, file), { recursive: true })
+    for (const file of ['LICENSE', 'lib', 'src', 'locale', 'cordis.patch.yml', 'README.md', 'README.zh.md']) await cp(join(bundleSource, file), join(bundle, file), { recursive: true })
     for (const relative of ['packages/skill/skill-hub', 'packages/client/ui-skill-hub']) {
       const source = join(root, relative)
       const child = JSON.parse(await readFile(join(source, 'package.json'), 'utf8')) as ReleaseManifest
       const target = join(bundle, 'node_modules', child.name)
       await mkdir(target, { recursive: true })
-      for (const file of ['LICENSE', 'lib', 'locale', 'NOTICE', 'LICENSE.Apache-2.0', 'README.md', 'README.zh.md']) await cp(join(source, file), join(target, file), { recursive: true })
+      for (const file of ['LICENSE', 'lib', 'src', 'locale', 'NOTICE', 'LICENSE.Apache-2.0', 'README.md', 'README.zh.md']) await cp(join(source, file), join(target, file), { recursive: true })
       child.devDependencies = {}
       if (relative.startsWith('packages/skill')) {
         await build({ cwd: source, config: false, entry: ['lib/types/index.js'], outDir: join(target, 'lib'), format: ['esm'], platform: 'node', target: 'es2024', fixedExtension: false, dts: false, clean: false,

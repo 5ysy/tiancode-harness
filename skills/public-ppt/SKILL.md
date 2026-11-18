@@ -24,7 +24,7 @@ metadata:
 
 先调用 `load_workspace_dependencies`，使用返回的 Python 可执行路径及环境。读取所选子技能的 `templates/README.md`、PPTX、JSON 示例，再读取 [操作说明](references/workflow.md)。共享脚本位于本技能的 `scripts/`；由实际技能安装路径解析相对路径，用户输出目录单独指定。禁止运行时安装包、下载模板或启动自动更新。
 
-加载可用的 `office-pptx`、`office-render` 技能；用户要求 PDF 时同时加载 `office-export-pdf`。使用这些技能提供的 Office 引擎绝对路径。无法调用依赖加载或缺少渲染引擎时记录具体限制，继续完成可执行的内容和结构检查。
+加载 `office-pptx` 和 `office`；在下一步使用 `office_render` 预览，用户要求 PDF 时使用 `office_convert` 并设置 `format: "pdf"`。将转换返回的临时文件复制到工作区的新输出路径。无法调用依赖加载或缺少渲染引擎时记录具体限制，继续完成可执行的内容和结构检查。
 
 ## 事实与交付
 

@@ -9,7 +9,7 @@ kind: "package-reference"
 
 ## 概述
 
-本包让以 `official` profile 构建的客户端在侧栏显示 DeepSeek Harness 标志与名称，让以 `tiancode` profile 构建的客户端显示 TianCode 标志与名称。其他构建 profile 保留外壳的鱼形标志与本地构建标签，TianCode 还会在会话首屏显示提供的图标。使用其他品牌的部署应提供替代品牌包。本包不保留运行时状态，也不影响模型请求。
+本包在 `official` 构建中显示 DeepSeek Harness 图形与名称，在 `tiancode` 构建中显示 TianCode 图形与名称。TianCode 还提供会话首屏标志，其他 profile 保留回退品牌。用户点击空白首页的留白处时播放像素鲸鱼动画。Web 与 Desktop 默认加载本包。它不增加模型请求。
 
 ## 目录
 
@@ -35,6 +35,15 @@ kind: "package-reference"
 
 自有身份的部署组合另一个占据侧栏与首屏 slot 的包。占据 slot 是唯一的组合路径；这里不存在任何品牌配置面。
 
+### 首页反馈
+
+默认首页保持留白，主按钮点击空白处才播放一次浅灰色鲸鱼跃起。每次播放结束后的点击在点阵与代码填充之间交替，首次为点阵；两种填充使用相同的大幅动态轮廓。动画持续 5.7 秒，随后清空。连续点击不会打断当前播放。点击由鲸鱼的 frame 层自己判定：外框内部的留白可触发播放，包括输入卡片两侧的空白；输入框、控件、输入卡片、portal 出去的浮层以及结束文字选择的点击都不触发。Canvas 不获取焦点或指针事件，点击由外框接收。窄屏首页中的鲸鱼保留较大比例，在 Canvas 边缘裁切，不增加横向滚动。减少动态效果偏好会禁用它，离开空白首页时释放动画与观察器。
+
+鲸鱼使用非常浅的主题中性色，呈现轻微的背景隐纹；代码文字的对比度略高于点阵。水花保留细小颗粒并使用较深的颜色，尤其是入水时左侧的水花。随包帧图提供动作，首次符合条件的点击时由浏览器经插件 asset 路由加载一次。代码填充使用密排的 7px 文字，内容只来自预设的代码标语，出水与入水时文本随动态轮廓裁切。解码或像素读取失败时停止装饰，首页仍可正常使用，并在日志中提示重新加载。
+
+图形参数固定，本行不接受配置。这是内置呈现，没有需要单独安装的 Bundle 或插件页面开关。
+
+
 -----
 
 <a id="understand-the-implementation"></a>
@@ -43,7 +52,7 @@ kind: "package-reference"
 <details>
 <summary>实现细节——点击展开</summary>
 
-侧栏填充作为一组声明感知的注册安装：嵌套的 `ctx.slots.inject()` 调用等待侧栏声明，因此无论本行在声明者之前还是之后激活，这组注册都能工作；声明消失时两个填充一并撤回，HMR 期间也不会留下残缺的品牌混合。TianCode 首屏标志通过独立的声明感知 effect 安装，首屏声明消失时撤回。浏览器半部是 [`src/client/index.ts`](src/client/index.ts)；node 半部是一个空 Loader 座位。浏览器标题是构建环境的事（`DSH_CLIENT_TITLE`），不在 slot 系统之内。
+两个填充作为一组声明感知的注册安装：嵌套的 `ctx.slots.inject()` 调用等待侧栏声明，因此无论本行在声明者之前还是之后激活，这组注册都能工作；声明消失时两个填充一并撤回，HMR 期间也不会留下残缺的品牌混合。TianCode 首屏标志通过独立的声明感知 effect 安装，首屏声明消失时撤回。独立的 `conversation.hero.frame` 层持有 Canvas 绘制器，通过 `ctx.slots.inject()` 等待声明；`hero` 为 true 时它以负 `z-index` 绘制 Canvas，按 frame 层约定画在 Conversation 背景之上、所有 Conversation 内容之下。它在点击落到自身外框、且不在控件和输入卡片上时播放；portal 浮层的点击以及结束外框内文字选择的点击会被忽略。它不更改输入框或会话状态。浏览器半部是 [`src/client/index.ts`](src/client/index.ts)；node 半部是空的 Loader 席位。[帧图](src/client/assets/breach-atlas.webp) 来自用户提供的[展示视频](https://yinghuo-hg.deepseek.com/wuyexinrui/dev-cpu/web-showcase/orca.mp4)：截取 1.5–7.2 秒，以每秒 24 帧采样为 192 × 108 个单元，以无损 WebP 存储。红色与绿色通道以 32 级分别编码圆点半径和不透明度；绘制器在首次符合条件的点击后读取一次。浏览器标题是构建环境的事（`DSH_CLIENT_TITLE`），不在 slot 系统之内。
 
 </details>
 
@@ -55,7 +64,7 @@ kind: "package-reference"
 当品牌面不够用时阅读以下页面。它们从本包占据的 slot 进入渲染这些 slot 的外壳。
 
 - [ui-sidebar](../ui-sidebar/README.zh.md)——声明 `sidebar.brand.mark` 与 `sidebar.brand.name` 并渲染其回退。
-- [ui-conversation](../ui-conversation/README.zh.md)——在首屏声明 `conversation.hero.brand.mark`。
+- [ui-conversation](../ui-conversation/README.zh.md)——在首屏声明 `conversation.hero.brand.mark`，以及本包占用的 `conversation.hero.frame` 层。
 - [Web 客户端架构](../../../docs/subsystems/web-client.zh.md)——浏览器插件行如何加载并注册 slot。
 
 -----
@@ -77,6 +86,7 @@ kind: "package-reference"
 这些限制界定了品牌呈现的供给方式。它们是当前包约束，不是品牌设计对比或任务积压。
 
 - **只有一组填充**——替代呈现属于占据相同 slot 的另一个 Cordis 包。
+- **装饰绘制需要 Canvas 2D**——上下文不可用或偏好减少动态效果时，首页保持留白。
 - **浏览器标题独立**——`DSH_CLIENT_TITLE` 在构建时选择标题文本，而非通过 UI slot。
 
 <a id="dev-note"></a>

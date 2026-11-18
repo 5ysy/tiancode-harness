@@ -3,7 +3,7 @@ description: "Install TianCode Skill Hub with its Settings page and private cata
 kind: "package-bundle"
 ---
 
-# @deepseek-ai/dsh-experimental-skill-hub-bundle
+# @deepseek-ai/dsh-skill-hub-bundle
 
 English | [中文](README.zh.md)
 
