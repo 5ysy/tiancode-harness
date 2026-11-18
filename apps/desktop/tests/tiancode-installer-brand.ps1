@@ -19,7 +19,7 @@ $root = Join-Path ([IO.Path]::GetTempPath()) ('tiancode-installer-' + [Guid]::Ne
 New-Item -ItemType Directory $root | Out-Null
 $installPath = Join-Path $root 'TianCode'
 $copy = @{}
-Get-Content (Join-Path $PSScriptRoot '../installer/strings.nsh') -Encoding UTF8 | ForEach-Object {
+Get-Content (Join-Path $PSScriptRoot '../.desktop-build/targets/win-x64/installer-ui/strings.nsh') -Encoding UTF8 | ForEach-Object {
     if ($_ -match '^LangString (INSTALLER_\w+) \$\{LANG_(ENGLISH|SIMPCHINESE)\} "(.*)"$') {
         if (-not $copy.ContainsKey($Matches[2])) { $copy[$Matches[2]] = @{} }
         $copy[$Matches[2]][$Matches[1]] = $Matches[3]

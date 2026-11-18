@@ -93,6 +93,12 @@ describe('installer preparation preserves application dependencies', () => {
     }
   })
 
+  it('reads installer strings from the generated target directory during shipped UI verification', () => {
+    const script = readFileSync(new URL('../tests/tiancode-installer-brand.ps1', import.meta.url), 'utf8')
+    expect(script).toContain('../.desktop-build/targets/win-x64/installer-ui/strings.nsh')
+    expect(script).not.toContain('../installer/strings.nsh')
+  })
+
   it('names unsigned Windows artifacts so they cannot pass for release builds', async () => {
     const { createElectronBuilderConfig } = await import('../scripts/electron-builder-config.mjs')
     const config = createElectronBuilderConfig({
