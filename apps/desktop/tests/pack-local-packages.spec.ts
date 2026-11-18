@@ -25,7 +25,7 @@ function write(root: string, path: string, text: string): void {
   writeFileSync(join(root, path), text)
 }
 
-function fixture(profile: 'local' | 'official' = 'local'): string {
+function fixture(profile: 'tiancode' | 'local' | 'official' = 'tiancode'): string {
   const root = mkdtempSync(join(tmpdir(), 'dsh-local-desktop-pack-'))
   roots.push(root)
   write(root, 'package.json', JSON.stringify({ name: 'desktop-pack-fixture', version: '1.2.3', private: true }))
@@ -83,7 +83,7 @@ it('packs local client artifacts without a release publication record', async ()
 }, testTimeout)
 
 it.each(['official', 'stale', 'missing'] as const)('rejects %s client artifacts before replacing local packages', async (kind) => {
-  const root = fixture(kind === 'official' ? 'official' : 'local')
+  const root = fixture(kind === 'official' ? 'official' : 'tiancode')
   if (kind === 'stale') write(root, 'packages/client/probe/lib/client.js', 'export const changed = true\n')
   if (kind === 'missing') unlinkSync(join(root, '.dsh-build/client-build-environment.json'))
   write(root, 'packed/retained.txt', 'previous output\n')
@@ -94,10 +94,10 @@ it.each(['official', 'stale', 'missing'] as const)('rejects %s client artifacts 
 }, testTimeout)
 
 it('rejects local client artifacts in the release packing command', async () => {
-  const root = fixture()
+  const root = fixture('local')
   const result = await pack(root, true)
   expect(result.code).not.toBe(0)
-  expect(result.output).toMatch(/DSH_CLIENT_BUILD_PROFILE/)
+  expect(result.output).toContain('requires a supported client build profile')
   expect(existsSync(join(root, 'packed'))).toBe(false)
 }, testTimeout)
 
